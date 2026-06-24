@@ -5,6 +5,10 @@
 (function () {
     'use strict';
 
+    // ===== ANO DINÂMICO =====
+    const anoEl = document.getElementById('ano');
+    if (anoEl) anoEl.textContent = new Date().getFullYear();
+
     // ===== MENU MOBILE =====
     const menuToggle = document.getElementById('menuToggle');
     const nav = document.getElementById('nav-principal');
@@ -16,7 +20,6 @@
             menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
         });
 
-        // Fecha o menu ao clicar em um link
         nav.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
                 if (nav.classList.contains('open')) {
@@ -28,7 +31,7 @@
         });
     }
 
-    // ===== ACTIVE NAV LINK (scrollspy simples) =====
+    // ===== SCROLLSPY =====
     const navLinks = document.querySelectorAll('.nav a[href^="#"]');
     const sections = Array.from(navLinks)
         .map(function (link) {
@@ -41,9 +44,7 @@
         const scrollY = window.scrollY + 120;
         let activeId = null;
         sections.forEach(function (section) {
-            if (section.offsetTop <= scrollY) {
-                activeId = '#' + section.id;
-            }
+            if (section.offsetTop <= scrollY) activeId = '#' + section.id;
         });
         navLinks.forEach(function (link) {
             link.classList.toggle('active', link.getAttribute('href') === activeId);
@@ -57,12 +58,10 @@
 
     // ===== SCROLL REVEAL =====
     const revealTargets = document.querySelectorAll(
-        '.section-head, .empresa-text, .empresa-visual, .produto-card, .noticia-card, .banner-content, .banner-visual, .contato-info, .contato-form'
+        '.section-head, .empresa-text, .values-grid, .value-card, .produto-card, .noticia-card, .solucoes-content, .solucoes-visual, .contato-info, .contato-form, .marca-item, .footer-cta-content, .mascot-wrap, .newsletter-content, .newsletter-form, .hero-mascot'
     );
 
-    revealTargets.forEach(function (el) {
-        el.classList.add('reveal');
-    });
+    revealTargets.forEach(function (el) { el.classList.add('reveal'); });
 
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver(
@@ -76,112 +75,159 @@
             },
             { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
         );
-
-        revealTargets.forEach(function (el) {
-            io.observe(el);
-        });
+        revealTargets.forEach(function (el) { io.observe(el); });
     } else {
-        // Fallback: torna tudo visível imediatamente
-        revealTargets.forEach(function (el) {
-            el.classList.add('visible');
+        revealTargets.forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    // ===== PRODUTOS: BUSCA + FILTROS =====
+    const busca = document.getElementById('busca');
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('#produtosGrid .produto-card');
+    const empty = document.getElementById('produtosEmpty');
+    let filtroAtivo = 'todos';
+
+    function aplicarFiltros() {
+        const termo = (busca ? busca.value.trim().toLowerCase() : '');
+        let visiveis = 0;
+
+        cards.forEach(function (card) {
+            const cat = card.getAttribute('data-cat') || '';
+            const nome = (card.getAttribute('data-nome') || '').toLowerCase();
+            const matchCat = filtroAtivo === 'todos' || cat === filtroAtivo;
+            const matchTermo = !termo || nome.indexOf(termo) !== -1;
+
+            if (matchCat && matchTermo) {
+                card.style.display = '';
+                visiveis++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (empty) empty.hidden = visiveis > 0;
+    }
+
+    if (chips.length) {
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+                chip.setAttribute('aria-pressed', 'true');
+                filtroAtivo = chip.getAttribute('data-filter');
+                aplicarFiltros();
+            });
         });
     }
 
-    // ===== FORM VALIDATION =====
+    if (busca) {
+        busca.addEventListener('input', debounce(aplicarFiltros, 200));
+    }
+
+    // ===== FORM CONTATO =====
     const form = document.getElementById('contatoForm');
 
     if (form) {
         const successMsg = document.getElementById('formSuccess');
 
+        const fields = [
+            {
+                id: 'nome',
+                validate: function (v) {
+                    if (!v.trim()) return 'Informe seu nome completo.';
+                    if (v.trim().length < 3) return 'Nome deve ter ao menos 3 caracteres.';
+                    return '';
+                }
+            },
+            {
+                id: 'email',
+                validate: function (v) {
+                    if (!v.trim()) return 'Informe seu e-mail.';
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'E-mail inválido. Verifique e tente novamente.';
+                    return '';
+                }
+            },
+            {
+                id: 'telefone',
+                validate: function (v) {
+                    if (!v.trim()) return 'Informe seu telefone ou WhatsApp.';
+                    const digits = v.replace(/\D/g, '');
+                    if (digits.length < 10 || digits.length > 11) return 'Telefone deve ter 10 ou 11 dígitos com DDD.';
+                    return '';
+                }
+            },
+            {
+                id: 'cidade',
+                validate: function (v) {
+                    if (!v.trim()) return 'Informe sua cidade.';
+                    if (v.trim().length < 2) return 'Cidade muito curta.';
+                    return '';
+                }
+            },
+            {
+                id: 'mensagem',
+                validate: function (v) {
+                    if (!v.trim()) return 'Escreva sua mensagem.';
+                    if (v.trim().length < 10) return 'Mensagem deve ter ao menos 10 caracteres.';
+                    return '';
+                }
+            }
+        ];
+
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-
-            const fields = [
-                {
-                    el: document.getElementById('nome'),
-                    err: document.getElementById('erro-nome'),
-                    validate: function (v) {
-                        if (!v.trim()) return 'Informe seu nome completo.';
-                        if (v.trim().length < 3) return 'Nome deve ter ao menos 3 caracteres.';
-                        return '';
-                    }
-                },
-                {
-                    el: document.getElementById('email'),
-                    err: document.getElementById('erro-email'),
-                    validate: function (v) {
-                        if (!v.trim()) return 'Informe seu e-mail.';
-                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'E-mail invalido.';
-                        return '';
-                    }
-                },
-                {
-                    el: document.getElementById('telefone'),
-                    err: document.getElementById('erro-telefone'),
-                    validate: function (v) {
-                        if (!v.trim()) return '';
-                        const digits = v.replace(/\D/g, '');
-                        if (digits.length < 10 || digits.length > 11) return 'Telefone deve ter 10 ou 11 digitos.';
-                        return '';
-                    }
-                },
-                {
-                    el: document.getElementById('mensagem'),
-                    err: document.getElementById('erro-mensagem'),
-                    validate: function (v) {
-                        if (!v.trim()) return 'Escreva sua mensagem.';
-                        if (v.trim().length < 10) return 'Mensagem deve ter ao menos 10 caracteres.';
-                        return '';
-                    }
-                }
-            ];
-
             let firstInvalid = null;
             let hasError = false;
 
             fields.forEach(function (f) {
-                const msg = f.validate(f.el.value);
+                const el = document.getElementById(f.id);
+                const err = document.getElementById('erro-' + f.id);
+                if (!el) return;
+                const msg = f.validate(el.value);
                 if (msg) {
                     hasError = true;
-                    f.el.classList.add('error');
-                    f.err.textContent = msg;
-                    if (!firstInvalid) firstInvalid = f.el;
+                    el.classList.add('error');
+                    el.setAttribute('aria-invalid', 'true');
+                    if (err) err.textContent = msg;
+                    if (!firstInvalid) firstInvalid = el;
                 } else {
-                    f.el.classList.remove('error');
-                    f.err.textContent = '';
+                    el.classList.remove('error');
+                    el.removeAttribute('aria-invalid');
+                    if (err) err.textContent = '';
                 }
             });
 
             if (hasError) {
                 if (firstInvalid) firstInvalid.focus();
-                successMsg.hidden = true;
+                if (successMsg) successMsg.hidden = true;
                 return;
             }
 
-            // Sucesso simulado
-            successMsg.hidden = false;
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (successMsg) {
+                successMsg.hidden = false;
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             form.reset();
 
             setTimeout(function () {
-                successMsg.hidden = true;
+                if (successMsg) successMsg.hidden = true;
             }, 6000);
         });
 
-        // Validação inline (on blur)
-        form.querySelectorAll('input, textarea').forEach(function (input) {
-            input.addEventListener('blur', function () {
-                if (input.classList.contains('error')) {
-                    const errEl = document.getElementById('erro-' + input.id);
-                    if (input.value.trim()) {
-                        input.classList.remove('error');
-                        if (errEl) errEl.textContent = '';
-                    }
+        fields.forEach(function (f) {
+            const el = document.getElementById(f.id);
+            if (!el) return;
+            el.addEventListener('blur', function () {
+                if (!el.classList.contains('error')) return;
+                const err = document.getElementById('erro-' + f.id);
+                const msg = f.validate(el.value);
+                if (!msg) {
+                    el.classList.remove('error');
+                    el.removeAttribute('aria-invalid');
+                    if (err) err.textContent = '';
                 }
             });
         });
 
-        // Máscara simples de telefone
         const tel = document.getElementById('telefone');
         if (tel) {
             tel.addEventListener('input', function () {
@@ -197,7 +243,32 @@
         }
     }
 
-    // ===== SMOOTH SCROLL POLISH (compensa header sticky) =====
+    // ===== NEWSLETTER =====
+    const newsForm = document.getElementById('newsForm');
+    if (newsForm) {
+        newsForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const input = document.getElementById('newsEmail');
+            const val = input.value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+                input.style.borderColor = '#C5221F';
+                input.focus();
+                return;
+            }
+            input.style.borderColor = '';
+            const btn = newsForm.querySelector('button[type="submit"]');
+            const orig = btn.textContent;
+            btn.textContent = 'Inscrito ✓';
+            btn.disabled = true;
+            newsForm.reset();
+            setTimeout(function () {
+                btn.textContent = orig;
+                btn.disabled = false;
+            }, 3500);
+        });
+    }
+
+    // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -205,13 +276,14 @@
             const target = document.querySelector(href);
             if (!target) return;
             e.preventDefault();
-            const headerHeight = document.querySelector('.header').offsetHeight + 12;
+            const header = document.querySelector('.header');
+            const headerHeight = (header ? header.offsetHeight : 0) + 12;
             const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight;
             window.scrollTo({ top: targetPos, behavior: 'smooth' });
         });
     });
 
-    // ===== UTILITÁRIO: THROTTLE =====
+    // ===== UTILITÁRIOS =====
     function throttle(fn, wait) {
         let inThrottle = false;
         return function () {
@@ -222,6 +294,16 @@
                 inThrottle = true;
                 setTimeout(function () { inThrottle = false; }, wait);
             }
+        };
+    }
+
+    function debounce(fn, wait) {
+        let timeout;
+        return function () {
+            const args = arguments;
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(function () { fn.apply(context, args); }, wait);
         };
     }
 })();
