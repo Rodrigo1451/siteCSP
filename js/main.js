@@ -198,19 +198,46 @@
 
             if (hasError) {
                 if (firstInvalid) firstInvalid.focus();
-                if (successMsg) successMsg.hidden = true;
+                if (successMsg) successMsg.style.display = 'none';
                 return;
             }
 
+            // ===== ENVIO PARA O WHATSAPP DA LOJA =====
+            var WHATSAPP_NUM = '5511973947185';
+            function campo(id) {
+                var el = document.getElementById(id);
+                return el ? el.value.trim() : '';
+            }
+            var assuntoEl = document.getElementById('assunto');
+            var assuntoTxt = (assuntoEl && assuntoEl.value)
+                ? assuntoEl.options[assuntoEl.selectedIndex].text
+                : 'Não informado';
+
+            var texto = [
+                '*Novo contato pelo site — Comercial São Pedro*',
+                '',
+                '*Nome:* ' + campo('nome'),
+                '*E-mail:* ' + campo('email'),
+                '*Telefone:* ' + campo('telefone'),
+                '*Cidade:* ' + campo('cidade'),
+                '*Assunto:* ' + assuntoTxt,
+                '',
+                '*Mensagem:*',
+                campo('mensagem')
+            ].join('\n');
+
+            var whatsUrl = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + encodeURIComponent(texto);
+            window.open(whatsUrl, '_blank', 'noopener');
+
             if (successMsg) {
-                successMsg.hidden = false;
+                successMsg.style.display = 'flex';
                 successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             form.reset();
 
             setTimeout(function () {
-                if (successMsg) successMsg.hidden = true;
-            }, 6000);
+                if (successMsg) successMsg.style.display = 'none';
+            }, 8000);
         });
 
         fields.forEach(function (f) {
