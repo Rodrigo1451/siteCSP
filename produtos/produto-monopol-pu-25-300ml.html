@@ -10,54 +10,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cardnav.css">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
 
 <a href="#main" class="skip-link">Ir para o conteúdo principal</a>
-
-<!-- TOPBAR -->
-<div class="topbar">
-    <div class="container topbar-inner">
-        <div class="topbar-info">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span><span class="topbar-info-detail">Av. Pref. Luis Latorre, 4097 — </span>Jundiaí-SP</span>
-        </div>
-        <div class="topbar-social">
-            <a href="https://www.facebook.com/Comercial-S%C3%A3o-Pedro-110534623943297" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="https://www.instagram.com/comercialsaopedrojundiai/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="https://wa.me/5511973947185" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.4-.2-.6.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.6-1.5-.8-2-.2-.5-.5-.4-.7-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.7 4.2 1.4.6 2.5.9 3.4 1.1.7.1 1.4.1 1.9 0 .6-.1 1.7-.7 2-1.4.3-.6.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4M12 22A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10"/></svg></a>
-        </div>
-    </div>
-</div>
-
-<!-- HEADER -->
-<header class="header" id="topo">
-    <div class="container header-inner">
-        <a href="../index.html" class="logo" aria-label="Comercial São Pedro - Página inicial">
-            <img src="../img/logos/csp/logo.png" alt="Comercial São Pedro" class="logo-img" width="160" height="50">
-        </a>
-        <nav class="nav" id="nav-principal" aria-label="Navegação principal">
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../produtos.html" class="active">Produtos</a></li>
-                <li><a href="../index.html#solucoes">Soluções</a></li>
-                <li><a href="../quem-somos.html">Quem Somos</a></li>
-                <li><a href="../noticias.html">Notícias</a></li>
-                <li><a href="../contato.html">Contato</a></li>
-            </ul>
+    <!-- CARD NAV -->
+    <div class="card-nav-container" id="topo">
+        <nav class="card-nav" id="cardNav" aria-label="Menu principal">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" id="hamburger" role="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="cardNavContent" tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+                <div class="card-nav-logo-wrap">
+                    <a href="../index.html" aria-label="Comercial S&atilde;o Pedro - P&aacute;gina inicial">
+                        <img src="../img/logos/csp/logo.png" alt="Comercial S&atilde;o Pedro" class="card-nav-logo">
+                    </a>
+                </div>
+                <a href="https://wa.me/5511973947185?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento." class="card-nav-cta" target="_blank" rel="noopener">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.4-.2-.6.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.6-1.5-.8-2-.2-.5-.5-.4-.7-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.7 4.2 1.4.6 2.5.9 3.4 1.1.7.1 1.4.1 1.9 0 .6-.1 1.7-.7 2-1.4.3-.6.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4M12 22A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10"/></svg>
+                    Or&ccedil;amento
+                </a>
+            </div>
+            <div class="card-nav-content" id="cardNavContent" aria-hidden="true">
+                <div class="nav-card" style="background:#44110D; color:#FCD230;">
+                    <div class="nav-card-label">Produtos</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="../produtos.html?cat=impermeabilizantes" style="color:#FCD230;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Impermeabilizantes</a>
+                        <a class="nav-card-link" href="../produtos.html?cat=mantas_asfalticas" style="color:#FCD230;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Mantas Asf&aacute;lticas</a>
+                        <a class="nav-card-link" href="../produtos.html?cat=argamassas" style="color:#FCD230;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Argamassas e Selantes</a>
+                        <a class="nav-card-link" href="../produtos.html" style="color:#FCD230;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Ver cat&aacute;logo completo</a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background:#572925; color:#fff;">
+                    <div class="nav-card-label">Empresa</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="../quem-somos.html" style="color:#fff;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Quem Somos</a>
+                        <a class="nav-card-link" href="../noticias.html" style="color:#fff;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Not&iacute;cias</a>
+                        <a class="nav-card-link" href="../index.html#solucoes" style="color:#fff;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Solu&ccedil;&otilde;es</a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background:#FCD230; color:#44110D;">
+                    <div class="nav-card-label">Contato</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="https://wa.me/5511973947185" target="_blank" rel="noopener" style="color:#44110D;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> WhatsApp</a>
+                        <a class="nav-card-link" href="../contato.html" style="color:#44110D;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> Fale Conosco</a>
+                        <a class="nav-card-link" href="tel:+551145222929" style="color:#44110D;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg> (11) 4522-2929</a>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <div class="header-actions">
-            <a href="https://wa.me/5511973947185?text=Olá!%20Vim%20pelo%20site%20e%20quero%20um%20orçamento." class="header-cta" target="_blank" rel="noopener" aria-label="Solicitar orçamento no WhatsApp">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.4-.2-.6.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.6-1.5-.8-2-.2-.5-.5-.4-.7-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.7 4.2 1.4.6 2.5.9 3.4 1.1.7.1 1.4.1 1.9 0 .6-.1 1.7-.7 2-1.4.3-.6.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4M12 22A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10"/></svg>
-                <span class="header-cta-text">Orçamento</span>
-            </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-principal">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
     </div>
-</header>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -221,5 +226,7 @@ Cart. 300ml CINZA</li>
 </a>
 
 <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../js/cardnav.js"></script>
 </body>
 </html>

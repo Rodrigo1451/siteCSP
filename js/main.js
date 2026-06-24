@@ -1,5 +1,6 @@
 /* ============================================
-   COMERCIAL SAO PEDRO - main.js
+   COMERCIAL SÃO PEDRO — main.js v2
+   Premium · Animated · Responsive
    ============================================ */
 
 (function () {
@@ -8,6 +9,36 @@
     // ===== ANO DINÂMICO =====
     const anoEl = document.getElementById('ano');
     if (anoEl) anoEl.textContent = new Date().getFullYear();
+
+    // ===== SCROLL PROGRESS BAR =====
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.setAttribute('aria-hidden', 'true');
+    document.body.prepend(progressBar);
+
+    function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ===== HEADER: GLASSMORPHISM ON SCROLL =====
+    const header = document.querySelector('.header');
+
+    function updateHeader() {
+        if (!header) return;
+        if (window.scrollY > 40) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
 
     // ===== MENU MOBILE =====
     const menuToggle = document.getElementById('menuToggle');
@@ -29,6 +60,17 @@
                 }
             });
         });
+
+        // Close nav on outside click
+        document.addEventListener('click', function (e) {
+            if (nav.classList.contains('open') &&
+                !nav.contains(e.target) &&
+                !menuToggle.contains(e.target)) {
+                nav.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menu');
+            }
+        });
     }
 
     // ===== SCROLLSPY =====
@@ -41,7 +83,7 @@
         .filter(Boolean);
 
     function updateActiveNav() {
-        const scrollY = window.scrollY + 120;
+        const scrollY = window.scrollY + 100;
         let activeId = null;
         sections.forEach(function (section) {
             if (section.offsetTop <= scrollY) activeId = '#' + section.id;
@@ -56,11 +98,71 @@
         updateActiveNav();
     }
 
-    // ===== SCROLL REVEAL =====
-    const revealTargets = document.querySelectorAll(
-        '.section-head, .empresa-text, .values-grid, .value-card, .produto-card, .noticia-card, .solucoes-content, .solucoes-visual, .contato-info, .contato-form, .marca-item, .footer-cta-content, .mascot-wrap, .newsletter-content, .newsletter-form, .hero-mascot'
-    );
+    // ===== COUNTER ANIMATION =====
+    function animateCounter(el, target, suffix, duration) {
+        suffix = suffix || '';
+        duration = duration || 1400;
+        const start = performance.now();
+        const startVal = 0;
 
+        function step(timestamp) {
+            const elapsed = timestamp - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            const current = Math.round(startVal + (target - startVal) * eased);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    function initCounters() {
+        const stats = document.querySelectorAll('.stat strong, .catalogo-num strong');
+        stats.forEach(function (el) {
+            const text = el.textContent.trim();
+            const num = parseInt(text.replace(/\D/g, ''), 10);
+            const suffix = text.replace(/[\d]/g, '');
+            if (isNaN(num)) return;
+            el.dataset.target = num;
+            el.dataset.suffix = suffix;
+            el.dataset.animated = 'false';
+        });
+    }
+
+    function triggerCounters(entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            if (el.dataset.animated === 'true') return;
+            el.dataset.animated = 'true';
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.dataset.suffix || '';
+            animateCounter(el, target, suffix, 1600);
+            counterObserver.unobserve(el);
+        });
+    }
+
+    initCounters();
+
+    const counterObserver = new IntersectionObserver(triggerCounters, {
+        threshold: 0.4
+    });
+
+    document.querySelectorAll('.stat strong, .catalogo-num strong').forEach(function (el) {
+        if (el.dataset.target) counterObserver.observe(el);
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealSelectors = [
+        '.section-head', '.empresa-text', '.values-grid', '.value-card',
+        '.produto-card', '.noticia-card', '.contato-info', '.contato-form',
+        '.marca-item', '.footer-cta-content', '.mascot-wrap', '.hero-mascot',
+        '.catalogo-cta-content', '.catalogo-cta-visual', '.cat-tile',
+        '.cta-block', '.contato-list li', '.features li'
+    ];
+
+    const revealTargets = document.querySelectorAll(revealSelectors.join(', '));
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
 
     if ('IntersectionObserver' in window) {
@@ -68,13 +170,25 @@
             function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        // Small stagger for sibling elements
+                        const parent = entry.target.parentElement;
+                        const siblings = parent
+                            ? Array.from(parent.querySelectorAll('.reveal:not(.visible)'))
+                            : [];
+                        const idx = siblings.indexOf(entry.target);
+                        const delay = Math.min(idx * 60, 300);
+
+                        setTimeout(function () {
+                            entry.target.classList.add('visible');
+                        }, delay);
+
                         io.unobserve(entry.target);
                     }
                 });
             },
-            { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
         );
+
         revealTargets.forEach(function (el) { io.observe(el); });
     } else {
         revealTargets.forEach(function (el) { el.classList.add('visible'); });
@@ -99,6 +213,7 @@
 
             if (matchCat && matchTermo) {
                 card.style.display = '';
+                card.style.animation = 'fadeInUp 300ms ease-out both';
                 visiveis++;
             } else {
                 card.style.display = 'none';
@@ -120,7 +235,22 @@
     }
 
     if (busca) {
-        busca.addEventListener('input', debounce(aplicarFiltros, 200));
+        busca.addEventListener('input', debounce(aplicarFiltros, 220));
+    }
+
+    // URL param filter on load
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat');
+    if (catParam && chips.length) {
+        const matchChip = Array.from(chips).find(function (c) {
+            return c.getAttribute('data-filter') === catParam;
+        });
+        if (matchChip) {
+            chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+            matchChip.setAttribute('aria-pressed', 'true');
+            filtroAtivo = catParam;
+            aplicarFiltros();
+        }
     }
 
     // ===== FORM CONTATO =====
@@ -198,11 +328,10 @@
 
             if (hasError) {
                 if (firstInvalid) firstInvalid.focus();
-                if (successMsg) successMsg.style.display = 'none';
+                if (successMsg) successMsg.hidden = true;
                 return;
             }
 
-            // ===== ENVIO PARA O WHATSAPP DA LOJA =====
             var WHATSAPP_NUM = '5511973947185';
             function campo(id) {
                 var el = document.getElementById(id);
@@ -230,13 +359,13 @@
             window.open(whatsUrl, '_blank', 'noopener');
 
             if (successMsg) {
-                successMsg.style.display = 'flex';
+                successMsg.hidden = false;
                 successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             form.reset();
 
             setTimeout(function () {
-                if (successMsg) successMsg.style.display = 'none';
+                if (successMsg) successMsg.hidden = true;
             }, 8000);
         });
 
@@ -276,6 +405,7 @@
         newsForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const input = document.getElementById('newsEmail');
+            if (!input) return;
             const val = input.value.trim();
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
                 input.style.borderColor = '#C5221F';
@@ -303,14 +433,14 @@
             const target = document.querySelector(href);
             if (!target) return;
             e.preventDefault();
-            const header = document.querySelector('.header');
-            const headerHeight = (header ? header.offsetHeight : 0) + 12;
-            const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+            const headerEl = document.querySelector('.header');
+            const offset = (headerEl ? headerEl.offsetHeight : 0) + 16;
+            const targetPos = target.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top: targetPos, behavior: 'smooth' });
         });
     });
 
-    // ===== UTILITÁRIOS =====
+    // ===== UTILITIES =====
     function throttle(fn, wait) {
         let inThrottle = false;
         return function () {
@@ -333,4 +463,13 @@
             timeout = setTimeout(function () { fn.apply(context, args); }, wait);
         };
     }
+
+    // Combined scroll handler (single listener for performance)
+    function onScroll() {
+        updateHeader();
+        updateProgress();
+    }
+
+    window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+
 })();

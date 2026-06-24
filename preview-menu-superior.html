@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview — Menu Superior | Comercial São Pedro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a0a08 0%, #2d1208 40%, #44110D 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Label informativo */
+        .preview-label {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8125rem;
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.15);
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        /* ===== CARDNAV ===== */
+        .card-nav-container {
+            position: fixed;
+            top: 1.5em;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 860px;
+            z-index: 99;
+        }
+
+        .card-nav {
+            display: block;
+            height: 60px;
+            background-color: #fff;
+            border: 0.5px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.16);
+            position: relative;
+            overflow: hidden;
+            will-change: height;
+        }
+
+        /* Top bar */
+        .card-nav-top {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px 0 16px;
+            z-index: 2;
+        }
+
+        /* Hamburger */
+        .hamburger-menu {
+            height: 44px;
+            width: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            gap: 6px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .hamburger-menu:hover { background: rgba(68,17,13,0.06); }
+        .hamburger-menu:focus-visible { outline: 2px solid #44110D; outline-offset: 2px; }
+
+        .hamburger-line {
+            width: 22px;
+            height: 2px;
+            background-color: #44110D;
+            transition: transform 0.25s ease, opacity 0.2s ease;
+            transform-origin: 50% 50%;
+        }
+
+        .hamburger-menu.open .hamburger-line:first-child {
+            transform: translateY(4px) rotate(45deg);
+        }
+        .hamburger-menu.open .hamburger-line:last-child {
+            transform: translateY(-4px) rotate(-45deg);
+        }
+
+        /* Logo */
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+        }
+
+        .card-nav-logo {
+            height: 34px;
+            width: auto;
+            display: block;
+        }
+
+        /* CTA button */
+        .card-nav-cta {
+            background: #44110D;
+            color: #FCD230;
+            border: none;
+            border-radius: 8px;
+            padding: 0 18px;
+            height: 40px;
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .card-nav-cta:hover {
+            background: #330D0A;
+            transform: translateY(-1px);
+        }
+
+        .card-nav-cta:focus-visible { outline: 2px solid #44110D; outline-offset: 3px; }
+
+        /* Cards content area */
+        .card-nav-content {
+            position: absolute;
+            left: 0; right: 0;
+            top: 60px; bottom: 0;
+            padding: 8px;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card-nav.open .card-nav-content {
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Nav cards */
+        .nav-card {
+            height: 100%;
+            flex: 1 1 0;
+            min-width: 0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            padding: 16px 18px;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .nav-card-label {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .nav-card-links {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .nav-card-link {
+            font-size: 0.9375rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 0;
+        }
+
+        .nav-card-link:hover {
+            opacity: 0.72;
+            transform: translateX(2px);
+        }
+
+        .nav-card-link:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+            border-radius: 3px;
+        }
+
+        .nav-card-link svg {
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .card-nav-container { width: 94%; top: 1em; }
+
+            .card-nav-top { padding: 0 10px; }
+
+            .logo-container { position: static; transform: none; order: 1; }
+            .hamburger-menu { order: 2; }
+            .card-nav-cta { display: none; }
+
+            .card-nav-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                bottom: 0;
+                justify-content: flex-start;
+            }
+
+            .nav-card {
+                height: auto;
+                min-height: 56px;
+                flex: 1 1 auto;
+            }
+
+            .nav-card-label { font-size: 1.0625rem; }
+            .nav-card-link { font-size: 0.875rem; }
+        }
+
+        /* Page content (apenas para contexto visual do preview) */
+        .preview-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 16px;
+            text-align: center;
+            padding: 120px 24px 80px;
+            color: rgba(255,255,255,0.35);
+            font-size: 0.875rem;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .preview-hero strong {
+            display: block;
+            font-family: 'Archivo', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            color: rgba(252,210,48,0.18);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== CARD NAV ===== -->
+    <div class="card-nav-container">
+        <nav class="card-nav" id="cardNav" aria-label="Menu principal">
+
+            <div class="card-nav-top">
+                <!-- Hamburger -->
+                <div class="hamburger-menu"
+                     id="hamburger"
+                     role="button"
+                     aria-label="Abrir menu"
+                     aria-expanded="false"
+                     aria-controls="cardNavContent"
+                     tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <!-- Logo -->
+                <div class="logo-container">
+                    <img src="img/logos/csp/logo.png" alt="Comercial São Pedro" class="card-nav-logo">
+                </div>
+
+                <!-- CTA -->
+                <a href="https://wa.me/5511973947185?text=Olá!%20Vim%20pelo%20site%20e%20quero%20um%20orçamento."
+                   class="card-nav-cta"
+                   target="_blank"
+                   rel="noopener">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.4-.2-.6.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.6-1.5-.8-2-.2-.5-.5-.4-.7-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.7 4.2 1.4.6 2.5.9 3.4 1.1.7.1 1.4.1 1.9 0 .6-.1 1.7-.7 2-1.4.3-.6.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4M12 22A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10"/></svg>
+                    Orçamento
+                </a>
+            </div>
+
+            <!-- Cards expandidos -->
+            <div class="card-nav-content" id="cardNavContent" aria-hidden="true">
+
+                <!-- Produtos -->
+                <div class="nav-card" style="background:#44110D; color:#FCD230;">
+                    <div class="nav-card-label">Produtos</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="produtos.html?cat=impermeabilizantes" style="color:#FCD230;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Impermeabilizantes
+                        </a>
+                        <a class="nav-card-link" href="produtos.html?cat=mantas_asfalticas" style="color:#FCD230;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Mantas Asfálticas
+                        </a>
+                        <a class="nav-card-link" href="produtos.html?cat=argamassas" style="color:#FCD230;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Argamassas e Selantes
+                        </a>
+                        <a class="nav-card-link" href="produtos.html" style="color:#FCD230;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Ver catálogo completo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Empresa -->
+                <div class="nav-card" style="background:#572925; color:#fff;">
+                    <div class="nav-card-label">Empresa</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="quem-somos.html" style="color:#fff;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Quem Somos
+                        </a>
+                        <a class="nav-card-link" href="noticias.html" style="color:#fff;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Notícias
+                        </a>
+                        <a class="nav-card-link" href="index.html#solucoes" style="color:#fff;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Soluções
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contato -->
+                <div class="nav-card" style="background:#FCD230; color:#44110D;">
+                    <div class="nav-card-label">Contato</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="https://wa.me/5511973947185" target="_blank" rel="noopener" style="color:#44110D;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            WhatsApp
+                        </a>
+                        <a class="nav-card-link" href="contato.html" style="color:#44110D;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            Fale Conosco
+                        </a>
+                        <a class="nav-card-link" href="tel:+551145222929" style="color:#44110D;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            (11) 4522-2929
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <!-- Fundo de preview -->
+    <div class="preview-hero" aria-hidden="true">
+        <strong>Comercial São Pedro</strong>
+        <p>↑ Clique no ícone de menu para ver a animação</p>
+        <p>Este arquivo é apenas uma proposta visual do novo menu.</p>
+        <p>Após aprovação, o menu será integrado em todas as páginas.</p>
+    </div>
+
+    <div class="preview-label" aria-hidden="true">Preview — Menu Superior CardNav · Aguardando aprovação</div>
+
+    <!-- GSAP via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        var navEl       = document.getElementById('cardNav');
+        var hamburger   = document.getElementById('hamburger');
+        var contentEl   = document.getElementById('cardNavContent');
+        var cards       = Array.from(document.querySelectorAll('.nav-card'));
+
+        var isExpanded  = false;
+        var tl          = null;
+
+        /* ---- Calcula altura expandida ---- */
+        function calcHeight() {
+            var mobile = window.matchMedia('(max-width: 768px)').matches;
+            if (!mobile) return 260;
+
+            /* mede a altura real do conteúdo */
+            var prev = {
+                visibility: contentEl.style.visibility,
+                pointerEvents: contentEl.style.pointerEvents,
+                position: contentEl.style.position,
+                height: contentEl.style.height
+            };
+            contentEl.style.visibility   = 'visible';
+            contentEl.style.pointerEvents = 'auto';
+            contentEl.style.position     = 'static';
+            contentEl.style.height       = 'auto';
+            void contentEl.offsetHeight; // force reflow
+            var h = 60 + contentEl.scrollHeight + 16;
+            contentEl.style.visibility   = prev.visibility;
+            contentEl.style.pointerEvents = prev.pointerEvents;
+            contentEl.style.position     = prev.position;
+            contentEl.style.height       = prev.height;
+            return h;
+        }
+
+        /* ---- Monta timeline GSAP ---- */
+        function buildTimeline() {
+            if (tl) tl.kill();
+            gsap.set(navEl, { height: 60, overflow: 'hidden' });
+            gsap.set(cards, { y: 40, opacity: 0 });
+
+            tl = gsap.timeline({ paused: true });
+            tl.to(navEl, { height: calcHeight, duration: 0.42, ease: 'power3.out' });
+            tl.to(cards, { y: 0, opacity: 1, duration: 0.38, ease: 'power3.out', stagger: 0.07 }, '-=0.12');
+            return tl;
+        }
+
+        /* ---- Toggle ---- */
+        function toggle() {
+            if (!tl) return;
+            if (!isExpanded) {
+                isExpanded = true;
+                hamburger.classList.add('open');
+                hamburger.setAttribute('aria-label', 'Fechar menu');
+                hamburger.setAttribute('aria-expanded', 'true');
+                navEl.classList.add('open');
+                contentEl.setAttribute('aria-hidden', 'false');
+                tl.play(0);
+            } else {
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-label', 'Abrir menu');
+                hamburger.setAttribute('aria-expanded', 'false');
+                contentEl.setAttribute('aria-hidden', 'true');
+                tl.eventCallback('onReverseComplete', function () {
+                    isExpanded = false;
+                    navEl.classList.remove('open');
+                });
+                tl.reverse();
+            }
+        }
+
+        /* ---- Resize ---- */
+        function handleResize() {
+            if (!tl) return;
+            if (isExpanded) {
+                gsap.set(navEl, { height: calcHeight() });
+                buildTimeline().progress(1);
+            } else {
+                buildTimeline();
+            }
+        }
+
+        /* ---- Init ---- */
+        buildTimeline();
+        hamburger.addEventListener('click', toggle);
+        hamburger.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+        window.addEventListener('resize', handleResize);
+
+        /* Fechar ao clicar fora */
+        document.addEventListener('click', function (e) {
+            if (isExpanded && !navEl.contains(e.target)) toggle();
+        });
+    })();
+    </script>
+</body>
+</html>
