@@ -1,0 +1,682 @@
+/* ============================================
+   COMERCIAL SÃO PEDRO — Mobile v1
+   Enhancements exclusivos para ≤ 767px
+   Segue os mesmos tokens de design-system
+   ============================================ */
+
+/* ===== BOTTOM ACTION BAR ===== */
+.mobile-bar {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+/* ----- Bottom Bar ----- */
+.mobile-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 450;
+    background: #fff;
+    border-top: 1.5px solid #E4E4E4;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.10);
+}
+
+.mobile-bar-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 4px;
+    min-height: 58px;
+    color: #545454;
+    text-decoration: none;
+    font-size: 0.625rem;
+    font-weight: 700;
+    font-family: 'Inter', system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: color 120ms ease, background 120ms ease;
+    position: relative;
+}
+
+.mobile-bar-btn:active {
+    background: #F9F9F9;
+    color: #44110D;
+}
+
+.mobile-bar-btn.active {
+    color: #44110D;
+}
+
+.mobile-bar-btn.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2.5px;
+    background: #44110D;
+    border-radius: 0 0 3px 3px;
+}
+
+.mobile-bar-btn svg {
+    flex-shrink: 0;
+    transition: transform 150ms ease;
+}
+
+.mobile-bar-btn:active svg {
+    transform: scale(0.88);
+}
+
+.mobile-bar-btn--wpp {
+    background: #25D366;
+    color: #fff;
+    flex: 1.3;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-bar-btn--wpp::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.mobile-bar-btn--wpp:active {
+    background: #1ebe5d;
+    color: #fff;
+}
+
+.mobile-bar-btn--wpp.active {
+    color: #fff;
+}
+
+.mobile-bar-btn--wpp.active::before {
+    display: none;
+}
+
+/* ----- WhatsApp float: reposicionar acima da bottom bar ----- */
+.whatsapp-float {
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 12px);
+    right: 16px;
+    width: 52px;
+    height: 52px;
+}
+
+/* ----- Content padding-bottom global para não ficar atrás da bottom bar ----- */
+footer.footer {
+    padding-bottom: calc(1.5rem + 58px + env(safe-area-inset-bottom, 0px));
+}
+
+main > section:last-of-type,
+.footer-cta {
+    padding-bottom: calc(3rem + 58px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ===== HERO MOBILE ===== */
+.hero {
+    min-height: 100svh;
+    min-height: -webkit-fill-available;
+    padding-top: 88px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    align-items: flex-start;
+}
+
+.hero-inner {
+    gap: 2.5rem;
+    padding-top: 1rem;
+}
+
+.hero-content {
+    max-width: 100%;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 7.5vw, 2.75rem);
+    line-height: 1.06;
+}
+
+.hero p {
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 100%;
+}
+
+.hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
+}
+
+.hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    max-width: 100%;
+}
+
+.stat {
+    padding: 0.875rem 0.5rem;
+}
+
+.stat strong {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+}
+
+.stat span {
+    font-size: 0.625rem;
+}
+
+/* Mostrar mascote pequeno no mobile (abaixo do conteúdo) */
+.hero-mascot {
+    display: flex !important;
+    justify-content: center;
+    padding-top: 0;
+}
+
+.hero-mascot img {
+    max-width: 200px;
+    width: 55vw;
+    filter: drop-shadow(0 16px 32px rgba(0,0,0,0.35));
+}
+
+/* ===== MARCAS MOBILE ===== */
+.marcas {
+    padding: 2rem 0;
+}
+
+/* ===== EMPRESA SECTION MOBILE ===== */
+.empresa-grid {
+    gap: 2.5rem;
+}
+
+.values-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.value-card {
+    padding: 1.25rem 0.875rem;
+}
+
+.value-icon {
+    width: 48px;
+    height: 48px;
+}
+
+/* ===== CATÁLOGO CTA MOBILE ===== */
+.catalogo-cta-visual {
+    display: none;
+}
+
+.catalogo-cta-inner {
+    gap: 2rem;
+}
+
+.catalogo-cta-content h2 {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+}
+
+.catalogo-nums {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+.catalogo-num-sep {
+    display: none;
+}
+
+.catalogo-num strong {
+    font-size: 1.75rem;
+}
+
+.btn-catalogo {
+    width: 100%;
+    justify-content: center;
+    min-width: auto;
+    min-height: 52px;
+}
+
+/* ===== SOLUÇÕES MOBILE ===== */
+.mapa-wrap {
+    display: none;
+}
+
+/* Transforma legenda em grade de tiles clicáveis no mobile */
+.solucoes-legenda {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.8125rem;
+}
+
+.solucoes-legenda li {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 0.875rem 0.75rem;
+    min-height: 56px;
+    align-items: center;
+    gap: 0.625rem;
+    transition: background 150ms ease, border-color 150ms ease;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.solucoes-legenda li:active {
+    background: rgba(252,210,48,0.15);
+    border-color: rgba(252,210,48,0.35);
+    color: #FCD230;
+}
+
+.leg-num {
+    min-width: 26px;
+    width: 26px;
+    height: 26px;
+    font-size: 0.6875rem;
+    flex-shrink: 0;
+}
+
+/* Links nas tiles de soluções */
+.solucoes-legenda li a {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    min-height: 44px;
+}
+
+.solucoes-head p {
+    font-size: 0.9375rem;
+}
+
+/* ===== NOTÍCIAS MOBILE ===== */
+.noticias-grid {
+    gap: 1rem;
+}
+
+.noticia-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+/* ===== CONTATO MOBILE ===== */
+.contato-inner {
+    gap: 2.5rem;
+}
+
+.form-row {
+    grid-template-columns: 1fr !important;
+}
+
+.contato-form {
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+.contato-form h3 {
+    font-size: 1.25rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    min-height: 52px;
+    font-size: 1rem;
+}
+
+/* ===== FOOTER CTA MOBILE ===== */
+.footer-cta-content h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+}
+
+.footer-cta-blocks {
+    gap: 0.75rem;
+}
+
+.cta-block {
+    padding: 0.875rem;
+}
+
+.mascot-wrap img {
+    width: 130px;
+}
+
+/* ===== FOOTER ACCORDION MOBILE ===== */
+.footer-inner {
+    gap: 0;
+    padding-bottom: 2rem;
+}
+
+.footer-col {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0;
+}
+
+.footer-col:first-child {
+    padding: 1.5rem 0 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-col:last-child {
+    border-bottom: none;
+}
+
+.footer-col h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 1rem 0;
+    margin-bottom: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.footer-col h4::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FCD230' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    transition: transform 250ms ease;
+}
+
+.footer-col.footer-col--open h4::after {
+    transform: rotate(180deg);
+}
+
+/* Ocultar conteúdo dos acordeões por padrão */
+.footer-col ul,
+.footer-col .contact-info,
+.footer-col p:not(.footer-brand-desc) {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease, opacity 250ms ease;
+    opacity: 0;
+    margin: 0;
+}
+
+.footer-col.footer-col--open ul,
+.footer-col.footer-col--open .contact-info,
+.footer-col.footer-col--open p:not(.footer-brand-desc) {
+    max-height: 320px;
+    opacity: 1;
+    padding-bottom: 1rem;
+}
+
+/* Primeiro col (logo + descrição) não é acordeão */
+.footer-col:first-child h4::after {
+    display: none;
+}
+
+.footer-col:first-child p,
+.footer-col:first-child .social {
+    max-height: none;
+    opacity: 1;
+}
+
+.footer-col:first-child h4 {
+    cursor: default;
+}
+
+/* ===== CARD NAV CTA MOBILE: mostrar como ícone apenas ===== */
+.card-nav-cta {
+    display: inline-flex !important;
+    padding: 0 11px !important;
+    gap: 0 !important;
+    min-width: 40px;
+    width: 40px;
+}
+
+.card-nav-cta-text {
+    display: none;
+}
+
+/* ===== PRODUTOS MOBILE ===== */
+.filtros-bar {
+    top: 80px; /* abaixo da card-nav no mobile */
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 0.875rem 1rem;
+    gap: 0.625rem;
+    position: sticky;
+    flex-wrap: wrap;
+}
+
+/* Busca: largura total */
+.filtros-bar .filtro-grupo:first-child {
+    flex: 0 0 100%;
+}
+
+/* Categoria e Marca lado a lado */
+.filtros-bar .filtro-grupo:nth-child(2),
+.filtros-bar .filtro-grupo:nth-child(3) {
+    flex: 1 1 calc(50% - 0.3rem);
+    min-width: 0;
+}
+
+/* Count e botão limpar */
+.filtros-count,
+.btn-limpar {
+    font-size: 0.8125rem;
+}
+
+.btn-limpar {
+    height: 40px;
+    padding: 0 0.875rem;
+}
+
+.filtro-grupo {
+    min-width: 0;
+}
+
+.filtro-grupo label {
+    font-size: 0.6875rem;
+}
+
+.filtro-grupo select,
+.filtro-grupo input[type="search"] {
+    height: 44px;
+    font-size: 1rem;
+}
+
+.filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 0.5rem;
+    padding-right: 1rem;
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+.chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-height: 40px;
+}
+
+/* Stack lista + busca no mobile */
+.produtos-controls {
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+}
+
+/* ===== PRODUTOS GRID FULL MOBILE ===== */
+.produtos-grid-full {
+    grid-template-columns: 1fr !important;
+    gap: 0.875rem;
+}
+
+/* ===== PÁGINA DE PRODUTO (subpages) ===== */
+.produto-detalhe {
+    gap: 1.5rem;
+}
+
+.produto-detalhe-media {
+    position: static;
+    padding: 1.25rem;
+}
+
+/* ===== SECTION HEAD MOBILE ===== */
+.section-head h2 {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+}
+
+/* ===== MAPA EMBED (contato page) ===== */
+.mapa-embed iframe {
+    height: 220px;
+}
+
+/* ===== SCROLL PROGRESS OFF MOBILE ===== */
+.scroll-progress {
+    display: none;
+}
+
+/* ===== SAFE AREA INSET: Skip link ===== */
+.skip-link {
+    padding-left: max(var(--sp-5), env(safe-area-inset-left));
+}
+
+/* ===== PAGE HERO (sub-páginas) ===== */
+.page-hero {
+    padding-top: 88px;
+    padding-bottom: 2.5rem;
+}
+
+.page-hero h1 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+}
+
+/* ===== QUEM SOMOS MOBILE ===== */
+.qs-stats {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 12px;
+}
+
+.qs-stat {
+    padding: 1.5rem 1rem;
+}
+
+.qs-stat strong {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.qs-mvv {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.qs-valores {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+/* ===== QS GRID ===== */
+.qs-grid {
+    gap: 2.5rem;
+}
+
+/* ===== NOTÍCIAS PAGE ===== */
+.noticias-page-grid {
+    gap: 2rem;
+}
+
+.noticia-card-full {
+    grid-template-columns: 1fr;
+}
+
+.noticia-body {
+    padding: 1.25rem;
+    gap: 0.75rem;
+}
+
+/* ===== MARCAS PAGE ===== */
+.marcas-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem;
+}
+
+.marca-item {
+    min-height: 64px;
+    padding: 0.875rem;
+}
+
+.marca-item img {
+    max-height: 40px;
+}
+
+} /* end @media (max-width: 767px) */
+
+/* ===== LANDSCAPE MOBILE ===== */
+@media (max-width: 767px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding-top: 88px;
+        padding-bottom: 2.5rem;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .hero-mascot {
+        display: flex !important;
+    }
+
+    .hero-mascot img {
+        max-width: 180px;
+    }
+}
+
+/* ===== REDUCED MOTION OVERRIDE MOBILE ===== */
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+    .mobile-bar-btn,
+    .mobile-bar-btn svg,
+    .footer-col h4::after,
+    .footer-col ul,
+    .footer-col p {
+        transition: none;
+    }
+}

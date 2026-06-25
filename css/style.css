@@ -1411,6 +1411,18 @@ a.marca-item { cursor: pointer; }
 @media (min-width: 600px)  { .produtos-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .produtos-grid { grid-template-columns: repeat(3, 1fr); } }
 
+/* Grid principal da página de catálogo */
+.produtos-grid-full {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-4);
+}
+
+@media (min-width: 900px)  { .produtos-grid-full { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { .produtos-grid-full { grid-template-columns: repeat(4, 1fr); } }
+
+@media (max-width: 479px) { .produtos-grid-full { grid-template-columns: 1fr; } }
+
 .produto-card {
     background: var(--white);
     border: 1px solid var(--gray-100);
