@@ -281,8 +281,11 @@ function openProdutoModal(id = null) {
         $('#pNome').value = item.nome;
         $('#pCategoria').value = item.categoria;
         $('#pMarca').value = item.marca || '';
+        $('#pTipo').value = item.tipo || '';
         $('#pAplicacao').value = item.aplicacao || '';
         $('#pDescricao').value = item.descricao;
+        $('#pEmbalagem').value = item.embalagem || '';
+        $('#pDetalhes').value = item.detalhes || '';
         $('#pTags').value = (item.tags || []).join(', ');
     }
     openModal('modalProduto');
@@ -296,8 +299,12 @@ async function saveProduto() {
     const marcaEl = $('#pMarca');
     const marca = marcaEl.value;
     const marcaLabel = marca ? marcaEl.options[marcaEl.selectedIndex].text : '';
+    const tipo = $('#pTipo').value.trim();
     const aplicacao = $('#pAplicacao').value.trim();
     const descricao = $('#pDescricao').value.trim();
+    // Uma embalagem por linha; normaliza para \n e descarta linhas vazias.
+    const embalagem = $('#pEmbalagem').value.split(/\r?\n/).map(l => l.trim()).filter(Boolean).join('\n');
+    const detalhes = $('#pDetalhes').value.replace(/\r\n/g, '\n').trim();
     const tags = $('#pTags').value.split(',').map(t => t.trim()).filter(Boolean);
 
     if (!nome || !descricao) {
@@ -307,7 +314,8 @@ async function saveProduto() {
 
     const existing = editingProduto ? state.produtos.find(p => p.id === editingProduto) : null;
     const item = Object.assign({}, existing || {}, {
-        nome, categoria, categoriaLabel, marca, marcaLabel, aplicacao, descricao, tags,
+        nome, categoria, categoriaLabel, marca, marcaLabel,
+        tipo, aplicacao, descricao, embalagem, detalhes, tags,
         tag: (existing && existing.tag) ? existing.tag : categoriaLabel,
     });
     if (editingProduto) item.id = editingProduto;

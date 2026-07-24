@@ -1,0 +1,9 @@
+https://comercialsaopedro.com.br/novo/public/produtos
+https://comercialsaopedro.com.br/novo/public/produtos?page=2
+https://comercialsaopedro.com.br/novo/public/produtos?page=3
+https://comercialsaopedro.com.br/novo/public/produtos?page=4
+https://comercialsaopedro.com.br/novo/public/produtos?page=5
+https://comercialsaopedro.com.br/novo/public/produtos?page=6
+https://comercialsaopedro.com.br/novo/public/produtos?page=7
+https://comercialsaopedro.com.br/novo/public/produtos?page=8
+https://comercialsaopedro.com.br/novo/public/produtos?page=9

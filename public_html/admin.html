@@ -468,6 +468,8 @@
                             <option value="cura_quimica">Cura Química</option>
                             <option value="desmoldantes">Desmoldantes</option>
                             <option value="drenagem">Drenagem</option>
+                            <option value="endurecedor">Endurecedores</option>
+                            <option value="grautes">Grautes</option>
                             <option value="impermeabilizantes">Impermeabilizantes</option>
                             <option value="inibidores">Inibidores de Corrosão</option>
                             <option value="juntas">Juntas de Dilatação</option>
@@ -475,7 +477,8 @@
                             <option value="primers">Primers</option>
                             <option value="complementares">Produtos Complementares</option>
                             <option value="revestimento">Revestimento Piso Esp.</option>
-                            <option value="selantes">Selantes / Mastiques</option></select>
+                            <option value="selantes">Selantes / Mastiques</option>
+                            <option value="telhados_calhas">Telhados e Calhas</option></select>
                     </div>
                     <div class="form-group">
                         <label for="pMarca">Marca</label>
@@ -485,12 +488,21 @@
                             <option value="cbpav">CB-PAV</option>
                             <option value="maccaferri">Maccaferri</option>
                             <option value="mactra">Mactra</option>
+                            <option value="outros">Outros</option>
+                            <option value="saint_gobain">Saint Gobain</option>
                             <option value="sika">Sika</option>
+                            <option value="tegula">Tégula</option>
                             <option value="vedbem">VedBem</option>
                             <option value="vedacit">Vedacit</option>
                             <option value="viapol">Viapol</option>
                             <option value="quartzolit">Weber-Quartzolit</option></select>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pTipo">Tipo do produto</label>
+                    <input type="text" id="pTipo" class="form-input" placeholder="Ex: Argamassa Polimérica">
+                    <div class="form-hint">Classificação técnica exibida como subtítulo na página do produto.</div>
                 </div>
 
                 <div class="form-group">
@@ -501,6 +513,18 @@
                 <div class="form-group">
                     <label for="pDescricao">Descrição *</label>
                     <textarea id="pDescricao" class="form-input" rows="3" placeholder="Breve descrição técnica do produto e seus benefícios"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="pEmbalagem">Embalagens disponíveis</label>
+                    <textarea id="pEmbalagem" class="form-input" rows="3" placeholder="Uma embalagem por linha. Ex:&#10;CX 18kg&#10;GL 3,6L"></textarea>
+                    <div class="form-hint">Uma por linha. Cada linha vira um item na página do produto.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pDetalhes">Detalhes do produto</label>
+                    <textarea id="pDetalhes" class="form-input" rows="6" placeholder="Características técnicas, vantagens, consumo, normas..."></textarea>
+                    <div class="form-hint">Texto longo. Comece a linha com &bull; para virar item de lista.</div>
                 </div>
 
                 <div class="form-group">

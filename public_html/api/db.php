@@ -53,6 +53,25 @@ function require_admin() {
     if (!is_admin()) { http_response_code(401); json_out(array('ok' => false, 'error' => 'unauthorized')); }
 }
 
+/* Versao da carga inicial. Ao publicar um seed.json com produtos novos,
+   incremente esta constante: seed_sync() insere o que falta no banco que ja
+   existe, sem sobrescrever nada que o admin tenha editado. */
+define('CSP_SEED_VERSION', '2026-07-24-99');
+
+/* Adiciona colunas que ainda nao existem. MySQL antigo nao aceita
+   ADD COLUMN IF NOT EXISTS, entao consultamos o information_schema. */
+function add_missing_columns($pdo, $tabela, $colunas) {
+    $st = $pdo->prepare("SELECT COLUMN_NAME FROM information_schema.COLUMNS
+        WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?");
+    $st->execute(array($tabela));
+    $existentes = array();
+    foreach ($st->fetchAll() as $r) { $existentes[strtolower($r['COLUMN_NAME'])] = true; }
+    foreach ($colunas as $nome => $definicao) {
+        if (isset($existentes[strtolower($nome)])) continue;
+        $pdo->exec("ALTER TABLE `$tabela` ADD COLUMN `$nome` $definicao");
+    }
+}
+
 function init_schema($pdo) {
     $pdo->exec("CREATE TABLE IF NOT EXISTS produtos (
         id VARCHAR(64) PRIMARY KEY,
@@ -65,6 +84,9 @@ function init_schema($pdo) {
         img VARCHAR(255),
         alt VARCHAR(255),
         url VARCHAR(255),
+        tipo VARCHAR(255),
+        embalagem TEXT,
+        detalhes TEXT,
         aplicacao TEXT,
         descricao TEXT,
         tags TEXT,
@@ -87,16 +109,27 @@ function init_schema($pdo) {
         k VARCHAR(64) PRIMARY KEY,
         v TEXT
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    add_missing_columns($pdo, 'produtos', array(
+        'tipo'      => "VARCHAR(255) NULL",
+        'embalagem' => "TEXT NULL",
+        'detalhes'  => "TEXT NULL",
+    ));
     seed_if_empty($pdo);
+    seed_sync($pdo);
+}
+
+function ler_seed() {
+    $json = @file_get_contents(__DIR__ . '/seed.json');
+    if ($json === false) return null;
+    $seed = json_decode($json, true);
+    return is_array($seed) ? $seed : null;
 }
 
 function seed_if_empty($pdo) {
     $n = (int) $pdo->query("SELECT COUNT(*) FROM produtos")->fetchColumn();
     if ($n > 0) return;
-    $json = @file_get_contents(__DIR__ . '/seed.json');
-    if ($json === false) return;
-    $seed = json_decode($json, true);
-    if (!is_array($seed)) return;
+    $seed = ler_seed();
+    if ($seed === null) return;
     $ordem = 0;
     if (isset($seed['produtos'])) {
         foreach ($seed['produtos'] as $p) { save_produto($pdo, $p, $ordem); $ordem++; }
@@ -105,6 +138,29 @@ function seed_if_empty($pdo) {
     if (isset($seed['noticias'])) {
         foreach ($seed['noticias'] as $it) { save_noticia($pdo, $it, $ordem); $ordem++; }
     }
+    set_setting($pdo, 'seed_version', CSP_SEED_VERSION);
+}
+
+/* Banco que ja foi populado por uma versao anterior do seed: insere apenas os
+   produtos cujo id ainda nao existe. Nao toca em quem ja esta la, para nao
+   desfazer edicoes feitas no painel admin. Roda uma vez por versao de seed. */
+function seed_sync($pdo) {
+    if (get_setting($pdo, 'seed_version') === CSP_SEED_VERSION) return;
+    $seed = ler_seed();
+    if ($seed === null || empty($seed['produtos'])) return;
+
+    $existentes = array();
+    foreach ($pdo->query("SELECT id FROM produtos")->fetchAll() as $r) {
+        $existentes[$r['id']] = true;
+    }
+    $ordem = (int) $pdo->query("SELECT COALESCE(MAX(ordem),0) FROM produtos")->fetchColumn();
+    foreach ($seed['produtos'] as $p) {
+        $id = isset($p['id']) ? $p['id'] : '';
+        if ($id === '' || isset($existentes[$id])) continue;
+        $ordem++;
+        save_produto($pdo, $p, $ordem);
+    }
+    set_setting($pdo, 'seed_version', CSP_SEED_VERSION);
 }
 
 function val($arr, $key, $def = '') { return isset($arr[$key]) ? $arr[$key] : $def; }
@@ -112,10 +168,11 @@ function val($arr, $key, $def = '') { return isset($arr[$key]) ? $arr[$key] : $d
 function save_produto($pdo, $p, $ordem = null) {
     $id = (isset($p['id']) && $p['id'] !== '') ? $p['id'] : uniqid('p_');
     $tags = isset($p['tags']) ? json_encode($p['tags'], JSON_UNESCAPED_UNICODE) : '[]';
-    $sql = "INSERT INTO produtos (id,nome,categoria,categoriaLabel,marca,marcaLabel,tag,img,alt,url,aplicacao,descricao,tags,ordem,createdAt)
-        VALUES (:id,:nome,:categoria,:categoriaLabel,:marca,:marcaLabel,:tag,:img,:alt,:url,:aplicacao,:descricao,:tags,:ordem,:createdAt)
+    $sql = "INSERT INTO produtos (id,nome,categoria,categoriaLabel,marca,marcaLabel,tag,img,alt,url,tipo,embalagem,detalhes,aplicacao,descricao,tags,ordem,createdAt)
+        VALUES (:id,:nome,:categoria,:categoriaLabel,:marca,:marcaLabel,:tag,:img,:alt,:url,:tipo,:embalagem,:detalhes,:aplicacao,:descricao,:tags,:ordem,:createdAt)
         ON DUPLICATE KEY UPDATE nome=VALUES(nome),categoria=VALUES(categoria),categoriaLabel=VALUES(categoriaLabel),
             marca=VALUES(marca),marcaLabel=VALUES(marcaLabel),tag=VALUES(tag),img=VALUES(img),alt=VALUES(alt),url=VALUES(url),
+            tipo=VALUES(tipo),embalagem=VALUES(embalagem),detalhes=VALUES(detalhes),
             aplicacao=VALUES(aplicacao),descricao=VALUES(descricao),tags=VALUES(tags)";
     $st = $pdo->prepare($sql);
     $st->execute(array(
@@ -129,6 +186,9 @@ function save_produto($pdo, $p, $ordem = null) {
         ':img' => (string) val($p, 'img'),
         ':alt' => (string) val($p, 'alt'),
         ':url' => (string) val($p, 'url'),
+        ':tipo' => (string) val($p, 'tipo'),
+        ':embalagem' => (string) val($p, 'embalagem'),
+        ':detalhes' => (string) val($p, 'detalhes'),
         ':aplicacao' => (string) val($p, 'aplicacao'),
         ':descricao' => (string) val($p, 'descricao'),
         ':tags' => $tags,

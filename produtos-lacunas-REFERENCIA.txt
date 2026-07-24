@@ -1,0 +1,56 @@
+REFERENCIA — valores validos para produtos-lacunas.csv
+
+REGRAS
+  - Nao altere a coluna "id" nem a primeira linha (cabecalho).
+  - Nao apague linhas. Deixe em branco o que nao souber.
+  - Colunas em MAIUSCULA sao auxiliares (LACUNAS, SUGESTAO_marca,
+    REVISAR_categoria). Eu as ignoro na volta; servem so de guia.
+  - "marca" e "categoria" aceitam SO as chaves abaixo (coluna esquerda).
+  - "embalagem": uma embalagem por linha dentro da mesma celula
+    (Alt+Enter no Excel).
+  - "detalhes": texto livre. Comece a linha com * para virar item de lista.
+  - Salve como CSV UTF-8 e me mande o arquivo.
+
+CHAVES DE CATEGORIA (chave = rotulo exibido no site)
+  adesivos_epoxi           = Adesivos Base Epoxi
+  adesivos_argamassas      = Adesivos p/ Argamassas
+  aditivos_concretos       = Aditivos p/ Concretos
+  aditivos_tamponamento    = Aditivos p/ Tamponamento
+  argamassas               = Argamassas Especiais
+  asfaltos                 = Asfaltos Modificados
+  cura_quimica             = Cura Química
+  desmoldantes             = Desmoldantes
+  drenagem                 = Drenagem
+  endurecedor              = Endurecedores
+  grautes                  = Grautes
+  impermeabilizantes       = Impermeabilizantes
+  inibidores               = Inibidores de Corrosão
+  juntas                   = Juntas de Dilatação
+  mantas_asfalticas        = Mantas Asfálticas
+  primers                  = Primers
+  complementares           = Produtos Complementares
+  revestimento             = Revestimento Piso Esp.
+  selantes                 = Selantes / Mastiques
+  telhados_calhas          = Telhados e Calhas
+
+CHAVES DE MARCA (chave = rotulo exibido no site)
+  branyl                   = Branyl
+  cbpav                    = CB-PAV
+  maccaferri               = Maccaferri
+  mactra                   = Mactra
+  outros                   = Outros
+  saint_gobain             = Saint Gobain
+  sika                     = Sika
+  tegula                   = Tégula
+  vedbem                   = VedBem
+  vedacit                  = Vedacit
+  viapol                   = Viapol
+  quartzolit               = Weber-Quartzolit
+  (deixe vazio se o produto nao tem marca definida)
+
+RESUMO DAS LACUNAS (99 produtos)
+  marca vazia .............. 49
+  detalhes vazio ........... 22
+  embalagem vazia .......... 1
+  aplicacao vazia .......... 99  (campo nosso; o site antigo nao tem)
+  categoria divergente ..... 22  (seed vs site antigo; REVISAR_categoria=SIM)
