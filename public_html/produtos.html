@@ -75,7 +75,7 @@
             <span aria-current="page">Produtos</span>
         </nav>
         <h1>Catálogo de <em>Produtos</em></h1>
-        <p>70 produtos em uma só página. Use a busca ou filtre por categoria e marca para encontrar o que precisa.</p>
+        <p><span data-csp-count="produtos">70</span> produtos em uma só página. Use a busca ou filtre por categoria e marca para encontrar o que precisa.</p>
     </div>
 </div>
 
@@ -215,6 +215,9 @@
     <script src="js/cardnav.js"></script>
     <script src="js/mobile.js"></script>
     <script src="js/carrinho.js"></script>
+    <!-- esta pagina ja busca os produtos abaixo; evita uma segunda requisicao -->
+    <script>window.CSP_COUNT_AUTO = false;</script>
+    <script src="js/contadores.js"></script>
 <script>
 (function () {
     var grid = document.getElementById('produtosGrid');
@@ -239,7 +242,6 @@
             '<span class="produto-tag">' + esc(p.tag || catLabel) + '</span>' + titulo +
             '<span class="produto-cat">' + esc(marcaLabel || '\u2014') + '</span>' +
             '<div class="produto-actions">' + verDetalhes +
-            '<a href="https://wa.me/5511973947185?text=Quero%20or%C3%A7amento%20de%20' + encodeURIComponent(p.nome) + '" class="btn btn-primary" target="_blank" rel="noopener">Or&ccedil;amento</a>' +
             '</div></div></article>';
     }
     function setupFilter(){
@@ -278,6 +280,7 @@
     function render(items){
         grid.innerHTML = items.map(cardHtml).join('');
         if (window.CSP_Cart && window.CSP_Cart.enhanceCatalog) window.CSP_Cart.enhanceCatalog();
+        if (window.CSP_Counts) window.CSP_Counts.apply(items);
         setupFilter();
     }
     function fallback(){ return (window.CSP_SEED && window.CSP_SEED.produtos) || []; }
