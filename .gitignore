@@ -1,0 +1,13 @@
+# Credenciais — NUNCA versionar
+api/config.php
+csp-config.php
+
+# Node
+node_modules/
+
+# Sistema / editores
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/

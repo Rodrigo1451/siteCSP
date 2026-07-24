@@ -1,0 +1,387 @@
+/* ============================================
+   COMERCIAL SÃO PEDRO — carrinho.css
+   Carrinho de orçamento (quote cart)
+   ============================================ */
+
+/* ===== BOTÃO FLUTUANTE (FAB) ===== */
+.cart-fab {
+    position: fixed;
+    bottom: 100px;
+    right: 28px;
+    width: 60px;
+    height: 60px;
+    background: var(--maroon-700);
+    color: var(--gold-500);
+    border: none;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(68, 17, 13, 0.4);
+    z-index: 500;
+    cursor: pointer;
+    transition: transform var(--t-spring, 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)),
+                box-shadow 0.3s ease;
+}
+
+.cart-fab:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 40px rgba(68, 17, 13, 0.55);
+}
+
+.cart-fab:focus-visible {
+    outline: 3px solid var(--gold-500);
+    outline-offset: 3px;
+}
+
+.cart-fab svg { width: 26px; height: 26px; }
+
+/* Badge com a contagem */
+.cart-fab-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    background: var(--gold-500);
+    color: var(--maroon-700);
+    border: 2px solid var(--white, #fff);
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cart-fab-badge.show { transform: scale(1); }
+
+.cart-fab.pulse { animation: cart-pulse 0.45s ease; }
+
+@keyframes cart-pulse {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.22); }
+    100% { transform: scale(1); }
+}
+
+/* ===== BOTÃO "ADICIONAR AO CARRINHO" nos cards / detalhe ===== */
+.btn-add-cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    border: 1.5px solid var(--maroon-700);
+    background: var(--maroon-700);
+    color: var(--gold-500);
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1;
+    transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+
+.btn-add-cart svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.btn-add-cart:hover {
+    background: var(--maroon-900, #2b0a08);
+    transform: translateY(-2px);
+}
+
+.btn-add-cart.added {
+    background: var(--gold-500);
+    color: var(--maroon-700);
+    border-color: var(--gold-500);
+}
+
+/* ===== OVERLAY ===== */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 10, 8, 0.55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1200;
+}
+
+.cart-overlay.open { opacity: 1; visibility: visible; }
+
+/* ===== DRAWER ===== */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(420px, 100%);
+    background: var(--white, #fff);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.25);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1300;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    padding: var(--sp-5);
+    background: var(--maroon-700);
+    color: #fff;
+}
+
+.cart-drawer-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-drawer-header .cart-count-pill {
+    background: var(--gold-500);
+    color: var(--maroon-700);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 2px 9px;
+    border-radius: var(--radius-full);
+}
+
+.cart-close {
+    background: rgba(255, 255, 255, 0.14);
+    border: none;
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+
+.cart-close:hover { background: rgba(255, 255, 255, 0.28); }
+.cart-close svg { width: 20px; height: 20px; }
+
+/* ===== LISTA DE ITENS ===== */
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--sp-4);
+    margin: 0;
+    list-style: none;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--sp-2) var(--sp-3);
+    align-items: center;
+    padding: var(--sp-4) 0;
+    border-bottom: 1px solid var(--gray-100, #eee);
+}
+
+.cart-item:first-child { padding-top: 0; }
+
+.cart-item-nome {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--maroon-700);
+    line-height: 1.3;
+    text-decoration: none;
+    grid-column: 1 / 2;
+}
+
+a.cart-item-nome:hover { text-decoration: underline; }
+
+.cart-item-remove {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background: none;
+    border: none;
+    color: var(--gray-400, #999);
+    cursor: pointer;
+    padding: 2px;
+    line-height: 0;
+    transition: color 0.2s ease;
+}
+
+.cart-item-remove:hover { color: #c5221f; }
+.cart-item-remove svg { width: 18px; height: 18px; }
+
+/* Stepper de quantidade */
+.cart-qty {
+    grid-column: 1 / 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 1.5px solid var(--gray-200, #e5e5e5);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    width: fit-content;
+}
+
+.cart-qty button {
+    width: 34px;
+    height: 34px;
+    background: var(--gray-50, #f7f7f7);
+    border: none;
+    color: var(--maroon-700);
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+}
+
+.cart-qty button:hover { background: var(--gold-200, #feeba2); }
+.cart-qty button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.cart-qty input {
+    width: 46px;
+    height: 34px;
+    text-align: center;
+    border: none;
+    border-left: 1.5px solid var(--gray-200, #e5e5e5);
+    border-right: 1.5px solid var(--gray-200, #e5e5e5);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--maroon-700);
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.cart-qty input::-webkit-outer-spin-button,
+.cart-qty input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ===== ESTADO VAZIO ===== */
+.cart-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--sp-6);
+    color: var(--gray-500, #777);
+}
+
+.cart-empty svg {
+    width: 64px;
+    height: 64px;
+    color: var(--gray-200, #e5e5e5);
+    margin-bottom: var(--sp-4);
+}
+
+.cart-empty strong {
+    display: block;
+    color: var(--maroon-700);
+    font-size: 1.05rem;
+    margin-bottom: var(--sp-2);
+}
+
+.cart-empty p { margin: 0; font-size: 0.9rem; }
+
+/* ===== RODAPÉ DO DRAWER ===== */
+.cart-footer {
+    border-top: 1px solid var(--gray-100, #eee);
+    padding: var(--sp-4) var(--sp-5) var(--sp-5);
+    background: var(--gray-50, #f7f7f7);
+}
+
+.cart-footer-resumo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--sp-4);
+    font-size: 0.9rem;
+    color: var(--gray-600, #555);
+}
+
+.cart-footer-resumo strong {
+    color: var(--maroon-700);
+    font-size: 1rem;
+}
+
+.cart-btn-orcamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 14px;
+    background: var(--whatsapp, #25d366);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.cart-btn-orcamento:hover { background: #1ebe5d; transform: translateY(-2px); }
+.cart-btn-orcamento:disabled {
+    background: var(--gray-300, #ccc);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+.cart-btn-orcamento svg { width: 20px; height: 20px; }
+
+.cart-btn-limpar {
+    display: block;
+    width: 100%;
+    margin-top: var(--sp-3);
+    padding: 9px;
+    background: none;
+    border: none;
+    color: var(--gray-500, #777);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.cart-btn-limpar:hover { color: #c5221f; }
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 767px) {
+    .cart-fab {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        /* acima do WhatsApp float, que já fica acima da bottom bar */
+        bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 12px + 52px + 12px);
+    }
+    .cart-fab svg { width: 23px; height: 23px; }
+    .cart-drawer { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cart-fab, .cart-fab-badge, .cart-drawer, .cart-overlay,
+    .btn-add-cart, .cart-btn-orcamento { transition: none; animation: none; }
+}

@@ -1,40 +1,15 @@
 /* ============================================================
-   COMERCIAL SÃO PEDRO — Admin Dashboard v1.0
-   Gerenciamento de notícias e produtos via localStorage
+   COMERCIAL SÃO PEDRO — Admin Dashboard v2.0
+   Gerenciamento de notícias e produtos via API PHP + MySQL.
+   Os dados são compartilhados: o que o admin salva aqui fica
+   visível para TODOS os visitantes do site.
    ============================================================ */
 
-/* ===== CONSTANTES ===== */
-const KEYS = {
-    hash: 'csp_admin_hash',
-    noticias: 'csp_noticias',
-    produtos: 'csp_produtos',
-    session: 'csp_admin_session',
+/* ===== ESTADO EM MEMÓRIA (espelho do banco) ===== */
+const state = {
+    produtos: [],
+    noticias: [],
 };
-
-const CATEGORIAS_NOTICIAS = [
-    'Palestra Técnica',
-    'Feiras e Eventos',
-    'Lançamentos de Produtos',
-    'Dicas para Obra',
-];
-
-const CATEGORIAS_PRODUTOS = [
-    { value: 'impermeabilizantes', label: 'Impermeabilizantes' },
-    { value: 'mantas_asfalticas', label: 'Mantas Asfálticas' },
-    { value: 'argamassas', label: 'Argamassas' },
-    { value: 'selantes', label: 'Selantes' },
-    { value: 'aditivos', label: 'Aditivos' },
-    { value: 'drenagem', label: 'Drenagem' },
-    { value: 'primers', label: 'Primers' },
-    { value: 'revestimento', label: 'Revestimento' },
-    { value: 'asfaltos', label: 'Asfaltos' },
-    { value: 'complementares', label: 'Complementares' },
-];
-
-const MARCAS = [
-    'Maccaferri', 'Mactra', 'Saint-Gobain', 'Sika',
-    'Tegula', 'Vedacit', 'Vedbem', 'Viapol', 'Weber', 'Outro',
-];
 
 const GRAD_NOTICIAS = {
     'Palestra Técnica': 'linear-gradient(135deg, #44110D 0%, #572925 100%)',
@@ -46,24 +21,6 @@ const GRAD_NOTICIAS = {
 /* ===== UTILITÁRIOS ===== */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-
-function uid() {
-    return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-}
-
-async function hashStr(str) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-function getData(key) {
-    try { return JSON.parse(localStorage.getItem(key)) || []; }
-    catch { return []; }
-}
-
-function setData(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-}
 
 function fmtDate(iso) {
     if (!iso) return '';
@@ -77,42 +34,15 @@ function escHtml(str) {
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* ===== AUTH ===== */
+/* ===== AUTENTICAÇÃO (server-side, via API) ===== */
 const Auth = {
-    isSetup() { return !!localStorage.getItem(KEYS.hash); },
-    hasSession() { return sessionStorage.getItem(KEYS.session) === '1'; },
-
-    async setup(pwd, pwd2) {
-        if (pwd.length < 6) return { ok: false, msg: 'Mínimo 6 caracteres.' };
-        if (pwd !== pwd2) return { ok: false, msg: 'As senhas não coincidem.' };
-        localStorage.setItem(KEYS.hash, await hashStr(pwd));
-        sessionStorage.setItem(KEYS.session, '1');
-        return { ok: true };
+    async status() {
+        try { return await CSP_API.authStatus(); }
+        catch (e) { return { ok: false, authenticated: false, setup: false, offline: true }; }
     },
-
-    async login(pwd) {
-        const stored = localStorage.getItem(KEYS.hash);
-        const h = await hashStr(pwd);
-        if (h === stored) {
-            sessionStorage.setItem(KEYS.session, '1');
-            return true;
-        }
-        return false;
-    },
-
-    logout() {
-        sessionStorage.removeItem(KEYS.session);
+    async logout() {
+        try { await CSP_API.logout(); } catch (e) {}
         location.reload();
-    },
-
-    async changePwd(old, novo, novo2) {
-        const stored = localStorage.getItem(KEYS.hash);
-        const h = await hashStr(old);
-        if (h !== stored) return { ok: false, msg: 'Senha atual incorreta.' };
-        if (novo.length < 6) return { ok: false, msg: 'Nova senha: mínimo 6 caracteres.' };
-        if (novo !== novo2) return { ok: false, msg: 'As senhas não coincidem.' };
-        localStorage.setItem(KEYS.hash, await hashStr(novo));
-        return { ok: true };
     },
 };
 
@@ -120,6 +50,7 @@ const Auth = {
 let toastTimer;
 function showToast(msg, type = 'success') {
     const el = $('#toast');
+    if (!el) return;
     el.textContent = msg;
     el.className = `toast show ${type}`;
     clearTimeout(toastTimer);
@@ -133,7 +64,6 @@ function openModal(id) {
     overlay.querySelector('.modal').setAttribute('role', 'dialog');
     document.body.style.overflow = 'hidden';
 }
-
 function closeModal(id) {
     $(`#${id}`).classList.remove('open');
     document.body.style.overflow = '';
@@ -141,20 +71,12 @@ function closeModal(id) {
 
 /* ===== ROUTER ===== */
 let currentSection = 'dashboard';
-
 function navigate(sec) {
     $$('.admin-section').forEach(s => s.classList.add('hidden'));
     $(`#sec-${sec}`).classList.remove('hidden');
-
     $$('.nav-item').forEach(n => n.classList.remove('active'));
     $(`[data-nav="${sec}"]`).classList.add('active');
-
-    const titles = {
-        dashboard: 'Dashboard',
-        noticias: 'Notícias',
-        produtos: 'Produtos',
-        configuracoes: 'Configurações',
-    };
+    const titles = { dashboard: 'Dashboard', noticias: 'Notícias', produtos: 'Produtos', configuracoes: 'Configurações' };
     $('#topbarTitle').textContent = titles[sec] || sec;
     currentSection = sec;
     updateCounts();
@@ -162,8 +84,8 @@ function navigate(sec) {
 
 /* ===== COUNTS ===== */
 function updateCounts() {
-    const noticias = getData(KEYS.noticias);
-    const produtos = getData(KEYS.produtos);
+    const noticias = state.noticias;
+    const produtos = state.produtos;
     const pubNot = noticias.filter(n => n.status === 'publicada').length;
 
     const setEl = (id, val) => { const el = $(id); if (el) el.textContent = val; };
@@ -173,22 +95,29 @@ function updateCounts() {
     setEl('#statNoticiasPubl', `${pubNot} publicada${pubNot !== 1 ? 's' : ''}`);
     setEl('#statProdutos', produtos.length);
     setEl('#statTotal', noticias.length + produtos.length);
-
-    // nav counts
     $$('[data-count-not]').forEach(el => el.textContent = noticias.length);
     $$('[data-count-prod]').forEach(el => el.textContent = produtos.length);
+}
+
+/* ===== CARREGAMENTO ===== */
+async function reloadProdutos() {
+    try { state.produtos = await CSP_API.getProdutos(); }
+    catch (e) { state.produtos = []; showToast('Falha ao carregar produtos.', 'error'); }
+}
+async function reloadNoticias() {
+    try { state.noticias = await CSP_API.getNoticias(); }
+    catch (e) { state.noticias = []; showToast('Falha ao carregar notícias.', 'error'); }
 }
 
 /* ===== NOTÍCIAS ===== */
 let editingNoticia = null;
 
 function renderNoticias(filter = '') {
-    const list = getData(KEYS.noticias);
+    const list = state.noticias;
     const tbody = $('#noticiasTableBody');
     const fl = filter.toLowerCase();
-
     const filtered = fl
-        ? list.filter(n => n.titulo.toLowerCase().includes(fl) || n.categoria.toLowerCase().includes(fl))
+        ? list.filter(n => (n.titulo || '').toLowerCase().includes(fl) || (n.categoria || '').toLowerCase().includes(fl))
         : list;
 
     if (filtered.length === 0) {
@@ -196,20 +125,18 @@ function renderNoticias(filter = '') {
             <tr><td colspan="5">
                 <div class="empty-state">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                    <p>${fl ? 'Nenhuma notícia encontrada.' : 'Nenhuma notícia publicada ainda.'}</p>
+                    <p>${fl ? 'Nenhuma notícia encontrada.' : 'Nenhuma notícia cadastrada ainda.'}</p>
                     ${!fl ? `<div class="empty-action"><button class="btn btn-md btn-primary-admin" onclick="openNoticiaModal()">Nova Notícia</button></div>` : ''}
                 </div>
             </td></tr>`;
         return;
     }
 
-    tbody.innerHTML = filtered.slice().reverse().map(n => `
+    tbody.innerHTML = filtered.map(n => `
         <tr>
-            <td>
-                <div class="table-title">${escHtml(n.titulo)}</div>
-            </td>
+            <td><div class="table-title">${escHtml(n.titulo)}</div></td>
             <td><span class="badge badge-cat">${escHtml(n.categoria)}</span></td>
-            <td style="color:#888; font-size:.8125rem;">${fmtDate(n.data) || '—'}</td>
+            <td style="color:#888; font-size:.8125rem;">${escHtml(n.dataLabel) || fmtDate(n.data) || '—'}</td>
             <td><span class="badge ${n.status === 'publicada' ? 'badge-pub' : 'badge-draft'}">${n.status === 'publicada' ? 'Publicada' : 'Rascunho'}</span></td>
             <td>
                 <div class="table-actions">
@@ -237,11 +164,11 @@ function openNoticiaModal(id = null) {
     $('#toggleStatusLabel').textContent = 'Publicada';
 
     if (isEdit) {
-        const item = getData(KEYS.noticias).find(n => n.id === id);
+        const item = state.noticias.find(n => n.id === id);
         if (!item) return;
         $('#nTitulo').value = item.titulo;
         $('#nCategoria').value = item.categoria;
-        $('#nData').value = item.data;
+        $('#nData').value = item.data || '';
         $('#nResumo').value = item.resumo;
         $('#nConteudo').value = item.conteudo || '';
         if (item.status !== 'publicada') {
@@ -253,7 +180,7 @@ function openNoticiaModal(id = null) {
     openModal('modalNoticia');
 }
 
-function saveNoticia() {
+async function saveNoticia() {
     const titulo = $('#nTitulo').value.trim();
     const categoria = $('#nCategoria').value;
     const data = $('#nData').value;
@@ -261,34 +188,30 @@ function saveNoticia() {
     const conteudo = $('#nConteudo').value.trim();
     const status = $('#toggleStatusHidden').value;
 
-    if (!titulo || !resumo || !data) {
-        showToast('Preencha título, data e resumo.', 'error');
+    if (!titulo || !resumo) {
+        showToast('Preencha título e resumo.', 'error');
         return;
     }
 
-    const list = getData(KEYS.noticias);
+    const existing = editingNoticia ? state.noticias.find(n => n.id === editingNoticia) : null;
+    const item = Object.assign({}, existing || {}, { titulo, categoria, data, resumo, conteudo, status });
+    if (editingNoticia) item.id = editingNoticia;
 
-    if (editingNoticia) {
-        const idx = list.findIndex(n => n.id === editingNoticia);
-        if (idx !== -1) {
-            list[idx] = { ...list[idx], titulo, categoria, data, resumo, conteudo, status };
-        }
-        showToast('Notícia atualizada!');
-    } else {
-        list.push({ id: uid(), titulo, categoria, data, resumo, conteudo, status, createdAt: Date.now() });
-        showToast('Notícia publicada!');
-    }
+    const res = await CSP_API.saveNoticia(item, editingNoticia ? 'update' : 'create');
+    if (!res.ok) { showToast(res.error || 'Erro ao salvar. Você está logado?', 'error'); return; }
 
-    setData(KEYS.noticias, list);
+    await reloadNoticias();
     closeModal('modalNoticia');
     renderNoticias($('#searchNoticias').value);
     updateCounts();
+    showToast(editingNoticia ? 'Notícia atualizada!' : 'Notícia publicada!');
 }
 
-function deleteNoticia(id) {
-    if (!confirm('Excluir esta notícia definitivamente?')) return;
-    const list = getData(KEYS.noticias).filter(n => n.id !== id);
-    setData(KEYS.noticias, list);
+async function deleteNoticia(id) {
+    if (!confirm('Excluir esta notícia definitivamente? Ela sairá do site para todos.')) return;
+    const res = await CSP_API.deleteNoticia(id);
+    if (!res.ok) { showToast(res.error || 'Erro ao excluir.', 'error'); return; }
+    await reloadNoticias();
     renderNoticias($('#searchNoticias').value);
     updateCounts();
     showToast('Notícia excluída.', 'warning');
@@ -305,12 +228,11 @@ function toggleStatus(btn) {
 let editingProduto = null;
 
 function renderProdutos(filter = '') {
-    const list = getData(KEYS.produtos);
+    const list = state.produtos;
     const tbody = $('#produtosTableBody');
     const fl = filter.toLowerCase();
-
     const filtered = fl
-        ? list.filter(p => p.nome.toLowerCase().includes(fl) || p.categoria.toLowerCase().includes(fl) || (p.marca||'').toLowerCase().includes(fl))
+        ? list.filter(p => (p.nome || '').toLowerCase().includes(fl) || (p.categoriaLabel || p.categoria || '').toLowerCase().includes(fl) || (p.marcaLabel || p.marca || '').toLowerCase().includes(fl))
         : list;
 
     if (filtered.length === 0) {
@@ -318,20 +240,18 @@ function renderProdutos(filter = '') {
             <tr><td colspan="5">
                 <div class="empty-state">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-                    <p>${fl ? 'Nenhum produto encontrado.' : 'Nenhum produto adicional cadastrado.'}</p>
+                    <p>${fl ? 'Nenhum produto encontrado.' : 'Nenhum produto cadastrado.'}</p>
                     ${!fl ? `<div class="empty-action"><button class="btn btn-md btn-primary-admin" onclick="openProdutoModal()">Novo Produto</button></div>` : ''}
                 </div>
             </td></tr>`;
         return;
     }
 
-    tbody.innerHTML = filtered.slice().reverse().map(p => `
+    tbody.innerHTML = filtered.map(p => `
         <tr>
-            <td>
-                <div class="table-title">${escHtml(p.nome)}</div>
-            </td>
+            <td><div class="table-title">${escHtml(p.nome)}</div></td>
             <td><span class="badge badge-cat">${escHtml(p.categoriaLabel || p.categoria)}</span></td>
-            <td>${p.marca ? `<span class="badge badge-marca">${escHtml(p.marca)}</span>` : '<span style="color:#ccc">—</span>'}</td>
+            <td>${p.marca ? `<span class="badge badge-marca">${escHtml(p.marcaLabel || p.marca)}</span>` : '<span style="color:#ccc">—</span>'}</td>
             <td style="font-size:.8125rem; color:#888; max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escHtml(p.descricao)}</td>
             <td>
                 <div class="table-actions">
@@ -356,7 +276,7 @@ function openProdutoModal(id = null) {
     form.reset();
 
     if (isEdit) {
-        const item = getData(KEYS.produtos).find(p => p.id === id);
+        const item = state.produtos.find(p => p.id === id);
         if (!item) return;
         $('#pNome').value = item.nome;
         $('#pCategoria').value = item.categoria;
@@ -368,12 +288,14 @@ function openProdutoModal(id = null) {
     openModal('modalProduto');
 }
 
-function saveProduto() {
+async function saveProduto() {
     const nome = $('#pNome').value.trim().toUpperCase();
     const categoriaEl = $('#pCategoria');
     const categoria = categoriaEl.value;
     const categoriaLabel = categoriaEl.options[categoriaEl.selectedIndex].text;
-    const marca = $('#pMarca').value;
+    const marcaEl = $('#pMarca');
+    const marca = marcaEl.value;
+    const marcaLabel = marca ? marcaEl.options[marcaEl.selectedIndex].text : '';
     const aplicacao = $('#pAplicacao').value.trim();
     const descricao = $('#pDescricao').value.trim();
     const tags = $('#pTags').value.split(',').map(t => t.trim()).filter(Boolean);
@@ -383,29 +305,28 @@ function saveProduto() {
         return;
     }
 
-    const list = getData(KEYS.produtos);
+    const existing = editingProduto ? state.produtos.find(p => p.id === editingProduto) : null;
+    const item = Object.assign({}, existing || {}, {
+        nome, categoria, categoriaLabel, marca, marcaLabel, aplicacao, descricao, tags,
+        tag: (existing && existing.tag) ? existing.tag : categoriaLabel,
+    });
+    if (editingProduto) item.id = editingProduto;
 
-    if (editingProduto) {
-        const idx = list.findIndex(p => p.id === editingProduto);
-        if (idx !== -1) {
-            list[idx] = { ...list[idx], nome, categoria, categoriaLabel, marca, aplicacao, descricao, tags };
-        }
-        showToast('Produto atualizado!');
-    } else {
-        list.push({ id: uid(), nome, categoria, categoriaLabel, marca, aplicacao, descricao, tags, createdAt: Date.now() });
-        showToast('Produto adicionado!');
-    }
+    const res = await CSP_API.saveProduto(item, editingProduto ? 'update' : 'create');
+    if (!res.ok) { showToast(res.error || 'Erro ao salvar. Você está logado?', 'error'); return; }
 
-    setData(KEYS.produtos, list);
+    await reloadProdutos();
     closeModal('modalProduto');
     renderProdutos($('#searchProdutos').value);
     updateCounts();
+    showToast(editingProduto ? 'Produto atualizado!' : 'Produto adicionado!');
 }
 
-function deleteProduto(id) {
-    if (!confirm('Excluir este produto definitivamente?')) return;
-    const list = getData(KEYS.produtos).filter(p => p.id !== id);
-    setData(KEYS.produtos, list);
+async function deleteProduto(id) {
+    if (!confirm('Excluir este produto definitivamente? Ele sairá do catálogo para todos.')) return;
+    const res = await CSP_API.deleteProduto(id);
+    if (!res.ok) { showToast(res.error || 'Erro ao excluir.', 'error'); return; }
+    await reloadProdutos();
     renderProdutos($('#searchProdutos').value);
     updateCounts();
     showToast('Produto excluído.', 'warning');
@@ -416,32 +337,35 @@ async function saveNewPwd() {
     const old = $('#cfgOldPwd').value;
     const novo = $('#cfgNewPwd').value;
     const novo2 = $('#cfgNewPwd2').value;
-    const res = await Auth.changePwd(old, novo, novo2);
+    if (novo !== novo2) { showToast('As senhas não coincidem.', 'error'); return; }
+    const res = await CSP_API.changePwd(old, novo);
     if (res.ok) {
         showToast('Senha alterada com sucesso!');
         $('#formChangePwd').reset();
     } else {
-        showToast(res.msg, 'error');
+        showToast(res.error || 'Erro ao alterar senha.', 'error');
     }
 }
 
-function clearAllData() {
-    if (!confirm('ATENÇÃO: isso apagará TODAS as notícias e produtos adicionados pelo painel. Continuar?')) return;
-    if (!confirm('Confirmar exclusão de todos os dados?')) return;
-    localStorage.removeItem(KEYS.noticias);
-    localStorage.removeItem(KEYS.produtos);
+async function clearAllData() {
+    if (!confirm('ATENÇÃO: isso apagará TODAS as notícias e produtos do site, para todos os visitantes. Continuar?')) return;
+    if (!confirm('Tem certeza absoluta? Esta ação não pode ser desfeita.')) return;
+    for (const p of state.produtos.slice()) { try { await CSP_API.deleteProduto(p.id); } catch (e) {} }
+    for (const n of state.noticias.slice()) { try { await CSP_API.deleteNoticia(n.id); } catch (e) {} }
+    await reloadProdutos();
+    await reloadNoticias();
     renderNoticias();
     renderProdutos();
     updateCounts();
-    showToast('Dados apagados.', 'warning');
+    showToast('Todos os dados foram apagados.', 'warning');
 }
 
 /* ===== EXPORT / IMPORT ===== */
 function exportData() {
     const data = {
         exportedAt: new Date().toISOString(),
-        noticias: getData(KEYS.noticias),
-        produtos: getData(KEYS.produtos),
+        noticias: state.noticias,
+        produtos: state.produtos,
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -457,16 +381,19 @@ function importData(e) {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = (ev) => {
+    reader.onload = async (ev) => {
         try {
             const data = JSON.parse(ev.target.result);
-            if (data.noticias) setData(KEYS.noticias, data.noticias);
-            if (data.produtos) setData(KEYS.produtos, data.produtos);
+            let count = 0;
+            for (const p of (data.produtos || [])) { const r = await CSP_API.saveProduto(p, 'update'); if (r.ok) count++; }
+            for (const n of (data.noticias || [])) { const r = await CSP_API.saveNoticia(n, 'update'); if (r.ok) count++; }
+            await reloadProdutos();
+            await reloadNoticias();
             renderNoticias();
             renderProdutos();
             updateCounts();
-            showToast('Dados importados com sucesso!');
-        } catch {
+            showToast(`${count} itens importados!`);
+        } catch (err) {
             showToast('Arquivo inválido.', 'error');
         }
     };
@@ -475,8 +402,7 @@ function importData(e) {
 }
 
 /* ===== LOGIN UI ===== */
-function renderLogin() {
-    const setup = !Auth.isSetup();
+function renderLogin(setup, offline) {
     $('#loginScreen').innerHTML = `
         <div class="login-card">
             <div class="login-logo">
@@ -485,8 +411,11 @@ function renderLogin() {
             <h1 class="login-title">Painel Admin</h1>
             <p class="login-subtitle">Comercial São Pedro</p>
 
-            ${setup ? `<div class="setup-badge">
-                <strong>Primeiro acesso</strong> — defina sua senha de administrador
+            ${offline ? `<div class="setup-badge" style="background:#fde8e8;color:#a12">
+                <strong>Sem conexão com o servidor</strong> — verifique se os arquivos da pasta <code>/api</code> e o banco MySQL estão configurados.
+            </div>` : ''}
+            ${(setup && !offline) ? `<div class="setup-badge">
+                <strong>Primeiro acesso</strong> — defina a senha de administrador
             </div>` : ''}
 
             <div class="form-group">
@@ -510,7 +439,7 @@ function renderLogin() {
                 </div>
             </div>` : ''}
 
-            <button class="btn-login" id="loginBtn" onclick="handleLogin(${setup})">
+            <button class="btn-login" id="loginBtn" onclick="handleLogin(${setup ? 'true' : 'false'})">
                 ${setup ? 'Criar senha e entrar' : 'Entrar'}
             </button>
         </div>`;
@@ -539,26 +468,27 @@ async function handleLogin(isSetup) {
     const pwd2 = isSetup ? ($('#loginPwd2')?.value || '') : '';
     const errEl = $('#loginError');
 
+    if (isSetup && pwd !== pwd2) {
+        errEl.textContent = 'As senhas não coincidem.';
+        errEl.classList.add('show');
+        return;
+    }
+
     btn.disabled = true;
     btn.textContent = 'Aguarde…';
     errEl.classList.remove('show');
 
-    let ok = false;
-    let errMsg = '';
-
-    if (isSetup) {
-        const res = await Auth.setup(pwd, pwd2);
-        ok = res.ok;
-        errMsg = res.msg || '';
-    } else {
-        ok = await Auth.login(pwd);
-        errMsg = 'Senha incorreta.';
+    let res;
+    try {
+        res = isSetup ? await CSP_API.setup(pwd) : await CSP_API.login(pwd);
+    } catch (e) {
+        res = { ok: false, error: 'Sem conexão com o servidor.' };
     }
 
-    if (ok) {
-        showDashboard();
+    if (res.ok) {
+        await showDashboard();
     } else {
-        errEl.textContent = errMsg;
+        errEl.textContent = res.error || (isSetup ? 'Não foi possível criar a senha.' : 'Senha incorreta.');
         errEl.classList.add('show');
         $('#loginPwd').classList.add('error');
         btn.disabled = false;
@@ -568,20 +498,26 @@ async function handleLogin(isSetup) {
 }
 
 /* ===== DASHBOARD ===== */
-function showDashboard() {
+async function showDashboard() {
     $('#loginScreen').classList.add('hidden');
     $('#dashboardScreen').classList.remove('hidden');
+    await reloadProdutos();
+    await reloadNoticias();
     navigate('dashboard');
     renderNoticias();
     renderProdutos();
+    updateCounts();
 }
 
 /* ===== INIT ===== */
-function init() {
-    if (Auth.hasSession()) {
-        showDashboard();
+async function init() {
+    const st = await Auth.status();
+    if (st.offline) {
+        renderLogin(false, true);
+    } else if (st.authenticated) {
+        await showDashboard();
     } else {
-        renderLogin();
+        renderLogin(!!st.setup, false);
     }
 
     // Sidebar mobile
@@ -616,12 +552,3 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-/* ===== FUNÇÃO GLOBAL para noticias.html e produtos.html ===== */
-window.CSP_Admin = {
-    getNoticias() { return getData(KEYS.noticias).filter(n => n.status === 'publicada'); },
-    getProdutos() { return getData(KEYS.produtos); },
-    GRAD_NOTICIAS,
-    fmtDate,
-    escHtml,
-};
