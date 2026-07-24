@@ -1,5 +1,6 @@
 # Credenciais — NUNCA versionar
-api/config.php
+# (sem barra = casa em qualquer pasta, inclusive public_html/api/)
+config.php
 csp-config.php
 
 # Node

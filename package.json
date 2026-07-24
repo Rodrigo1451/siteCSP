@@ -5,6 +5,6 @@
   "description": "Site Comercial São Pedro — HTML estático + API PHP",
   "scripts": {
     "dev": "node scripts/dev-server.js",
-    "dev:php": "php -S localhost:8000 -t ."
+    "dev:php": "php -S localhost:8000 -t public_html"
   }
 }

@@ -39,7 +39,7 @@ O arquivo com as senhas **não fica no repositório** — ele é criado direto n
 1. No **Gerenciador de Arquivos** da Hostinger, vá para a pasta que **contém** `public_html`
    (ex.: `/home/u123456789/`) — ou seja, **um nível acima** do site.
 2. Crie ali um arquivo chamado **`csp-config.php`**.
-3. Copie o conteúdo de `api/config.example.php` para dentro dele e preencha os 4 valores:
+3. Copie o conteúdo de `public_html/api/config.example.php` para dentro dele e preencha os 4 valores:
 
 ```php
 define('DB_HOST', 'localhost');
@@ -51,14 +51,30 @@ define('DB_PASS', 'sua-senha-secreta');    // sua senha
 Por ficar fora do `public_html`, esse arquivo é **inacessível pela web** — ninguém consegue
 abrir pelo navegador nem por engano.
 
-> Para testar no seu computador, copie `api/config.example.php` para `api/config.php` e
-> preencha com os dados de um banco local. O sistema procura `csp-config.php` primeiro e,
-> se não achar, usa `api/config.php`. Os dois estão no `.gitignore`.
+> No seu computador o projeto já está organizado assim — o `csp-config.php` fica na raiz,
+> ao lado da pasta `public_html/`. O sistema procura `csp-config.php` primeiro e, se não
+> achar, usa `public_html/api/config.php`. Os dois estão no `.gitignore`.
 
 ## Passo 3 — Enviar os arquivos
 
-Envie **todo o site** para a pasta `public_html` (via **Gerenciador de Arquivos** do hPanel ou FTP),
-incluindo a pasta **`api/`** inteira (com o `seed.json`) e a pasta **`js/`**.
+A pasta do projeto espelha exatamente a estrutura do servidor:
+
+```
+siteCSP/                  →  /home/u123456789/
+├── csp-config.php        →  /home/u123456789/csp-config.php   (credenciais, fora da web)
+├── public_html/          →  /home/u123456789/public_html/     (o site)
+│   ├── index.html, admin.html, produtos.html, ...
+│   ├── api/              (backend PHP + seed.json)
+│   ├── css/  js/  img/  assets/  marcas/  produtos/
+├── package.json          ─┐
+├── scripts/               ├─ só para desenvolvimento;
+├── GUIA_BACKEND.md        │  NÃO precisam ir para o servidor
+└── ALTERACOES_ADMIN.md   ─┘
+```
+
+Envie **o conteúdo da pasta `public_html/`** para o `public_html` da Hostinger (via
+**Gerenciador de Arquivos** do hPanel ou FTP), incluindo `api/` inteira (com o `seed.json`)
+e `js/`. O `csp-config.php` vai separado, **um nível acima**, como no Passo 2.
 
 ## Passo 4 — Primeiro acesso (cria tabelas + carrega os 70 produtos)
 
@@ -89,6 +105,8 @@ No painel → **Configurações → Exportar dados** baixa um `.json` com tudo.
 ---
 
 ## Arquivos do backend
+
+Caminhos relativos a `public_html/`.
 
 | Arquivo | Papel |
 |---|---|

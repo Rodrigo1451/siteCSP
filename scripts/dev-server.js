@@ -12,7 +12,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..');
+// O site fica em public_html/, espelhando a estrutura da Hostinger.
+const ROOT = path.resolve(__dirname, '..', 'public_html');
 const PORT = process.env.PORT || 3000;
 
 const MIME = {
