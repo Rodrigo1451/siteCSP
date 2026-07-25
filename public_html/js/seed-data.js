@@ -38,6 +38,7 @@ window.CSP_MARCA_LABELS = {
   "ciplak": "Ciplak",
   "duralfoil": "Duralfoil",
   "euclid_chemical": "Euclid Chemical",
+  "fh": "FH",
   "fibratex": "Fibratex",
   "fuseprotec": "Fuseprotec",
   "heydi": "Heydi",
@@ -77,7 +78,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Composto de pega rápida para bloqueio de infiltrações e vazamentos",
-    "tags": [],
+    "tags": [
+      "tamponamento",
+      "pega rápida",
+      "bloqueio"
+    ],
     "ordem": 0,
     "origin": "seed"
   },
@@ -97,7 +102,10 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Aplicação de selantes ou mastiques embalados em saches de 600ml.",
-    "tags": [],
+    "tags": [
+      "aplicador",
+      "ferramenta"
+    ],
     "ordem": 1,
     "origin": "seed"
   },
@@ -117,7 +125,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Ferramenta para aplicação de selantes ou mastiques, embalados em saches ou embalages de cartucho.",
-    "tags": [],
+    "tags": [
+      "pistola",
+      "aplicador",
+      "ferramenta"
+    ],
     "ordem": 2,
     "origin": "seed"
   },
@@ -137,7 +149,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa para correção e acabamento de trincas",
-    "tags": [],
+    "tags": [
+      "argamassa",
+      "trinca",
+      "reparo"
+    ],
     "ordem": 3,
     "origin": "seed"
   },
@@ -157,7 +173,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa impermeabilizante para rodapé e baldrame",
-    "tags": [],
+    "tags": [
+      "argamassa",
+      "rodapé",
+      "baldrame",
+      "umidade"
+    ],
     "ordem": 4,
     "origin": "seed"
   },
@@ -177,7 +198,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa polimérica flexível para impermeabilização",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "flexível",
+      "impermeabilizante"
+    ],
     "ordem": 5,
     "origin": "seed"
   },
@@ -197,7 +222,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Bloqueador de umidade para alvenaria e superfícies cimentícias",
-    "tags": [],
+    "tags": [
+      "bloqueio de umidade",
+      "impermeabilizante",
+      "alvenaria"
+    ],
     "ordem": 6,
     "origin": "seed"
   },
@@ -217,7 +246,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Membrana elástica tipo borracha líquida para impermeabilização, cor branca",
-    "tags": [],
+    "tags": [
+      "borracha líquida",
+      "membrana",
+      "laje",
+      "branco"
+    ],
     "ordem": 7,
     "origin": "seed"
   },
@@ -237,7 +271,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Adesivo líquido para chapisco e argamassas de aderência",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "chapisco",
+      "argamassa",
+      "aderência"
+    ],
     "ordem": 8,
     "origin": "seed"
   },
@@ -257,7 +296,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fita para tratamento e estruturação de trincas",
-    "tags": [],
+    "tags": [
+      "fita",
+      "trinca",
+      "estruturante"
+    ],
     "ordem": 9,
     "origin": "seed"
   },
@@ -277,7 +320,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fita asfáltica autoadesiva aluminizada para vedação de rufos, calhas e emendas",
-    "tags": [],
+    "tags": [
+      "fita autoadesiva",
+      "asfáltica",
+      "alumínio",
+      "vedação"
+    ],
     "ordem": 10,
     "origin": "seed"
   },
@@ -297,7 +345,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Membrana elástica impermeabilizante incolor (manta líquida)",
-    "tags": [],
+    "tags": [
+      "manta líquida",
+      "incolor",
+      "impermeabilizante"
+    ],
     "ordem": 11,
     "origin": "seed"
   },
@@ -317,7 +369,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Silicone adesivo e vedante multiuso",
-    "tags": [],
+    "tags": [
+      "silicone",
+      "adesivo",
+      "vedante"
+    ],
     "ordem": 12,
     "origin": "seed"
   },
@@ -337,7 +393,12 @@ window.CSP_SEED = {
     "detalhes": "BIANCO é uma resina sintética de alto desempenho que proporciona excelente aderência das argamassas aos mais diversos substratos.\nBIANCO confere maior elasticidade e, assim, maior resistência ao desgaste e aos choques.\nBIANCO aumenta a impermeabilidade e evita a retração das argamassas. Pode ser usado em áreas externas e internas ou sujeitas à umidade.\nA melhor aderência do chapisco é obtida com o emprego de aditivos promotores de aderência. Segundo a NBR 11905 ABNT, homopolímeros e polímeros sucetíveis à reemulsificação e saponificação, não podem ser utilizados em sistemas de impermeabilização compostos de cimento, portanto também é arriscado utilizá-los em chapisco localizado em caixas d&acute;água, piscinas e paredes externas ou sujeitas às infiltrações. A reemulsificação e a saponificação são processos que ocorrem em alguns tipos de polímeros onde após sua polimerização se desagregam quando colocados em presença constante de água. Os copolímeros vinílicos, apresentam excelentes propriedades sem qualquer risco de desagregação.\nCaracterísticas\nDensidade: 1,02 g/cm3\nAparência: Líquido branco, isento de cloretos\nComposição básica: copolímero compatível com o cimento - atende a norma NBR 11905\nValidade: 12 meses\nMODO DE USAR\nPreparo do substrato\nAs superfícies (limpas, porosas, isentas de pó ou oleosidade) devem ser umedecidas antes da aplicação.\nPreparo do produto\nMisturar antes de usar.\nAdicionar BIANCO à água de amassamento na proporção BIANCO:água (1:2).\nAplicação\nTodos os revestimentos de maior espessura são precedidos da aplicação do composto adesivo.\nAs regularizações, os reparos e as colagens de azulejos com espessuras inferiores a 0,5 cm não necessitam desse preparo.\nComposto adesivo para chapisco\nTRAÇO: 1 parte cimento Portland / 3 partes areia média.\nAmolentar com a solução BIANCO:água (1:2). Aplicar o composto adesivo nos pisos, com vassourão, ou em forma de chapisco nas paredes.\nO chapisco pode ser feito também na forma de pintura (BIANCO ROLADO), utilizando-se rolo para textura intensa e, preferencialmente, areia grossa.\nRevestimentos\nTRAÇO: 1 parte cimento Portland / 3 partes areia média seca peneirada.\nAmolentar com solução BIANCO:água (1:2).\nPisos\nAplicar previamente o composto adesivo e, simultaneamente a argamassa:\nTRAÇO: 1 parte cimento Portland / 1 parte areia média (0 - 3 mm) / 2 partes pedrisco.\nAmolentar com solução BIANCO:água (1:2).\nA argamassa não poderá ser muito fluida, devendo ser bem adensada. Evitar a secagem rápida, utilizando cura úmida, CURING ou TRI-CURING.\nRejuntamento\nAdicionar alvaiade ao cimento branco e amolentar com a solução BIANCO: água 1:2, ou seja, 1 litro de BIANCO para 2 litros de água.\nBIANCO pode ser utilizado em rejuntes fornecidos prontos para uso.\nReparos\nReparos são feitos com espessura máxima de 0,5 cm, sem aplicação do composto adesivo. Pode-se misturar cimento comum ou cimento branco para obter várias tonalidades.\nA aplicação é feita com broxa e a igualação com desempenadeira de feltro.\nTRAÇO: 1 parte cimento Portland / 3 partes areia média seca e peneirada.\nAmolentar com solução BIANCO: água (1:2).\nPinturas\nA pintura com BIANCO é mais impermeável e durável, além de ter aplicação facilitada. BIANCO é ideal para caiações, pinturas com cimento branco ou cimento comum e com CIMENTOL.\nTRAÇO: - para cal ou cimento misturar 1 kg de BIANCO e 4 litros de água.\nConsumo aproximado\n- Composto adesivo para chapisco = 300 g/m²\n- Composto adesivo para chapisco rolado = 200 g/m²\n- Reparos, revestimentos e pisos = 400 g/m²/cm\nPRECAUÇÕES\nArmazenamento\nEstocar o produto em local coberto, fresco, seco e ventilado, fora do alcance de crianças e animais e longe de fontes de calor.\nAtenção\n- Superfícies muito lisas, inclusive devido à utilização de fôrmas plastificadas, resinadas ou com excesso de desmoldante, devem ser lavadas, escovadas ou até mesmo apicoadas, para obter a perfeita aderência do chapisco.\n- Nunca utilizar o produto puro, como tinta.\n- Em argamassas para chapisco, não utilizar cimento de pega lenta.\nEPI (Equipamento de proteção individual)\nAvental de PVC\nLuvas de borracha\nÓculos de Segurança\nPrimeiros socorros\nContato com os olhos: lavar com bastante água, durante pelo menos 15 minutos. Procurar um médico.\nContato com a pele: lavar com bastante água, durante pelo menos 15 minutos. Aplicar creme hidratante.\nInalação: remover para ambiente fresco e ventilado.\nIngestão: não provocar vômito. Procurar um médico.",
     "aplicacao": "",
     "descricao": "Chapisco nos mais diversos substratos, inclusive EPS (Isopor(r)).\nReparo de pouca espessura em concreto e alvenaria.\nExecução de piso, rejuntamento.\nFixador de caiação.\nAssentamento de azulejo, cerâmica.\nPlastificante para gesso.\nFixador para o CIMENTOL e outras tintas minerais.",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "impermeabilizante",
+      "argamassa",
+      "branco"
+    ],
     "ordem": 13,
     "origin": "seed"
   },
@@ -357,7 +418,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Adesivo/cola PVA para chapisco e argamassas",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "cola",
+      "pva",
+      "argamassa"
+    ],
     "ordem": 14,
     "origin": "seed"
   },
@@ -377,7 +443,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Broxas Retangulares estão presentes nos maiores e distribuidores e atacadistas do Brasil.\nA Maciez de suas cerdas e o encaixe para as latas são suas principais características.\nAplicação de pinturas asfálticas, acrílicas, e cimentícias.",
-    "tags": [],
+    "tags": [
+      "broxa",
+      "ferramenta",
+      "aplicação"
+    ],
     "ordem": 15,
     "origin": "seed"
   },
@@ -397,7 +467,11 @@ window.CSP_SEED = {
     "detalhes": "Descrição:\nFilme de (polietileno) com 1,3 m com epessura de 24 micras\nVantagem:\nEvita que os esforços de dilatação e contração da argamassa de proteção mecânica atuem diretamente sobre a impermeabilização.\nObservação:\nSalientamos que o filme de polietileno que serve de acabamento das mantas fabricadas pela VIAPOL não se constitui numa camada separadora, pois nas emendas de manta com manta haverá aderência da proteção mecânica no asfalto que forma o cordão de biselamento.\nValidade e estocagem:\nO produto tem validade de 5 anos, a partir da data de fabricação, desde que armazenado na posição vertical, nas embalagens originais e intactas, em local seco, ventilado e longe de fontes de calor.\nRecomendações:\nToda impermeabilização efetuada em ambientes fechados deve ter ventilação forçada, se houver a necessidade de utilização de maçarico na aplicação do sistema impermeabilizante, para maior segurança o botijão de gás deve permanecer fora do ambiente.\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico.A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "A camada separadora, num sistema de impermeabilização, tem como função evitar que as tensões atuantes nas camadas de proteção mecânica, originadas por variações térmicas ou carregamentos, transmitam-se para a impermeabilização.\nOutra função importante da camada separadora é permitir que se façam reparos na impermeabilização, quando necessários, sem que a camada impermeabilizante seja danificada pela remoção da proteção, o que ocorreria caso a mesma não tivesse sido colocada.\nCom estas considerações feitas e sempre no sentido de indicar aos seus aplicadores a forma mais correta e eficiente para a execução dos serviços de impermeabilização, a VIAPOL recomenda que em toda a superfície horizontal, após a colocação das mantas, seja colocada uma camada separadora antes da proteção mecânica.",
-    "tags": [],
+    "tags": [
+      "camada separadora",
+      "filme",
+      "proteção"
+    ],
     "ordem": 16,
     "origin": "seed"
   },
@@ -417,7 +491,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "São produtos têxteis utilizados junto ao solo ou com outros materiais dentro da engenharia civil e geotécnica.\nGeralmente são do tipo não tecido, embora também existam geotêxteis tricotados e reforçados.\nEnvelopamento de tubos de drenagem de 4 polegadas.",
-    "tags": [],
+    "tags": [
+      "geotêxtil",
+      "dreno",
+      "camisa"
+    ],
     "ordem": 17,
     "origin": "seed"
   },
@@ -437,7 +515,11 @@ window.CSP_SEED = {
     "detalhes": "Descrição:\nProduto obtido no processo de fracionamento do petróleo, com penetrações variadas, proporcionando os mais diversos usos, para os quais sejam requeridas características especiais de aderência, impermeabilidade, isolação acústicas e elétricas.\nUtilização:\nO Cimento Asfáltico NBR 9910 tem seu uso na indústria como matéria prima para adesivos asfálticos, impermeabilizantes, massas para pavimentação e mastiques anti-ruído.\nOutras formulações para aplicações especificas, consultar o Departamento Técnico da Viapol.\nRecomendações:\nO produto deve ser utilizado por profissionais com conhecimento em cada área de aplicação;\nNão aplicar em tempo chuvoso;\nNão aplicar em substrato molhado;\nNão aplicar sobre marcações existentes, como pinturas, termoplásticos e outros;\nProduto aplicado sob ação de temperatura - Utilizar EPIs adequados (luvas de raspas, botas, mangotes);\nEm caso de contato com a pele resfriar imediatamente com água fria, até que haja endurecimento e resfriamento do produto, cobrir a queimadura e encaminhar ao médico.\nIrritação dos olhos, lavar com água em abundância e procurar orientação médica, informando sobre o tipo de produto\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico. A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.\n\u0002Validade e estocagem: O produto tem validade de 12 meses, a partir da data de fabricação, desde que armazenado em local seco, coberto e longe de fontes de calor.",
     "aplicacao": "",
     "descricao": "O cimento asfaltico NBR 9910 Tipo II é aplicado após fusão e requer cuidados especiais para aquecimento;\nA chama direta ou temperatura superior a 200ºC degradam o produto. Portanto, seu aquecimento deve ser feito entre 130º a 190ºC com chama indireta, para isto é utilizada caldeira apropriada ou ainda recipiente utilizando óleo térmico ou areia grossa e com termômetro para controle da temperatura.\nNão recomendamos seu aquecimento por chama direta.",
-    "tags": [],
+    "tags": [
+      "cimento asfáltico",
+      "nbr 9910",
+      "asfalto"
+    ],
     "ordem": 18,
     "origin": "seed"
   },
@@ -457,7 +539,11 @@ window.CSP_SEED = {
     "detalhes": "Manta asfáltica produzida a partir da modificação física de asfaltos com polímeros elastoméricos (EL). Estruturada com um não-tecido de filamentos contínuos de poliéster previamente estabilizado, tendo como acabamento na face exposta uma película aluminizada altamente flexível e resistente ao ozônio.\nForma portanto uma superfície refletiva aos raios solares que garante a longevidade da manta asfáltica.\nFornecido em bobinas com espessura de 3mm e 4mm.\nUtilização:\nClassic Alumínio são indicadas como sistema impermeabilizante e acabamento final de coberturas não transitáveis. Sistema ideal para impermeabilização de lajes de coberturas sem transito, sheds, cúpulas, abóbadas, vigas de diferentes formatos, calhas de concreto, tratamento de juntas de estruturas pré-moldadas, telhas pré-fabricadas onduladas ou trapezoidais, e sistemas de isolação térmica.\nOutras aplicações consultar o Departamento Técnico da Viapol.\nCaracterísticas Técnicas:\n\u0002Características\u0001Unid.\u0001Poliéster Tipo III\n\u0002Carga máxima ruptura longitudinal (mín.)\u0001N/5cm\u0001400\n\u0002Carga máxima ruptura transversal (mín)\u0001N/5cm\u0001400\n\u0002Alongamento mínimo na longitudinal\u0001%\u000130\n\u0002Alongamento mínimo na transversal\u0001%\u000130\n\u0002Absorção d’água (máx)\u0001%\u00011,5\n\u0002Flexibilidade à baixa temperatura\u0001ºC\u0001-5\n\u0002Resistência ao impacto\u0001J-Joule\u00014,90\n\u0002Resistência ao puncionamento estático\u0001kg\u000125\n\u0002Escorrimento ao calor (mín)\u0001ºC\u000195\n\u0002Estabilidade dimensional (máx)\u0001%\u00011\n\u0002Flexibilidade após envelhecimento (mín)\u0001ºC\u0001 Normalização:\nAtende ao tipo III-B segundo a NBR 9952/2007, norma vigente.\nAtende ao tipo III segundo a NBR 9952/98, norma substituída.\nPreparação da superfície:\nA superfície deverá previamente lavada, isenta de pó, areia, resíduos de óleo, graxa, desmoldante, etc\nSobre a superfície horizontal úmida, executar regularização com caimento mínimo de 1% em direção aos pontos de escoamento de água, preparada com argamassa de cimento e areia média, traço 1:3, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água para maior aderência ao substrato. Essa argamassa deverá ter acabamento desempenado, com espessura mínima de 2cm.\nNa região dos ralos, deverá ser criado um rebaixo de 1cm de profundidade, com área de 40x40 cm com bordas chanfradas para que haja nivelamento de toda a impermeabilização, após a colocação dos reforços previstos neste local.\nTodos os cantos e arestas deverão ser arredondados com raio aproximado de 5cm a 8cm.\nJuntas de dilatação deverão ser consideradas como divisores de água de forma a evitar o acúmulo de água. As juntas deverão estar limpas e desobstruídas, permitindo sua normal movimentação.\nNas áreas verticais em alvenaria, executar chapisco de cimento e areia grossa, traço 1:3, seguido da execução de uma argamassa desempenada, de cimento e areia média, traço 1:4, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água.\nOs ralos e demais peças emergentes deverão estar adequadamente fixados de forma a executar os arremates, conforme os detalhes do projeto.\nConsumo:\nConsumo estimado de 1,15m²/m² de área, considerando sobreposições e perdas por recortes de detalhes.\nAcabamento:\nFace superior exposta ao intemperismo: revestida de uma película aluminizada flexível.\nFace inferior, que será aderida à estrutura: revestiva de filme de polietilêno extinguível à chama de maçarico.\nValidade e estocagem:\nO produto tem validade de 5 anos, a partir da data de fabricação, desde que armazenado na posição vertical, nas embalagens originais e intactas, em local seco, ventilado e longe de fontes de calor.\nRecomendações:\nToda impermeabilização efetuada em ambientes fechados deve ter ventilação forçada, se houver a necessidade de utilização de maçarico na aplicação do sistema impermeabilizante, para maior segurança o botijão de gás deve permanecer fora do ambiente\nConsultar os seguintes catálogos: Viafix, Adeflex, Viabit e Ecoprimer.\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico.A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Aplicar sobre o telhado ou sobre a regularização seca uma demão de primer Viabit, Adeflex ou Ecoprimer, com rolo ou trincha e aguardar a secagem por no mínimo 6 horas\nAlinhar a manta asfáltica de acordo com o requadramento da área, procurando iniciar a colagem no sentido dos ralos para as cotas mais elevadas;\nCom auxílio da chama do maçarico de gás GLP, proceder a aderência total da manta asfáltica. Nas emendas das mantas, deverá haver sobreposição de 10 cm que receberão biselamento para proporcionar perfeita vedação.\nExecutar as mantas na posição horizontal, subindo 10cm na posição vertical.\nAlinhar e aderir à manta na vertical, descendo e sobrepondo em 10cm na manta aderida na horizontal.\nA impermeabilização deverá subir na vertical no mínimo 30cm.\nApós a aplicação da manta asfáltica, fazer o teste de estanqueidade, enchendo o local impermeabilizado com água, mantendo o nível por no mínimo 72 horas.\nApós teste de estanqueidade, aplicar duas demão de tinta alumínio sobre a linha de biselamento (emendas das mantas).",
-    "tags": [],
+    "tags": [
+      "manta asfáltica",
+      "alumínio",
+      "4 mm"
+    ],
     "ordem": 19,
     "origin": "seed"
   },
@@ -477,7 +563,12 @@ window.CSP_SEED = {
     "detalhes": "COMPOUND ADESIVO apresenta excelente desempenho nas colagens dos mais diversos materiais empregados na construção civil.\nCOMPOUND ADESIVO oferece ótima resistência à água, ao óleo, à graxa e ao meio agressivo.\nA fluidez do COMPOUND ADESIVO permite grande facilidade para manuseio.\nCOMPOUND ADESIVO também é bastante eficiente como barreira contra a penetração de cloretos, devido à formação de uma película espessa e de baixíssima porosidade.\nCaracterísticas\nDensidade\nComponente A: 1,52 g/cm3\nAparência:\nComponente A: cor branca\nComponente B: cor preta\nComposição básica:\nComponente A: resina epóxi\nComponente B: poliamino-amida\nValidade: 12 meses\nMODO DE USAR\nPreparo do substrato\nA superfície deve estar limpa, seca e isenta de pó.\nPara aplicação em vidros e plásticos, a superfície deve ser previamente lixada.\nPara superfícies metálicas recomenda-se a remoção de ferrugens e incrustrações e óleos. Em chapas lisas executar jatemento de areia.\nPreparo do produto\nMisturar perfeitamente os dois componentes, usando, de preferência, um misturador mecânico, até a obtenção de uma massa homogênea de cor cinza.\nUtilizar o produto em, no máximo, 1 hora (sob temperatura de 25°C) depois de realizada a mistura.\nAplicação\nAplicar COMPOUND ADESIVO com pincel, trincha ou espátula, preenchendo todas as cavidades.\nCOMPOUND ADESIVO apresenta resistência inicial em 24 horas (a resistência máxima é obtida somente 7 dias após a aplicação).\nLimpar as ferramentas imediatamente após o uso do COMPOUND ADESIVO com SOLVENTE EPOXY.\nConsumo aproximado\n1,5 kg/m²/mm de espessura\nPRECAUÇÕES\nArmazenamento\nEstocar o produto em local coberto, fresco, seco e ventilado, fora do alcance de crianças e animais e longe de fontes de calor.\nAtenção\n- Quando for necessário um adesivo que não escorra, é indicada a utilização do COMPOUND ADESIVO TIX.\n- Para solicitações urgentes ou para superfícies úmidas, mas não-encharcadas, é indicado COMPOUND ADESIVO 200.\n- Quando for necessário um adesivo de grande fluidez, utilizar COMPOUND ADESIVO GEL.\n- Para ponte de aderência onde é necessário maior tempo de pega, utilizar o COMPOUND ADESIVO PL.\nEPI (Equipamento de proteção individual)\nAvental de PVC\nLuvas de PVC\nMáscara semifacial com filtro adequado para vapores orgânicos\nÓculos de Segurança\nPrimeiros socorros\nComponente A\nContato com os olhos: lavar com bastante água, durante pelo menos 15 minutos. Procurar um médico.\nContato com a pele: remover o produto com pano limpo e lavar com bastante água e sabão. Aplicar creme hidratante.\nInalação: remover para ambiente fresco e ventilado.\nIngestão: não provocar vômito. Procurar um médico.\nProcedimentos gerais: caso o produto já tenha secado na pele, remover com óleo vegetal. Lavar com bastante água e sabão. Aplicar creme hidratante.\nComponente B\nContato com os olhos: lavar com bastante água, durante pelo menos 15 minutos. Procurar um médico.\nContato com a pele: remover o produto com pano limpo e lavar com bastante água e sabão. Aplicar creme hidratante.\nInalação: remover para ambiente fresco e ventilado.\nIngestão: não provocar vômito. Procurar um médico.\nProcedimentos gerais: caso o produto já tenha secado na pele, remover com óleo vegetal. Lavar com bastante água e sabão. Aplicar creme hidratante.",
     "aplicacao": "",
     "descricao": "concreto-concreto;\nconcreto-ferro-madeira-azulejo-cerâmica-pedra-fibrocimento-vidro-plástico.\nRecolocação de azulejos soltos em piscinas, sem necessidade de esvaziá-las.\nChumbamentos.\nConserto de embarcações.\nAncoragem.",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "epóxi",
+      "estrutural",
+      "bicomponente"
+    ],
     "ordem": 20,
     "origin": "seed"
   },
@@ -497,7 +588,12 @@ window.CSP_SEED = {
     "detalhes": "COMPOUND ADESIVO TIX é um adesivo estrutural de alta viscosidade.\nCOMPOUND ADESIVO TIX não escorre, mesmo quando aplicado em superfícies verticais.\nCOMPOUND ADESIVO TIX é impermeável e resistente aos óleos, às graxas e à uma série de substâncias químicas. COMPOUND ADESIVO TIX apresenta excelente aderência a vários tipos de substratos.\nCaracterísticas\nDensidade\nComponente A: 1,45 g/cm3\nAparência:\nComponente A: cor branca\nComponente B: cor preta\nComposição básica:\nComponente A: resina epóxi\nComponente B: poliamino-amida\nValidade: 12 meses\nDADOS TÉCNICOS\nConsistência - alta viscosidade\nMODO DE USAR\nPreparo do substrato\nA superfície deve estar seca, limpa e isenta de pó.\nPara superfícies metálicas recomenda-se a remoção de ferrugens, incrustrações e óleos. Em chapas lisas executar jatemento de areia.\nPreparo do produto\nMisturar perfeitamente os dois componentes usando, de preferência, um misturador mecânico, até a obtenção de uma massa homogênea de cor cinza.\nAplicação\nAplicar com espátula em, no máximo, 1 hora (a 25° C) depois de realizada a mistura.\nCOMPOUND ADESIVO TIX apresenta cura final em 7 dias.\nLimpar as ferramentas com SOLVENTE EPOXY logo após o uso. Lavar as mãos com água e sabão.\nPara chumbamento de armadura em superfícies verticais é indicado aplicar o COMPOUND ADESIVO TIX com a ponta do ferro, empurrando com movimentos giratórios, a fim de retirar todo o ar confinado. Em furos de grande profundidade, aplicar o produto com espátula na entrada do orifício e empurrar do mesmo modo, até proceder o total preenchimento do vão entre o concreto e a armadura a ser chumbada. Manter a armadura sem movimentação por 24 horas.\nConsumo aproximado\n1,4 kg/m²/mm de espessura\nPRECAUÇÕES\nArmazenamento\nEstocar o produto em local coberto, fresco, seco e ventilado, fora do alcance de crianças e animais e longe de fontes de calor.\nEPI (Equipamento de proteção individual)\nAvental de PVC\nLuvas de PVC\nMáscara semifacial com filtro adequado para vapores orgânicos\nÓculos de Segurança\nPrimeiros socorros\nComponente A\nContato com os olhos: lavar com bastante água, durante pelo menos 15 minutos. Procurar um médico.\nContato com a pele: remover o produto com pano limpo e lavar com bastante água e sabão. Aplicar creme hidratante.\nInalação: remover para ambiente fresco e ventilado.\nIngestão: não provocar vômito. Procurar um médico.\nProcedimentos gerais: caso o produto já tenha secado na pele, remover com óleo vegetal. Lavar com bastante água e sabão. Aplicar creme hidratante.\nComponente B\nContato com os olhos: lavar com bastante água, durante pelo menos 15 minutos. Procurar um médico.\nContato com a pele: remover o produto com pano limpo e lavar com bastante água e sabão. Aplicar creme hidratante.\nInalação: remover para ambiente fresco e ventilado.\nIngestão: não provocar vômito. Procurar um médico.\nProcedimentos gerais: caso o produto já tenha secado na pele, remover com óleo vegetal. Lavar com bastante água e sabão. Aplicar creme hidratante.",
     "aplicacao": "",
     "descricao": "Concreto-concreto e concreto-ferro, madeira, azulejo, cerâmica e pedra.\nRecolocação de azulejos soltos em piscina, sem a necessidade de esvaziá-las.\nChumbamentos.",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "epóxi",
+      "tixotrópico",
+      "estrutural"
+    ],
     "ordem": 21,
     "origin": "seed"
   },
@@ -517,7 +613,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Desmoldante para formas de concreto",
-    "tags": [],
+    "tags": [
+      "desmoldante",
+      "forma",
+      "concreto"
+    ],
     "ordem": 22,
     "origin": "seed"
   },
@@ -537,7 +637,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Subcobertura aluminizada refletiva para telhados",
-    "tags": [],
+    "tags": [
+      "subcobertura",
+      "alumínio",
+      "telhado",
+      "térmico"
+    ],
     "ordem": 23,
     "origin": "seed"
   },
@@ -557,7 +662,11 @@ window.CSP_SEED = {
     "detalhes": "Descrição:\nEmulsão asfáltica especialmente desenvolvida para impermeabilizações sob a forma de pintura, podendo ser aplicada mesmo com a presença de umidade.\nExcelente material aglutinante, para execução de preenchimento quando misturado com areia.\nUltilização:\nEcol 2 é uma emulsão asfáltica, aplicada a frio com broxa, rodo ou escovão, para impermeabilização de fundações,baldrames, muros de arrimo, alicerces, estruturas em contato com o solo, etc.\nCaracterísticas Técnicas:\nDensidade: 1,00 à 1,04 g/cm³\nCor: marrom escuro\nAparência: Líquido Viscoso\nProduto isento de solvente - não inflamável.\nPraparação da superfície:\nA superfície a ser impermeabilizada deve estar limpa, isenta de corpos estranhos e materiais soltos.\nDeve ser regularizada com argamassa de cimento e areia no traço volumérico de 1:3 sem aditivos hidrófugos.\nConsumo:\nMínimo recomendado: 0,5 kg/m² em duas demãos\nValidade e estocagem:\nO produto tem validade de 24 meses, a partir da data de fabricação, desde que armazenado em local seco, coberto e longe de fontes de calor.\nRecomendações:\nNão aplicar em tempo chuvoso;\nNão aquecer;\nManter as embalagens fechadas, fora do alcançe de crianças e animais, e longe de fontes de calor;\nEm caso de contato com a pele ou olhos, lavar a região com água em abundância; Em caso de ingestão, não provocar vômito e procurar imediatamente orientação médica, informando o tipo de produto.\nConsultar as seguintes normas técnicas:\nNBR 8083 - Materiais e sistemas utilizados em impermeabilizações.\nNBR 9574 - Execução de impermeabilização\nNBR 9685 - Emulsões Asfálticas sem carga para impermeabilizações\nNBR 9689 - Materiais e sistemas de impermeabilizações\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico. A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Aplicar uma demão de Ecol 2 diluído em 50% de água, aguardando a secagem total, por aproximadamente 8 horas, dependendo das condições climáticas;\nContinuar a aplicação com o produto puro em 2 demãos alternadas e cruzadas, aguardando sempre o período mínimo de 8 horas entre a primeira e a segunda demão;\nNão aplicar o produto em dias chuvosos;\nPara maiores detalhes de aplicação, consulte o departamento técnico da Viapol.",
-    "tags": [],
+    "tags": [
+      "emulsão asfáltica",
+      "base água",
+      "laje"
+    ],
     "ordem": 24,
     "origin": "seed"
   },
@@ -577,7 +686,11 @@ window.CSP_SEED = {
     "detalhes": "Descrição:\nPintura impermeabilizante composta de asfaltos modificados, isenta de solventes, para aplicação à frio sobre superfícies de concreto, argamassa, alvenaria, metal, PVC, fibra de vidro, etc.\nUtilização:\nEcoprimer é utilizado como:\nPrimer para substrato em áreas a ser impermeabilizadascom mantas asfálticas elastoméricas, poliméricas ou oxidadas, tanto no sistema de aplicação a maçarico como com asfalto oxidado. Pintura impermeável para fachadas, quando for aplicada sob película de vidro. Forma eficiente barreira contra a umidade, permitindo perfeito acabamento, enaltecendo a película.\nCaracterísticas técnicas :\nCor: Preto\nViscosidade: Pastosa\nDensidade: 1,00g/cm³\nVantagens:\nSua exclusiva fórmula, totalmente sem solventes tóxicos, é uma solução ecológica que permite uma aplicação mais segura em ambientes pouco ventilados, como subsolos e reservatórios, além de uma perfeita ancoragem de mantas asfálticas com as mais diversas características e com secagem mais rápida.\nNormalização:\nNão aplicável.\nPreparação da Superfície:\nO local a receber o primer Ecoprimerdeve estar limpo, seco e regularizado com caimento mínimo de 1% em direção aos pontos de escoamento de água, preparada com argamassa de cimento e areia média, traço 1:3, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água para maior aderência ao substrato. Essa argamassa deverá ter acabamento desempenado, com espessura mínima de 2cm.\nConsumo:\nDe 0,3 a 0,4 litros/m²/demão.\nValidade e Estocagem:\nProduto válido por 12 meses, a partir da data de fabricação, desde que armazenado em local coberto, sem incidência de sol.\nRecomendações:\nNo caso de contato do produto com a pele, lavar a região com água e sabão neutro ou pasta especial para limpeza;\nNo caso de contato com os olhos, lavar com água potável em abundância por no mínimo 15 minutos;\nEventual irritação da pele, olhos ou ingestão do produto, procurar orientação médica, informando sobre o tipo de produto.\nMisturar bem o produto antes de utilizar.\nNão reutilizar a embalagem.\nPara limpeza de ferramentas, utilizar Aguarrás.\nToda a impermeabilização efetuada em reservatórios fechados, deve ter ventilação forçada e se houver a necessidade de utilização de maçarico na aplicação do sistema impermeabilizante, para maior segurança o botijão de gás deve permanecer fora do reservatório.\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico. A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Ecoprimer é aplicado puro, utilizando rodo, vassoura de pêlo ou trincha, em uma ou duas demãos.\nO tempo máximo de secagem é de 15 minutos, com temperatura média de 25ºC e umidade relativa do ar de 70%.\nNão utilizar em tempo chuvoso.\nHomogeneizar o produto antes de sua aplicação.",
-    "tags": [],
+    "tags": [
+      "primer",
+      "base água",
+      "asfáltico"
+    ],
     "ordem": 25,
     "origin": "seed"
   },
@@ -597,7 +710,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Espátula plástica para aplicação e acabamento",
-    "tags": [],
+    "tags": [
+      "espátula",
+      "ferramenta",
+      "acabamento"
+    ],
     "ordem": 26,
     "origin": "seed"
   },
@@ -617,7 +734,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Espuma expansiva de poliuretano para preenchimento e vedação",
-    "tags": [],
+    "tags": [
+      "espuma expansiva",
+      "poliuretano",
+      "vedação"
+    ],
     "ordem": 27,
     "origin": "seed"
   },
@@ -637,7 +758,11 @@ window.CSP_SEED = {
     "detalhes": "Utilização\n• Concreto convencional;\n• Concreto bombeado;\n• Concreto pré-moldado;\n• Argamassa de fixação e enchimento;\n• Argamassa de reparo urgente;\n• Argamassa de revestimento;\nVantagens\n• Redução no tempo da pega do cimento;\n• Antecipa o endurecimento do concreto/argamassa;\n• Altíssima resistência mecânica inicial;\n• Possibilita a concretagem em áreas submersas e/ou molhadas, permitindo antecipar o endurecimento do concreto/argamassa;\n• Aumento da durabilidade das peças concretadas;",
     "aplicacao": "",
     "descricao": "EUCON® RAPID 10 é um aditivo para concreto, líquido, isento de cloreto, pronto para o uso. EUCON® RAPID 10 é composto por matérias primas de altíssimo desempenho. EUCON® RAPID 10 é um aditivo acelerador de pega do cimento e das resistências iniciais do concreto e argamassas.",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "acelerador",
+      "concreto"
+    ],
     "ordem": 28,
     "origin": "seed"
   },
@@ -657,7 +782,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa de reparo estrutural tixotrópica",
-    "tags": [],
+    "tags": [
+      "reparo estrutural",
+      "argamassa",
+      "tixotrópica"
+    ],
     "ordem": 29,
     "origin": "seed"
   },
@@ -677,7 +806,12 @@ window.CSP_SEED = {
     "detalhes": "EXPANSOR plastifica as argamassas e preenche totalmente os espaços vazios, o que facilita a sua aplicação em frestas.\nEXPANSOR compensa a retração natural das argamassas por meio do efeito de expansão moderada, evitando fissuras.\nCaracterísticas\nAparência: Pó branco, isento de cloretos\nComposição básica: cargas minerais\nValidade: 9 meses\nMODO DE USAR\nPreparo do substrato\nA superfície deve estar ligeiramente úmida.\nPreparo do produto\nAdicionar EXPANSOR ao cimento a seco. Usar a menor quantidade de água possível, devido a maior plasticidade.\nAplicação\nUsar 1 parte de cimento Portland, 3 partes de areia média e 1% de EXPANSOR misturados com a massa de cimento.\nPara um melhor desempenho do produto, a argamassa deve ter consistência seca e ser utilizada em, no máximo, 40 minutos (25°C) após a adição da água.\nEncunhamentos\nDeixar uma fresta de 3 cm entre a alvenaria e a estrutura e socar bem a argamassa no interior da fresta para um perfeito preenchimento dos espaços vazios.\nConsumo aproximado\nEXPANSOR é usado na proporção de 1% sobre a massa de cimento.\n500 g EXPANSOR / 50 kg cimento.\nPRECAUÇÕES\nArmazenamento\nEstocar o produto em local coberto, fresco, seco e ventilado, fora do alcance de crianças e animais e longe de fontes de calor.\nAtenção\nO encunhamento deve ser feito, no mínimo, 14 dias após o assentamento da alvenaria.\nEPI (Equipamento de proteção individual)\nAvental de PVC\nLuvas de borracha\nMáscara com filtro para pó\nÓculos de Segurança\nPrimeiros socorros\nContato com os olhos: lavar com bastante água, durante pelo menos 15 minutos. Procurar um médico.\nContato com a pele: lavar com bastante água, durante pelo menos 15 minutos. Aplicar creme hidratante.\nInalação: remover para ambiente fresco e ventilado.\nIngestão: não provocar vômito. Procurar um médico.",
     "aplicacao": "",
     "descricao": "Preenchimentos, argamassa tipo \"dry-pack\".",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "expansor",
+      "graute",
+      "chumbamento"
+    ],
     "ordem": 30,
     "origin": "seed"
   },
@@ -697,7 +831,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Composto de pega ultrarrápida para tamponamento de vazamentos e infiltrações",
-    "tags": [],
+    "tags": [
+      "tamponamento",
+      "pega rápida",
+      "vazamento"
+    ],
     "ordem": 31,
     "origin": "seed"
   },
@@ -717,7 +855,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fibra de polipropileno 12 mm para reforço e controle de fissuração do concreto",
-    "tags": [],
+    "tags": [
+      "fibra",
+      "polipropileno",
+      "concreto",
+      "retração"
+    ],
     "ordem": 32,
     "origin": "seed"
   },
@@ -737,7 +880,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fita adesiva aluminizada para vedação e acabamento",
-    "tags": [],
+    "tags": [
+      "fita adesiva",
+      "alumínio",
+      "vedação"
+    ],
     "ordem": 33,
     "origin": "seed"
   },
@@ -757,7 +904,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fita crepe para proteção e delimitação durante a aplicação",
-    "tags": [],
+    "tags": [
+      "fita crepe",
+      "proteção",
+      "ferramenta"
+    ],
     "ordem": 34,
     "origin": "seed"
   },
@@ -777,7 +928,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fita asfáltica autoadesiva aluminizada multiuso para vedações",
-    "tags": [],
+    "tags": [
+      "fita autoadesiva",
+      "asfáltica",
+      "alumínio",
+      "vedação"
+    ],
     "ordem": 35,
     "origin": "seed"
   },
@@ -797,7 +953,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Fita Vedatrica, é um complemento para a aplicação da pasta cremosa de base acrílica Vedatrinca, utilizada nos reparos de trincas e fissuras em revestimentos, com grande poder de aderência formando uma membrana elástica de otimo acabamento.",
-    "tags": [],
+    "tags": [
+      "fita",
+      "tela",
+      "trinca",
+      "estruturante"
+    ],
     "ordem": 36,
     "origin": "seed"
   },
@@ -817,7 +978,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Adesivo/selante multiuso de alta aderência, cor branca",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "selante",
+      "multiuso",
+      "branco"
+    ],
     "ordem": 37,
     "origin": "seed"
   },
@@ -837,7 +1003,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Os cordões de fundo de junta, disponíveis em poliuretano (célula aberta) e/ou polietileno (célula fechada), são ideais para limitar a profundidade da junta e impedir a aderência do selante à respetiva base (fundo), assegurando dessa forma o comportamento adequado do selante.",
-    "tags": [],
+    "tags": [
+      "tarucel",
+      "junta",
+      "cordão",
+      "backer rod"
+    ],
     "ordem": 38,
     "origin": "seed"
   },
@@ -857,7 +1028,11 @@ window.CSP_SEED = {
     "detalhes": "Características técnicas: Natureza química homopolímero acrílico termo - plástico - isento de radicais estirênicos, dissolvido em solvente aromático.\nAspecto: Líquido transparenteDensidade: 0,900 g/cm³",
     "aplicacao": "",
     "descricao": "Fuseprotec: É uma composição transparente, à base de resina acrílica 100% pura.Composição básica: Resina acrílica pura (100%), solvente aromático e aditivos.Utilização: Destinada à proteção e impermeabilização de áreas externas de concreto aparente, tijolos à vista, blocos de concreto e pedras ornamentais. Vantagens: Insensível à ação dos raios solares e da alcalinidade do concreto.Ótima resistência à água, não agarra sujeira, não mofa, não amarela e não descasca.É fabricado nos tipos: BRILHANTE, SEMI-BRILHO e FOSCO .Testes práticos e de laboratório indicam uma resistência mínima de 5 anos de exposição a intempéries, sem alterar o seu aspecto original.",
-    "tags": [],
+    "tags": [
+      "resina acrílica",
+      "impermeabilizante",
+      "brilhante"
+    ],
     "ordem": 39,
     "origin": "seed"
   },
@@ -877,7 +1052,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Resina acrílica impermeabilizante de acabamento super brilhante",
-    "tags": [],
+    "tags": [
+      "resina acrílica",
+      "impermeabilizante",
+      "brilhante"
+    ],
     "ordem": 40,
     "origin": "seed"
   },
@@ -897,7 +1076,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Grânulos de ardósia cinza claro para acabamento e reparo de mantas asfálticas",
-    "tags": [],
+    "tags": [
+      "ardósia",
+      "grânulos",
+      "acabamento",
+      "manta"
+    ],
     "ordem": 41,
     "origin": "seed"
   },
@@ -917,7 +1101,12 @@ window.CSP_SEED = {
     "detalhes": "Descrição:\nMástique à base de resinas acrílicas, de ótimas características de elasticidade, aderência e impermeabilidade, tendo como finalidade o tratamento de trincas e fissuras na recuperação de fachadas de edifícios, com ótimo resultado estético, proporcionando melhor acabamento do sistema de pintura adotado.\nUtilização:\nCalafetação de juntas de fechamento de pré-moldados;\nFissuras de retração, tanto horizontais como verticais;\nTrincas e fissuras em fachadas de edifícios;\nCalafetação de frestas entre guarnições de madeira ou metal e as paredes acabadas.\nEm conjunto com impermeabilizante de membranas acrílicas, Viaflex Branco e Hey’dicryl\nEm conjunto com tintas acrílicas Fuselatex, Fusecril Látex ou Vedaplast\nVantagens:\nExcelente resistência a ação dos raios ultravioletas, ozona e intempéries;\nÓtimo desempenho em fissuras de fachadas;\nFácil aplicação e manuseio;\nA quantidade de 1,0 kg rende 10 metros em junta 1x1 cm\nElástico e flexível.\nCompatível com as pinturas base água\nIsento de solventes\nCaracterísticas técnicas:\nAspecto: Pastoso / Pasta\nCor: Branca\nSecagem ao toque: aprox. 2 horas\nTempo de cura inicial: 24 horas\nTempo de cura final: 7 dias\nPreparação da superfície:\nPara aplicação do Hey’dicryl Mástique, limpar bem a superfície a ser aplicada, para que ela fique seca e isenta de pó, graxa, tinta ou quaisquer outros materiais anteriormente aplicados\nNo caso de calafetação de caixilhos, batentes, entre outros, abrir um pequeno filete ao longo da peça a ser calafetada, tomando o cuidado para deixá-la bem limpa;\nNas juntas de dilatação de painéis verticais, proceder a limpeza utilizando uma espátula, nessas situações colocar um limitador de profundidade que deverá ser dimensionado de acordo com a largura da junta.\nConsumo:\n0,1 kg/m em junta de 1 x 1 cm\nPara embalagem menor, dispomos do Monopol Acrílico em cartucho de 420 g\nValidade e estocagem:\nProduto válido por 12 meses, a partir da data de fabricação, desde que armazenado em local seco e ventilado, nas embalagens originais e intactas.\nRecomendações:\nManter as embalagens fechadas longe do alcance das crianças, animais e fontes de calor;\nEm caso de contato com a pele ou olhos, lavar a região afetada com água em abundância;\nEm caso de ingestão, não provocar vômito e procurar imediatamente um médico, informando-o sobre o tipo de produto;\nPara limpeza de ferramentas, utilizar Aguarrás Viapol;\nNão reutilizar a embalagem.\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico. A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Preencher todas as juntas e sulcos com Hey’dicryl Mástique, utilizando uma espátula.\nHavendo necessidade de uma espessura maior, acima de 10 mm, deve ser aplicado em duas ou mais demãos, obedecendo ao tempo de secagem\nNecessitando de pintura posterior, aguardar a completa secagem do mástique por 4 dias, no mínimo.\nProceder ao lixamento manual da superfície e pintar posteriormente.\nPara mais informações sobre manuseio e medidas de segurança, consultar nosso\ndepartamento técnico",
-    "tags": [],
+    "tags": [
+      "mastique",
+      "acrílico",
+      "junta",
+      "branco"
+    ],
     "ordem": 42,
     "origin": "seed"
   },
@@ -937,7 +1126,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Solução asfáltica para imprimação (primer) de superfícies",
-    "tags": [],
+    "tags": [
+      "primer",
+      "solução asfáltica",
+      "imprimação"
+    ],
     "ordem": 43,
     "origin": "seed"
   },
@@ -957,7 +1150,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Emulsão asfáltica elastomérica para impermeabilização de fundações e estruturas enterradas",
-    "tags": [],
+    "tags": [
+      "emulsão asfáltica",
+      "elastomérica",
+      "fundação"
+    ],
     "ordem": 44,
     "origin": "seed"
   },
@@ -977,7 +1174,12 @@ window.CSP_SEED = {
     "detalhes": "\u0002IMPERALL é a mais nova tecnologia contra batida de chuva na parede e os conseqüentes males que a infiltração provoca. IMPERALL elimina problemas no acabamento interno, melhorando a qualidade de vida e a conservação dos materiais dentro do imóvel. IMPERALL é um revestimento capaz de impermeabilizar, selar, pintar e absorver fissuras* em um só produto, justamente por ter uma tecnologia única no mercado, composta de minerais acrílicos super fortes, capazes de agüentar ações da natureza, como raios UV, fungos e variações térmicas. VANTAGENS • É 4 em 1: Impermeabiliza, sela, pinta e absorve microfissuras* • Ótimo acabamento; • Aceita pigmentação; • Já vem pronto e é fácil de aplicar; • Ótima resistência à maresia. ONDE APLICAR • Paredes com batida de chuva; • Bloco aparente (cimento); • Placas cimentícias; • Tijolos e concretos; • Selador impermeável para tintas látex PVA e acrílica. ATENÇÃO: No caso de umidade ascendente do solo, é necessário utilizar outra tecnologia de impermeabilização (MACTRASET e MACTRA 2000). COMO APLICAR Preparo da Superfície: • A superfície a ser tratada deverá estar limpa e seca, isenta de partículas soltas ou fungos. Se tiver algum tipo de pintura deve-se lixar ou escovar antes da aplicação. • Trate as trincas estruturais estabilizadas com TELA + MASSA VEDATRINCA. Nas trincas de superfície utilize a FITA VEDATRINCA. Faça a calafetação dos caixilhos com ELASTIQUE. • No caso de rebocos novos, deve-se esperar a cura de 28 dias. Como Aplicar 1. Mexa antes de aplicar. 2. Aplique o IMPERALL com trincha de nylon, rolo ou brocha em 2 a 3 demãos. Dilua a primeira demão em até 20% em água e aplique as demais puras. Tempo entre demãos: 6 horas. • Armagenagem em local coberto, seco e arejado. Características Densidade: Líquido branco viscoso. Composição básica: Acrílica de alto desempenho, minerais e anti-fungos. Consumo (rendimento): 270 a 320 g/m2/demão. Embalagens: 18 e 200 kg.",
     "aplicacao": "",
     "descricao": "• Paredes com batida de chuva;\n• Bloco aparente (cimento);\n• Placas cimentícias;\n• Tijolos e concretos;\n• Selador impermeável para tintas látex PVA e acrílica.\nATENÇÃO: No caso de umidade ascendente do solo, é necessário utilizar outra tecnologia de impermeabilização (MACTRASET e MACTRA 2000).",
-    "tags": [],
+    "tags": [
+      "impermeabilizante",
+      "acrílico",
+      "fachada",
+      "parede"
+    ],
     "ordem": 45,
     "origin": "seed"
   },
@@ -986,18 +1188,23 @@ window.CSP_SEED = {
     "nome": "INSTANT PAV",
     "categoria": "asfaltos",
     "categoriaLabel": "Asfaltos Modificados",
-    "marca": "cbpav",
-    "marcaLabel": "CB-PAV",
+    "marca": "fh",
+    "marcaLabel": "FH",
     "tag": "Asfaltos Modificados",
     "img": "img/produtos/instant-pav.jpg",
     "alt": "INSTANT PAV",
     "url": "produtos/produto-instant-pav.html",
     "tipo": "Reparador de piso asfáltico",
-    "embalagem": "SC 40kg",
+    "embalagem": "Saco 25 kg",
     "detalhes": "O INSTANT PAV é um concreto asfaltico usinado a quente para aplicação a frio, livre de solventes, a base de CAP e óleos vegetais aditivado com MAC FIX não emulsionado, pronto para uso, sem necessidade de imprimação ou compactação, podendo ser usado em buracos com água em dias chuvosos e em dias secos executar previa varredura para eliminação de pó, acondicionados em sacos multifoliados de papel Kraft de 40 kg com garantia de estocagem de 12 meses.* Pode ser utilizado em buracos com água e em dias chuvosos* Ecologicamente correto livre de solventes e óleos minerais* Não necessita de aquecimento ou mistura* Não tem cheiro* Não necessita de imprimação* A compactação é feita pelos veículos passantes* Perda por arraste 5%* Menor tempo de cura* Não gruda nos pneus* Garantia de estocagem de 12 meses* Melhor adesividade aos agregados* Alta resistência ao envelhecimento* Redução do aparecimento de trincas",
     "aplicacao": "",
     "descricao": "O INSTANT PAV é o resultado de uma parceria entre a CB PAV Indústria e Comercio Ltda e a Macismo Asphalt Inovations. Na busca de qualidade e inovações na área de pavimentação a CB PAV trouxe para o Brasil as novas tecnologias em aditivos livres de solvente com diluentes vegetais da Macismo Asphalt Inovations. Iniciou-se a produção do INSTANT PAV FIX, um asfalto usinado a quente para aplicação a frio, a base de CAP 50/70, pronto para uso que se tornou a mais moderna e correta opção para serviços de tapa buracos, valas e bordas de tampões de PV, com alta durabilidade e podendo ser utilizado em buracos com água e em dias chuvosos o permite executar recomposição de asfaltos em quaisquer circunstâncias dando agilidade aos setores de manutenção de Prefeituras e órgãos de saneamento.\nPRATICIDADE NAS OPERAÇÕES - O INSTANT PAV FIX é um asfalto livre de solventes, ecológico pronto para uso resistente à ação da água, podendo ser utilizado em buracos com água em dias chuvosos. Aplica-se diretamente por uma só pessoa com uma pá, após uma simples varredura no buraco, não necessita de imprimação, ser aquecido ou misturado com outros produtos, não necessita de compactação sendo a mesma efetuada pelo próprio transito, resultando em rapidez e praticidade nas operações e reduzindo substancialmente os custos e mão de obra e equipamentos.\nCaracterísticas\n• Asfalto com borracha reciclada de pneus.\n• Não necessita de aquecimento ou mistura\n• Não tem cheiro\n• Não necessita de imprimação\n• Maior resistência à água\n• A compactação é feita pelos veículos passantes\n• Menor custo perda arraste de 5%\n• Menor tempo de cura\n• Não gruda nos pneus\n• Garantia de estocagem de 12 meses\n• Melhor adesividade aos agregados\n• Alta resistência ao envelhecimento\n• Redução do aparecimento de trincas\n• Diminuição de pneus jogados em rios e córregos",
-    "tags": [],
+    "tags": [
+      "asfalto",
+      "tapa-buraco",
+      "pavimento",
+      "aplicação a frio"
+    ],
     "ordem": 46,
     "origin": "seed"
   },
@@ -1017,7 +1224,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Jogo de acessórios (bicos e adaptadores) para aplicação de sachês",
-    "tags": [],
+    "tags": [
+      "acessório",
+      "sachê",
+      "aplicador",
+      "ferramenta"
+    ],
     "ordem": 47,
     "origin": "seed"
   },
@@ -1037,7 +1249,12 @@ window.CSP_SEED = {
     "detalhes": "Descrição:\nImpermeabilizante líquido à base de silicatos e resinas que, por efeito de cristalização, colmata a porosidade das alvenarias de tijolo maciço, bloqueando a umidade ascendente.\nUtilização:\nKiesey é utilizado para impermeabilização de paredes de alvenaria de tijolo maciço com problemas de umidade ascendente, muito comum principamente em áreas litorâneas cuja impermeabilização de baldrames e alicerces não foram adequadamente executadas.\nVantagens:\nRecupera a condição de impermeabilidade da base da parede com o baldrame;\nEvita quebra ou demolição por etapas das paredes;\nAge por processo de cristalização, colmatando os poros da estrutura;\nNão necessita de mão de obra especializada;\nNão necessita que as estruturas estejam secas, pois o veículo de penetração do produto é a própria água;\nPor se tratar de produto de base mineral, possui excelente durabilidade.\nCaracterísticas técnicas:\nAspectos: Líquido Turvo\nCor: Acinzentada\nDensidade a 25°: 1,21 `a 1,25 g/ml\nNão voláteis: 28,0 à 32,0 %\nViscosidade de ford: 10,0 à 12,5 segundos\nCristalização:\nFrente à pequena quantidade de álcool cristaliza\nEm excesso de álcool gelifica.\nPreparação da superfície:\nRetirar todo o reboco da área a tratar, desde o piso até a altura de 1 a 1,2 m;\nExecutar 2 linhas de furos, a primeira a 10 cm do piso e a segunda a 20 cm, com broca de ½\" ou &frac34;\". Perfurando pelo menos 2/3 da espessura da parede com uma inclinação de 45º;\nOs furos da mesma linha deverão estar distanciados entre si, no máximo, 15 cm, intercalados com os furos da linha anterior.\nConsumo:\nParedes de ½ tijolo (10 cm): 1 kg/m linear\nParedes de 1 tijolo (20 cm): 2 kg/m linear\nParedes de 1 ½ tijolo (30 cm): 3 kg/m linear\nObs.: Este consumo é médio, pois depende da porosidade do tijolo.\nValidade e estocagem:\nO produto tem validade de 12 meses, a partir da data de fabricação, desde que armazenado em local seco e ventilado, nas embalagens originais e intáctas.\nRecomendações:\nManter as embalagens fechadas, longe do alcance das crianças e animais;\nEm caso de contato com a pele ou olhos, lavar a região afetada com água em abundância;\nEm caso de ingestão, não provocar vômito e procurar imediatamente um médico, informando sobre o tipo de produto;\nNão reutilizar a embalagem;\nO produto pode causar manchas em superfícies porosas, como pisos.\nEvite escorrimento e proteja a área de trabalho com lona plástica.\nPara limpeza de ferramentas, utilizar Aguarrás Viapol .\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico. A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Com o auxílio de um funil, injetar água nos furos, até sua completa saturação;\nAgitar o produto antes de sua aplicação;\nRetirar o excesso d'água nos furos e, imediatamente, injetar o Kiesey.\nRepetir esta operação quantas vezes forem necessárias para atingir a metade do consumo especificado;\nApós 24 horas da primeira aplicação, desobstruir as paredes dos furos com broca e executar a segunda aplicação de Kiesey, sem a prévia injeção de água;\nA segunda aplicação deve ser feita em todos os furos sucessivamente até atingir a outra metade do consumo especificado;\nAguardar 3 dias e fazer o fechamento dos furos com argamassa de cimento e areia, sem cal, esperando sua secagem;\nApós a aplicação total de Kiesey, aplicar 2 demãos cruzadas de Viaplus 1000/TOP.\nO consumo aproximado deverá ser de 2 kg para essas.",
-    "tags": [],
+    "tags": [
+      "cristalizante",
+      "silicato",
+      "umidade ascendente",
+      "injeção"
+    ],
     "ordem": 48,
     "origin": "seed"
   },
@@ -1057,7 +1274,11 @@ window.CSP_SEED = {
     "detalhes": "\u0002Ligmassa\n\u0002Aditivo plastificante para argamassa Ligmassa é a mais moderna tecnologia para se preparar argamassas. Ligmassa é um aditivo concentrado que proporciona liga e plasticidade às argamassas de reboco e assentamento. VANTAGENS • Oferece excelente liga e plasticidade; • Diminui o fator água/cimento, evitando trincas e fissuras; • Aumenta a resistência e a aderência; • Dispensa a utilização de ligantes convencionais, logo a argamassa não precisa ficar curtindo; • O sarrafeamento é praticamente imediato e o acabamento de primeira qualidade. ONDE APLICAR • Argamassa de assentamento; • Argamassa de reboco. COMO APLICAR Como Preparar: • Reboco interno ou assentamento: 1 lata de cimento, até 9 latas de areia e água; • Reboco externo: 1 lata de cimento, até 6 latas de areia e água. Aplicação: 1. Dilua o Ligmassa na água. 2. Adicione na betoneira o cimento para fazer a massa. 3. Adicione areia. Utilize areia média. lavada, nunca areia grossa ou muito fina. 4. Adicione a água com o Ligmassa. 5. Complete com água. Reduza a água de amassamento em mais ou menos pela metade. 1 sachê de Ligmassa é a dose certa para o preparo de 25 kg de cimento (1 lata). Molhe a superfície antes de aplicar o reboco. EMBALAGEM Sachê de 40 ml e embalagens de 20 e 200 litros. Composição básica: Emulsão de compostos orgânicos e bactericida.",
     "aplicacao": "",
     "descricao": "• Argamassa de assentamento;\n• Argamassa de reboco.",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "plastificante",
+      "argamassa"
+    ],
     "ordem": 49,
     "origin": "seed"
   },
@@ -1077,7 +1298,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "O geocomposto para drenagem MacDrain® 2L possui filtros geotêxteis em seus dois lados, sendo que estes sobressaem 10 cm do núcleo nas laterais dos rolos, para que durante a instalação seja garantida a continuidade do filtro e proteção do núcleo drenante, formado por uma geomanta tridimensional com mais de 90% de vazios, de elevada capacidade drenante.",
-    "tags": [],
+    "tags": [
+      "drenagem",
+      "geocomposto",
+      "geotêxtil"
+    ],
     "ordem": 50,
     "origin": "seed"
   },
@@ -1097,7 +1322,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "O geocomposto para drenagem MacDrain® 2L possui filtros geotêxteis em seus dois lados, sendo que estes sobressaem 10 cm do núcleo nas laterais dos rolos, para que durante a instalação seja garantida a continuidade do filtro e proteção do núcleo drenante, formado por uma geomanta tridimensional com mais de 90% de vazios, de elevada capacidade drenante.\nPor possuir em um de seus lados um geotêxtil laminado com filme plástico, o geocomposto para drenagem MacDrain® FP (Fôrma Perdida) é especialmente indicada para situações onde o geocomposto estará diretamente em contato com concretos e argamassas em seu estado fluído, ou seja, imediatamente após sua aplicação, de maneira que o geocomposto drenante atue como fôrma para esses materiais, caso das cortinas de contenção, concretagem de taludes, aplicação de concreto projetado em túneis, entre outras.",
-    "tags": [],
+    "tags": [
+      "drenagem",
+      "geocomposto",
+      "geotêxtil"
+    ],
     "ordem": 51,
     "origin": "seed"
   },
@@ -1117,7 +1346,12 @@ window.CSP_SEED = {
     "detalhes": "\u0002MACTRA 2000 é uma emulsão solúvel em água com propriedades de impermeabilizar concreto e argamassas por hidrofugação do sistema capilar. MACTRA 2000 deixa os materiais respirarem normalmente. VANTAGENS • Ótima resistência à compressão; • Fórmula mineral, não perde suas propriedades com o tempo; • Maior plasticidade; • Reduz o fator água/cimento; • Deixa a massa mais leve. ONDE APLICAR Reboco e revestimentos impermeáveis, Caixas d'água, Piscinas, Subsolos, Túneis, Pisos em contato com solo. COMO APLICAR Preparo da Superfície: 1. O local da aplicação deverá estar áspero, resistente, íntegro, livre de trincas, limpa e isenta de partículas soltas. 2. Não ter água escorrendo ou com gotejamento. 3. Superfície lisa deverá ser apicoada, escovada e lavada p/ remoção de partículas soltas. Cantos e arestas devem ser arredondados (meia cana). Modo de usar: Conforme a tabela abaixo, MACTRA 2000, deverá ser diluído com água e misturado a uma argamassa de cimento portland e areia média, lavada e isenta de impurezas ou materiais orgânicos. Revestimento Impermeável: A aderência entre a superfície e a argamassa impermeável deverá ser por intermédio de um chapisco aberto com traço nunca inferior ao da argamassa e sem adição do MACTRA 2000. O revestimento impermeável terá espessura mínima de 3 cm, sendo a aplicação feita em chapadas sucessivas de 1 cm de espessura, evitando a superposição das juntas de execução. O acabamento deverá ser feito com desempenadeira de madeira e mantido por cura úmida durante 3 dias. Reservatórios: 1. Arredondar todos os cantos (meia cana) com raio de no mínimo 8cm. 2. Dê um chapisco aberto de forma vigorosa e contínua, aguardando sua secagem por no mínimo 24 horas. 3. Aplicar três chapadas com 1 cm de espessura cada, preparada com MACTRA 2000, sempre aguardando a anterior ter puxado após 4 a 6 horas, após este tempo será necessário chapiscar p/ promover aderência entre as chapadas. 4. Evitar sempre a superposição das juntas. O acabamento deverá ser feito com desempenadeira de madeira e mantido em cura úmida por 3 dias. Alicerces: 1. Sobre o respaldo aplicar camada de argamassa impermeável com no mínimo 1,5 cm de espessura, descendo 15 cm nas laterais no mínimo, todos os tijolos até a terceira fiada acima do nível do solo deverão ser assentados com argamassa impermeável. 2. Em construções ao nível do solo em concreto ou alvenaria o revestimento deverá ser feito em argamassa impermeável com MACTRA 2000 até 1 m no mínimo acima do piso externo acabado e o revestimento interno até 30 cm no mínimo acima do piso interno acabado. 3. Construções no subsolo as paredes internas e externas deverão ser revestidas com duas chapadas no mínimo de argamassa impermeável até 1 m acima do piso externo acabado. Pisos: A impermeabilização do piso com argamassa impermeável com MACTRA 2000, deverá estar diretamente ligada com a impermeabilização do alicerce e ter espessura mínima de 3 cm. Este tratamento é realizado sobre uma camada de concreto com no mínimo 8 cm, sendo aplicada com forte pressão sobre a base. O acabamento é com desempenadeira. Concreto Impermeável: Utilizar 500 ml de MACTRA 2000 p/ cada saco de cimento (50 kg) ou sobre 1% sobre o peso do cimento, para traço de concreto com consumo de cimento superior a 350 kg/m². Recomendações · Nunca utilize a cal em argamassa impermeável. MACTRA 2000 reduz o fator Água/Cimento. Nunca queime a superfície com desempenadeira ou colher de pedreiro. Caso haja necessidade de aderir o reboco sobre a massa impermeável, recomendamos chapisco prévio com MACTRACOL. Composição Básica: Sais inorgânicos, emulsificante, ácidos graxos, conservantes. Embalagens: 1 / 3,6 / 18e 200 litro.",
     "aplicacao": "",
     "descricao": "Reboco e revestimentos impermeáveis, Caixas d'água, Piscinas, Subsolos, Túneis, Pisos em contato com solo.",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "impermeabilizante",
+      "argamassa",
+      "hidrofugante"
+    ],
     "ordem": 52,
     "origin": "seed"
   },
@@ -1137,7 +1371,12 @@ window.CSP_SEED = {
     "detalhes": "Adesivo para chapiscos e argamassa\nMactracol é um adesivo especial à base de resina sintética compatível com o cimento, cal, gesso e Isopor® (EPS). Mactracol proporciona às argamassas alto poder de aderência.\nVANTAGENS\n• Proporciona às argamassas alto poder de aderência;\n• Diminui a retração;\n• Deixa a argamassa mais plástica;\n• A caiação não solta;\n• Reforça a tinta látex.\nONDE APLICAR\nMactracol é um adesivo especial para:\n• Chapiscos;\n• Estucagem de concreto;\n• Conserto de rebocos;\n• Pisos industriais;\n• Assentamento de azulejos e pisos;\n• Caiação;\n• Reforço para tinta látex;\n• Gesso.\nCOMO APLICAR\nChapiscos:\n1. Se a superfície estiver engordurada, lave-a.\n2. Misture Mactracol e água 1:2. 3. Adicione em\numa argamassa cimento/areia 1:3. 4. A argamassa deverá ficar líquida suficiente para se obter um chapisco solto sobre o concreto. 5. Assente a massa de acabamento após 24 horas.\nObs.: Caso aplique gesso como acabamento, faça o chapisco com rolo de textura.\nAssentamento de pisos:\n(Ardósia, mármore e granitos):\n1. Misture Mactracol com água 1:1. 2. Adicione em uma argamassa cimento/areia 1:3. A mistura deverá ficar bem líquida. 3. Aplique com uma brocha nas peças e em seguida assente sobre a massa do piso ainda úmida.\nEstucagem em concreto:\n1. Misture Mactracol com água 1:3. 2. Adicione sobre uma mistura de cimento branco e cinza de 1:1, até obter uma pasta homogênea. 3. Aplique sobre o concreto com uma espátula ou desempenadeira de aço, em seguida faça o lixamento (2 horas).\nConserto de rebocos:\n1. Mactracol com água 1:2. 2. Adicione em um\nreboco de cimento/areia 1:5. 3. Deixe o local limpo e umedecido. 4. Aplique o reboco com desempenadeira de madeira.\nPisos Industriais:\n1. Misture Mactracol com água 1:1. 2. Adicione em uma argamassa de cimento/areia 1:3. Deixe a argamassa com consistência de \"boiaca\". 3.\nAplique com um vassourão sobre o piso limpo e úmido, imediatamente após lance o concreto novo (úmido sobre úmido).\nAssentamento de azulejos e pisos:\n1. Misture Mactracol com água 1:1. 2. Adicione em uma argamassa de cimento/areia fina 1:3. Deixe-a com consistência plástica. 3. Aplique com desempenadeira dentada.\nCaiação:\n1. Misture Mactracol com água 1:4. 2. Adicione na cal até obter uma consistência de tinta.\nReforço em tinta látex:\n1. Coloque 1 ou 2 litros de Mactracol em 18 litros de tinta PVA.\nOutras Aplicações:\nDilua o Mactracol levando em conta o esforço a que será submetido o material. Quanto menor for a diluição do Mactracol, maior será o poder de aderência.\nCARACTERÍSTICAS\nComposição básica: Emulsão copolímeros sintéticos e bactericida.\nConsumo: 200 a 400 g/m².\nDensidade: 1,02 g/cm³.\nEmbalagens: 0,9 / 3,6 / 18 e 200 litros.",
     "aplicacao": "",
     "descricao": "• Chapiscos;\n• Estucagem de concreto;\n• Conserto de rebocos;\n• Pisos industriais;\n• Assentamento de azulejos e pisos;\n• Caiação;\n• Reforço para tinta látex;\n• Gesso.",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "cola",
+      "chapisco",
+      "argamassa"
+    ],
     "ordem": 53,
     "origin": "seed"
   },
@@ -1157,7 +1396,11 @@ window.CSP_SEED = {
     "detalhes": "MACTRASET é um revestimento composto de resina acrílica e argamassa pré-fabricada e impermeável. MACTRASET é semi-flexível, adere perfeitamente ao concreto, alvenaria e ferro, possui excelente resistência mecânica e não é tóxico.\nVANTAGENS\n• Já vem pronto (não precisa dosar água, areia e cimento, por isso tem o melhor índice de resultados);\n• Melhor índice de sucesso;\n• Pode-se preparar meia embalagem de 18 kg;\n• Mais fácil de misturar;\n• Maior tempo para aplicação;\n• Formulação acrílica de alto desempenho.\nONDE APLICAR\n• Impermeabilização de paredes externas e internas.\n• Reservatórios de água;\n• Piscinas;\n• Alicerces e muros de arrimo;\n• Áreas frias (banheiros, cozinha, lavabos e lavanderia);\n• Piscinas e caixas d'água: (Para piscinas elevadas e caixas d'água, usar VedBem Pressão).\nCOMO APLICAR\nAlicerce: Conforme a ilustração, o MACTRASET deverá ser aplicado em 2 demãos cruzadas sobre o baldrame regularizado. As paredes serão erguidas sobre o impermeabilizante. O intervalo mínimo entre demãos é de 6h. Consumo obrigatório 2 kg/m².\nPiscinas e caixas d&acute;água: 1. Limpe a superfície, retire as partículas soltas e\narredonde os cantos com argamassa forte de\nareia/cimento. 2. Reforce cantos e tubulações com tela. 3. Aplique MACTRASET em 4 demãos cruzadas com intervalo mínimo de 6 h entre cada uma. Para teste de carga aguardar 72 h. Fazer cura úmida. Consumo 4 kg/m².\nParede encostada em barranco: 1. Retire toda a argamassa do lado interno e externo das paredes sempre 1m acima do nível do solo. 2. Sobre a alvenaria regularizada aplique 3 demãos cruzadas de MACTRASET com intervalo de 6 h entre cada uma. 3. Arredonde os cantos parede/piso. Chapisque com Mactracol. Consumo 3 kg/m².\nÁreas frias e pisos em contato com o solo:\nMACTRASET é ideal para pisos e paredes de banheiros, pisos de cozinhas e lavanderias.\n• A aplicação nas paredes é feita diretamente sobre o emboço, em 2 demãos cruzadas.\n• Nos pisos aplique 2 demãos antes do assentamento do piso de acabamento.\nReforçar com tela cantos e tubulações.\nConsumo 2 kg/m².\nParedes úmidas: 1. Retire o reboco da parede interna e externa até a altura de 1m, deixando a alvenaria exposta. Se o nível do solo do lado externo desta parede for mais alto, conte a partir dele. Arredonde os cantos parede/piso. 2. Aplique o MACTRASET sobre a alvenaria regularizada em 2 demãos cruzadas com intervalo mínimo de 6 h. Utilize uma broxa comum. OBS.: Nunca pregue ou parafuse um rodapé. Utilize Prego Líquido. Consumo 2 kg/m².\nPREPARAÇÃO\nProduto: 1. Coloque lentamente o componente B (pó) ao componente A (líquido). 2. Misture bem até obter uma consistência plástica. 3. Mexa sempre durante a aplicação. Havendo possibilidade recomendamos um misturador de tintas de baixa rotação ou masseira comum.\nAtenção:\nNunca coloque água.\nUtilize dentro de 2 horas.\nMantenha ao abrigo do sol.\nSuperfície: 1. O local deve estar limpo e sem partículas soltas. 2. Caso haja imperfeições, deve-se fazer a regularização adequada. 3. Em superfícies porosas, umedeça antes da 1º demão.\nCARACTERÍSTICAS\nComposição básica:\nComposto A - Resina acrílica, elastômero,\nplastificante e impermeabilizantes.\nComposto B - Cimento, carga e aditivo.\nEmbalagens: 3,6 / 7,2 e 18 kg.\nIMPORTANTE\nA eficiência do MACTRASET depende da qualidade da aplicação, como:\n• Obedecer ao consumo mínimo por demão.\n• Evitar falhas na cobertura (buracos).\n• Nunca coloque água.\n• Utilize dentro de 2 horas.\n• Mantenha ao abrigo do sol.",
     "aplicacao": "",
     "descricao": "• Impermeabilização de paredes externas e internas.\n• Reservatórios de água;\n• Piscinas;\n• Alicerces e muros de arrimo;\n• Áreas frias (banheiros, cozinha, lavabos e lavanderia);\n• Piscinas e caixas d'água: (Para piscinas elevadas e caixas d'água, usar VedBem Pressão).",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "impermeabilizante",
+      "umidade"
+    ],
     "ordem": 54,
     "origin": "seed"
   },
@@ -1177,7 +1420,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Manta aluminizada para impermeabilização de coberturas e telhados",
-    "tags": [],
+    "tags": [
+      "manta",
+      "alumínio",
+      "cobertura",
+      "telhado"
+    ],
     "ordem": 55,
     "origin": "seed"
   },
@@ -1197,7 +1445,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Manta geotêxtil não tecida para separação, filtração e proteção mecânica",
-    "tags": [],
+    "tags": [
+      "geotêxtil",
+      "drenagem",
+      "filtração",
+      "proteção"
+    ],
     "ordem": 56,
     "origin": "seed"
   },
@@ -1217,7 +1470,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Manta geotêxtil não tecida branca para separação e proteção",
-    "tags": [],
+    "tags": [
+      "geotêxtil",
+      "drenagem",
+      "proteção"
+    ],
     "ordem": 57,
     "origin": "seed"
   },
@@ -1237,7 +1494,14 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Manta asfáltica tipo II com estruturante de poliéster",
-    "tags": [],
+    "tags": [
+      "manta asfáltica",
+      "poliéster",
+      "ardósia",
+      "tipo ii",
+      "4 mm",
+      "3 mm"
+    ],
     "ordem": 58,
     "origin": "seed"
   },
@@ -1253,11 +1517,16 @@ window.CSP_SEED = {
     "alt": "MONOPOL PU 25 300ML",
     "url": "produtos/produto-monopol-pu-25-300ml.html",
     "tipo": "Mastique de poliuretano",
-    "embalagem": "Cart. 300ml BCO\nCart. 300ml CINZA",
+    "embalagem": "600 ml / 942 g",
     "detalhes": "Monopol PU 25 foi especialmente desenvolvido para o uso como selante e adesivo em diversas aplicações na construção civil, onde possui excelente aderência sem causar nenhum tipo de manchamento por exsudação de plastificantes e solventes, tais como:\n• Juntas de dilatação de pisos e fachadas com movimentação de até 25%;\n• Selamento de ralos, tubulações de reservatórios;\n• Vedação de esquadrias, caixilhos metálicos e de madeira;\n• Tratamento de trincas e fissuras;\n• Vedação de calhas e rufos;\n• Peças pré-moldadas.",
     "aplicacao": "",
     "descricao": "Monopol PU 25 é um selante elastomérico a base de poliuretano, monocomponente, com alto poder de aderência, com elasticidade, aliados a excelentes propriedades químicas e físicas. Produto tixotrópico e aderente a diversos tipos de substratos como: concreto, argamassas, alumínio, madeira, pedras, cerâmicas, etc.\nVantagens\nO uso do selante Monopol PU 25 oferece os seguintes benefícios aos usuários:\n• Excelente resistência aos raios ultravioletas;\n• Não causa manchamento;\n• Impermeável;\n• Aderente em diversos materiais sem necessidade de primer na maioria dos substratos;\n• Aceita pintura base água após a formação da pele (algumas horas);\n• Boa resistência a ácidos e bases;\n• Excelente resistência às intempéries, inclusive à maresia;\n• Atende ASTM C920; Classe 25;\n• Atende ISO 11600 – Tipo F – Classe 25 LM.",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "junta",
+      "cinza"
+    ],
     "ordem": 59,
     "origin": "seed"
   },
@@ -1277,7 +1546,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Pincel 2\" para aplicação de primers e ou emulsões.",
-    "tags": [],
+    "tags": [
+      "pincel",
+      "ferramenta",
+      "aplicação"
+    ],
     "ordem": 60,
     "origin": "seed"
   },
@@ -1297,7 +1570,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Pincel para aplicação de tintas, resinas, ou emulsões.",
-    "tags": [],
+    "tags": [
+      "pincel",
+      "ferramenta",
+      "aplicação"
+    ],
     "ordem": 61,
     "origin": "seed"
   },
@@ -1317,7 +1594,13 @@ window.CSP_SEED = {
     "detalhes": "Manta asfáltica produzida a partir da modificação física de asfaltos com polímeros Elastoméricos (EL) ou Plastoméricos (PL). Estruturada com um não-tecido de filamentos contínuos de poliéster, resinado e termofixado. Disponível nas espessuras de 3, 4 e 5 mm.\nUtilização:\nPremium Poliéster 3 mm - varandas e terraços, lajes maciças de pequenas dimensões, lajes sob telhados, calhas, barriletes, cortinas em contato com o solo (face externa) e no sistema de dupla manta.\nPremium Poliéster 4 mm - lajes térreas, lajes de cobertura, play ground’s, vigas calhas, reservatórios elevados, piscinas elevadas e espelhos d'água elevados.\nPremium Poliéster 5 mm - lajes pré-moldadas, lajes de estacionamento, helipontos e heliportos.\nOutras aplicações consultar o Departamento Técnico da Viapol.\nCaracterísticas Técnicas:\n\u0002Características\u0001Unid.\u0001PL\u0001EL\n\u0002Carga máxima ruptura longitudinal (mín.)\u0001N/5cm\u0001400\u0001400\n\u0002Carga máxima ruptura transversal (mín)\u0001N/5cm\u0001400\u0001400\n\u0002Alongamento mínimo na longitudinal\u0001%\u000130\u000130\n\u0002Alongamento mínimo na transversal\u0001%\u000130\u000130\n\u0002Absorção d’água (máx)\u0001%\u00011,5\u00011,5\n\u0002Flexibilidade à baixa temperatura\u0001ºC\u0001-5\u0001-5\n\u0002Resistência ao impacto\u0001J-Joule\u00014,90\u00014,90\n\u0002Resistência ao puncionamento estático\u0001kg\u000125\u000125\n\u0002Escorrimento ao calor (mín)\u0001ºC\u0001105\u000195\n\u0002Estabilidade dimensional (máx)\u0001%\u00011\u00011\n\u0002Flexibilidade após envelhecimento (mín)\u0001ºC\u0001Normalização:\nAtende ao tipo III-B segundo a NBR 9952/2007, norma vigente.\nAtende ao tipo III segundo a NBR 9952/98, norma substituída.\nPreparação da superfície:\nA superfície deverá ser previamente lavada, isenta de pó, areia, resíduos de óleo, graxa, desmoldante, etc.\nSobre a superfície horizontal úmida, executar regularização com caimento mínimo de 1% em direção aos pontos de escoamento de água, preparada com argamassa de cimento e areia média, traço 1:3, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água para maior aderência ao substrato. Essa argamassa deverá ter acabamento desempenado, com espessura mínima de 2cm.\nNa região dos ralos, deverá ser criado um rebaixo de 1cm de profundidade, com área de 40x40 cm com bordas chanfradas para que haja nivelamento de toda a impermeabilização, após a colocação dos reforços previstos neste local.\nTodos os cantos e arestas deverão ser arredondados com raio aproximado de 5cm a 8cm.\nNas áreas verticais em alvenaria, executar chapisco de cimento e areia grossa, traço 1:3, seguido da execução de uma argamassa desempenada, de cimento e areia média, traço 1:4, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água.\nNos vãos de entrada das edificações (portas, esquadrias, etc.) a regularização deverá avançar no mínimo 60cm para o seu interior, por baixo de batentes, contra-marcos, etc., respeitando o caimento para as áreas externas; exceto para áreas internas com pisos em madeira ou degradáveis por ação de umidade. Recomenda-se que as áreas externas tenham cota no mínimo 6cm menor que as cotas internas, tanto no nível da impermeabilização como no nível do piso acabado.\nOs ralos e demais peças emergentes deverão estar adequadamente fixados de forma a executar os arremates.\nCamada Separadora:\nEvita que os esforços de dilatação e contração da argamassa de proteção mecânica atuem diretamente sobre a impermeabilização.\nComo camada separadora utilizar:\nFilme plástico de 24 micra de espessura.\nEm estacionamentos, utilizar como camada amortecedora e separadora geotêxtil de gramatura mínima de 400 grs/m2.\nArgamassa de Proteção Mecânica :\nHorizontal\nExecutar argamassa de proteção mecânica de cimento e areia traço 1:4, desempenada com espessura mínima de 3cm. Esta argamassa deverá ter juntas perímetrais com 2 cm de largura, preenchidas com argamassa betuminosa, traço 1:8:3 de cimento, areia e emulsão asfáltica Vitkote. Caso a proteção mecânica seja o piso final fazer juntas formando quadros de no máximo 2,0mx2,00m, preenchido com argamassa betuminosa conforme descrito.\nPara estacionamentos e rampas, executar o piso previsto que deverá ser dimensionado e estudado de acordo com o projeto e necessidades do local.\nVertical\nSobre a impermeabilização, executar chapisco de cimento e areia, traço 1:3, seguido da execução de uma argamassa desempenada de cimento e areia média, traço 1:4, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água. A argamassa deverá ser armada com tela plástica, subindo 10 cm acima da manta asfáltica.\nConsumo:\nConsumo estimado de 1,15m²/m² de área, considerando sobreposições e perdas por recortes de detalhes.\nAcabamento:\nPP - Polietileno em ambas as faces, para colagem com maçarico;\nAA - Areia em ambas as faces para colagem com asfalto quente;\nAP - Areia/polietileno - Polietileno na face de colagem para aplicação com maçarico.\nValidade e estocagem:\nO produto tem validade de 5 anos, a partir da data de fabricação, desde que armazenado na posição vertical, nas embalagens originais e intactas, em local seco, ventilado e longe de fontes de calor.\nRecomendações:\nToda impermeabilização efetuada em ambientes fechados deve ter ventilação forçada, se houver a necessidade de utilização de maçarico na aplicação do sistema impermeabilizante, para maior segurança o botijão de gás deve permanecer fora do ambiente.\nConsultar os seguintes catálogos: Viafix, Adeflex, Viabit, Ecoprimer\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico.A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Aplicar sobre a regularização seca uma demão de primer Viabit, Adeflex ou Ecoprimer, com rolo ou trincha e aguardar a secagem por no mínimo 6 horas;\nAlinhar a manta asfáltica Premium Poliéster em função do requadramento da área, procurando iniciar a colagem no sentido dos ralos para as cotas mais elevadas;\nCom auxílio da chama do maçarico de gás GLP, proceder a aderência total da manta Premium Poliéster. Nas emendas das mantas deverá haver sobreposição de 10 cm que receberão biselamento para proporcionar perfeita vedação.\nExecutar as mantas na posição horizontal, subindo 10cm na posição vertical.\nAlinhar e aderir à manta na vertical, descendo e sobrepondo em 10cm na manta aderida na horizontal.\nA manta deverá ser aderida na vertical 30cm acima do piso acabado.\nApós a aplicação da manta asfáltica, fazer o teste de estanqueidade, enchendo os locais impermeabilizados com água, mantendo o nível por no mínimo 72 horas.\nObservação: No caso de aplicação com asfalto quente, consultar o site www.viapol.com.br – Ativ Web.",
-    "tags": [],
+    "tags": [
+      "manta asfáltica",
+      "poliéster",
+      "ardosiada",
+      "3 mm",
+      "4 mm"
+    ],
     "ordem": 62,
     "origin": "seed"
   },
@@ -1337,7 +1620,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante elástico de poliuretano multiuso, disponível nas cores cinza e branca",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "multiuso",
+      "cinza",
+      "branco"
+    ],
     "ordem": 63,
     "origin": "seed"
   },
@@ -1357,7 +1646,11 @@ window.CSP_SEED = {
     "detalhes": "Cristalizante ultra rápido, com início de pega em 7 segundos e endurecimento em até 90 segundos, isento de cloretos;\nCaracterísticas técnicas:\nAspecto: Pó\nCor: Cinza Escura / Marrom\nTempo de pega: 20 à 50 seg.",
     "aplicacao": "",
     "descricao": "Cimento de pega ultra-rápida para tamponamento de jorros d’ água, servindo como serviço preliminar para posterior aplicação das argamassas poliméricas Viaplus 1000 / Top, ou como componente do sistema Tratamento Especial Hey&acute;di (ver catálogo próprio do Tratamento Especial Hey&acute;di).",
-    "tags": [],
+    "tags": [
+      "tamponamento",
+      "pega instantânea",
+      "vazamento"
+    ],
     "ordem": 64,
     "origin": "seed"
   },
@@ -1377,7 +1670,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Hidrofugante repelente de água para fachadas e superfícies porosas",
-    "tags": [],
+    "tags": [
+      "hidrofugante",
+      "repelente",
+      "fachada"
+    ],
     "ordem": 65,
     "origin": "seed"
   },
@@ -1397,7 +1694,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Resina acrílica hidrorrepelente para proteção de paredes e muros",
-    "tags": [],
+    "tags": [
+      "resina acrílica",
+      "hidrorrepelente",
+      "fachada",
+      "muro"
+    ],
     "ordem": 66,
     "origin": "seed"
   },
@@ -1417,7 +1719,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Rolo antirrespingo com cabo para aplicação de tintas e impermeabilizantes",
-    "tags": [],
+    "tags": [
+      "rolo",
+      "ferramenta",
+      "aplicação"
+    ],
     "ordem": 67,
     "origin": "seed"
   },
@@ -1437,7 +1743,14 @@ window.CSP_SEED = {
     "detalhes": "Características:\n• Produto monocomponente.\n• Variedade de aplicações na construção civil.\n• Elevada resistência às intempéries.\n• Apresenta cura rápida com excelente acabamento.\n• Elevada aderência a diversos materiais, tanto na vertical quanto na horizontal.\n• Permanente flexibilidade sob diversas solicitações\n• Não mancha o substrato.\nCONSUMO\nAproximadamente 100 ml/m de juntas com 10 x 10 mm (largura x profundidade).",
     "aplicacao": "",
     "descricao": "Selante elastomérico à base de poliuretano indicado para:\n• Selamento de juntas de movimentação em pisos, rodapés, paredes e painéis pré-fabricados, incluindo materiais com diferentes coeficientes de dilatação.\n• Selamento de rejuntamentos em geral.\n• Vedação perimetral de vidro e esquadrias de janelas, portas e molduras de aparelhos de ar-condicionado.\n• Vedação de juntas sanitárias, tubulações, calhas e telhados.\n• Vedação acústica.",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "junta",
+      "cinza",
+      "preto",
+      "branco"
+    ],
     "ordem": 68,
     "origin": "seed"
   },
@@ -1457,7 +1770,11 @@ window.CSP_SEED = {
     "detalhes": "É um impermeabilizante de pega normal para argamassa e concreto. SIKA 1 reage com o cimento durante o processo de hidratação, dando origem a substâncias minerais que bloqueiam a rede capilar, proporcionando elevada impermeabilidade à argamassa e concreto.\nCaracterísticas:\n\u0002Ação Principal:\u0001Impermeabilizante de pega normal\n\u0002Ação Secundária:\u0001Mineral. Elevada durabilidade\n\u0002Composição básica:\u0001Solução aquosa de silicatos coloidais\n\u0002Aspecto:\u0001Cremoso\n\u0002Cor:\u0001Amarelo\n\u0002Densidade a 25º C:\u00011,00 a 1,10 kg/l\n\u0002PH:\u00018,5- 11,5\nPropriedades:\n• O revestimento com SIKA 1 tem grande durabilidade, uma vez que é totalmente mineral. Sua ação diminui com o tempo, isto é, seu efeito é permanente.\n• Por se líquido é de fácil mistura e dosagem.\n• Proporciona elevada impermeabilidade à argamassa e concreto.\n• Não altera os tempos de pega (início e fim).\n• Reduz a permeabilidade.\n• Confere maior durabilidade.\nModo de Emprego:\nPreparo da Superfície:\nA superfície deverá estar limpa, não apresentar trincas, isenta de sujeiras, ponta de ferro, partículas soltas, pedaços de madeira, desmoldantes, pinturas (tintas e vernizes), hidrorrepelentes, graxas, óleos e nata de cimento. Corrigir eventuais trincas, ninhos de concretagem (bicheiras), sendo que a superfície deverá estar áspera, se necessário deverá ser feito um apicoamento manual, raspagem com escova de aço e lavagem com jato de água. Aplicar um chapisco prévio com argamassa de cimento e areia grossa, traço 1:2 ou 1:3 em volume, com SIKA CHAPISCO diluido na proporção de 1:2 (SIKA CHAPISCO : água de amassamento). Aguardar 24h para aplicação da argamassa aditivada com SIKA® 1.\nObs.: A solução SIKA 1: Água deve ser homogeneizada antes do início de cada aplicação. No preparo da argamassa impermeabilizante, só é permitido o uso de cimento Portland e areia natural, média, lavada, isenta de sais ou impurezas orgânicas. A água deve ser potável, não prepare argamassa mais do que o necessário para 30 a 45 minutos de trabalho.\na)-Revestimento externo (fachadas e muros)\n• Após 24 horas da aplicação do chapisco, aplicar a argamassa de revestimento no traço de 1:2:8 a 1:2:10 (cimento : cal : areia) em volume, diluir na água de amassamento aproximadamente 3,5% a 4% de SIKA® 1 por quilo de cimento, ou seja 1,75 a 2 litros de SIKA 1 por cada saco de cimento (50 kg).\n• O revestimento deverá ser aplicado de 2 a 3 camadas de 1 a 1,5 cm de espessura cada, aplicado com desempenadeira de madeira ou colher de pedreiro e pressionado contra o substrato.\n•Aplicar a segunda camada de argamassa após a anterior ter “puxado” (máximo 6 horas), se ultrapassar esse intervalo, será necessário um novo chapisco como ponte de aderência, evitar ao máximo as emendas e não deixá-las coincidir nas várias camadas.\n•A última camada de argamassa deverá ser desempenada com desempenadeira de madeira, nunca “alisar” ou “queimar” com desempenadeira de aço ou colher de pedreiro. Para evitar a retração da argamassa, realizar cura úmida por no mínimo 72 horas, após o endurecimento da argamassa.\nb)- Piscinas e caixas d&acute;água\n• Os cantos devém ser arredondados (meia-cana) com um raio de pelo menos 5 cm, aplicando argamassa no traço de 1:2 (cimento:areia), em volume, com SIKA CHAPISCO diluído em 1:2 (SIKA® CHAPISCO : água de amassamento).\n• Aplicar o chapisco no traço de 1:2 ou 1:3 em volume, aguardar 24 horas para iniciar a aplicação da argamassa aditivada com SIKA 1.\n• Após 24 horas da aplicação do chapisco, aplicar na parede e meia-cana a argamassa de revestimento com o traço de 1:3 (cimento : areia) em volume, diluir na água de amassamento 4% de SIKA 1 por quilo de cimento, ou seja 2 litros de SIKA 1 por cada saco de cimento (50kg).\n•O revestimento deverá ser aplicado de 2 a 3 camadas de 1 a 1,5 cm de espessura cada, aplicado com desempenadeira de madeira ou colher de pedreiro e pressionado contra o substrato.\n•Assim que a argamassa tiver “puxado” aplicar um chapisco na parede e meia-cana no traço 1:3 (cimento : areia) em volume (não utilizar SIKA 1 no chapisco).\n•Repetir a aplicação da argamassa aditivada com SIKA 1, conforme descrito no início, aspergindo uma camada fina de areia no piso sobre a argamassa no estado fresco.\n•As etapas devem ser repedidas até a espessura de 3 cm do revestimento final, sendo que as camadas de argamassas devem ser desempenadas com desempenadeira de madeira, nunca “alisar” ou “queimar” com desempenadeira de aço ou colher de pedreiro, na última camada de argamassa aplicada no piso, não é necessária a aspersão de areia.\n•Para evitar a retração da argamassa, realizar cura úmida por no mínimo 72 horas, após o endurecimento da argamassa. Obs.: não utilizar cal na argamassa do chapisco e revestimento para piscinas, reservatórios de água e porões.\nC)- Alicerces e paredes em contato com solo\n• Aplicar no alicerce uma camada de argamassa no traço 1:3 (Cimento : areia) em volume, diluir na água de amassamento 4% de SIKA 1 por quilo de cimento, ou seja, 2 litros de SIKA 1 por saco de cimento (50kg).\n• O revestimento deverá ser aplicado de 1 a 2 camadas de 1 a 1,5 cm de espessura cada e descendo lateralmente aproximadamente 15 cm aplicado com colher de pedreiro, pressionando contra o substrato.\n• Nunca “alisar” ou “queimar” com desempenadeira de aço ou colher de pedreiro.\n•Assentar todos os tijolos até a terceira fiada acima do nível do solo, com argamassa aditivada com SIKA 1.\n• Nas paredes em contato com solo, não utilizar cal na argamassa, o traço deve ser 1:3 a 1:4 (cimento : areia) em volume aditivado com 4% de SIKA® 1 por quilo de cimento, ou seja 2 litros de SIKA® 1 por cada saco de cimento (50 kg), o revestimento deverá ser sempre 60 cm acima do nível do solo ou das manchas de umidade nas paredes em contato com solo.\n•Após a aplicação da argamassa aditivada com SIKA® 1 na espessura final de 3 cm, aguardar 24 horas e aplicar duas demãos de IGOL® 2 (a superfície poderá estar seca ou úmida).\n• Proteger o revestimento contra as intempéries por 24 horas.\nD)- Subsolos, túneis e porões\nSeguir recomendações conforme procedimentos descritos acima para impermeabilzação de piscinas e reservatórios.\n• Não utilizar cal na argamassa do chapisco e revestimento.\n• Não é necessário arredondar os cantos (obrigatório para piscinas e reservatórios)\n•Adotar traço 1:2,5 (cimento : areia) em volume.\nE)- Concreto Impermeável\n•Dosar o traço do concreto com consumo mínimo de cimento de 350 kg/m3 e relação água/cimento máximo igual a 0,5 (50 litros de água para cada 100 kg de cimento).\n•Adicionar na água de amassamento a proporção de 1% de SIKA® 1 por quilo de cimento ou seja 0,5 litros de SIKA 1 por saco de cimento (50 kg).\nIndicações Importantes:\n•É necessária a sobreposição impecável das camadas para uma perfeita impermeabilização. No caso de interrupção prolongada, a zona de impermeabilização deverá ser apicoada e lavada com jato de água. A seguir, será coberta com chapisco antes da aplicação da camada seguinte.\n•As camadas de revestimento vertical devem cobrir a camada anterior em uma sobreposição de até 20 cm do piso. A meia-cana feita \"à garrafa\" na argamassa fresca da última camada reforça a junta do canto.\n•Para os casos de superfícies úmidas, com infiltrações, aplicar inicialmente, conforme o caso, os impermeabilizantes de pega rápida SIKA 2.\n• É necessário garantir uma boa cura à argamassa. Os revestimentos de SIKA 1 não devem ser expostos à pressão de água antes de curados.\n• A adição de SIKA 1 às argamassas de emboço e reboco aumentam a impermeabilidade sem impedir a respiração das paredes, evitando, assim, o perigo da condensação e eflorescências.\n• As argamassas com SIKA 1 constituem uma impermeabilização rígida. Fissuras eventuais não podem ser absorvidas elasticamente. Portanto, não recomendamos a aplicação da argamassa impermeabilizante após a desforma, mas apenas sobre concreto lançado há, no mínimo, 2 ou 3 semanas.\n•As premissas de uma boa aderência são a limpeza e a rugosidade do substrato.\n•Uma argamassa executada corretamente, a utilização de uma areia limpa e de boa granulometria são essenciais para obter a impermeabilidade do revestimento.\nLimpeza:\n• As ferramentas e materiais devem ser lavados com água após o uso.\nConsumo:\n\u0002Serviços\u0001Sugestão de Tempo (em volume)\u0001Consumo\n\u0002Revestimento Interno/ Externo\u0001Cimento: Cal: Areia 1:2:8 1:2:10\u00012 litros de Sika ®1/50 kg aglomerante (cal + cimento) ou 180 ml/m² x de espessura\n\u0002Revestimento impermeavel de caixa d&acute;água, piscinas, alicerces e paredes em contato com o solo\u0001Cimento: Areia 1:3\u00012 litros de Sika ®1/50 kg cimento ou 220 m/ml² x de espessura\n\u0002Revestimentos de solos, túneis e porões\u0001Cimento: Areia 1:2,5\u00012 litros de Sika ®1/50 kg cimento ou 250 m/ml² x de espessura\n\u0002Concreto impermeável\u0001Consumo mínino 350 kg/m³ de cimento relação AC &le; 0,50\u00010,5 litros de Sika ®1/50 kg cimento\nDica Sika:\nO traço ideal deverá ser determinada através de ensaios experimentais com os materiais da obra.\nValidade:\n18 meses.\nSegurança:\nUtilizar óculos de segurança e luvas de borracha ou sintética. Em caso de contato com os olhos, lavar imediatamente com água corrente durante 15 minutos. Solicite atenção médica (oftalmologista). Em caso de contato com a pele, lavar com bastante água e sabão. Em caso de ingestão, não induzir ao vômito. Consulte um médico imediatamente. Consultar MSDS-001.\nEcologia:\nPode contaminar esgotos, rios e córregos. Impedir que chegue às águas ou solo. Descarte a embalagem em local adequado, conforme regulamentação vigente. Não reutilizar a embalagem para estocar água potável ou alimentos.",
     "aplicacao": "",
     "descricao": "Rebocos internos e externos.\nRevestimentos impermeáveis em: subsolos, fundações, pisos e paredes em contato com umidade do solo, piscinas, reservatórios e caixas de água, túneis e galerias.\nMuros de arrimo\nArgamassa de assentamento de blocos e tijolos para evitar umidade ascendente.\nConcreto impermeável.",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "impermeabilizante",
+      "argamassa"
+    ],
     "ordem": 69,
     "origin": "seed"
   },
@@ -1477,7 +1794,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Primer asfáltico base água para preparo de superfícies antes da manta",
-    "tags": [],
+    "tags": [
+      "primer",
+      "base água",
+      "asfáltico"
+    ],
     "ordem": 70,
     "origin": "seed"
   },
@@ -1497,7 +1818,15 @@ window.CSP_SEED = {
     "detalhes": "TIPOS:\nSika® Manta PS Tipo II 3 mmSika® Manta PS Tipo II 4 mmSika® Manta PS Tipo III 3 mmSika® Manta PS Tipo III 4 mmSika® Manta PS Tipo III 5 mmSika® Manta PS Tipo IV 4 mm",
     "aplicacao": "",
     "descricao": "Sika® Manta PS é uma manta impermeabilizante pré-fabricada à base de asfalto modificado com polímeros e estruturada com poliéster pré-estabilizado. É necessário fazer proteção mecânica para proteção da manta. O produto atende às normas ABNT.",
-    "tags": [],
+    "tags": [
+      "manta asfáltica",
+      "poliéster",
+      "alumínio",
+      "tipo ii",
+      "3 mm",
+      "classe b",
+      "classe a"
+    ],
     "ordem": 71,
     "origin": "seed"
   },
@@ -1517,7 +1846,11 @@ window.CSP_SEED = {
     "detalhes": "As fitas de impermeabilização auto-adesivas Sika Mutiseal são compostas por uma lâmina de alumínio pintada e reforçada com armadura de poliéster, associada a uma camada de adesivo asfáltico.\nPropriedades:\n• Rápida e fácil aplicação.\n• Excelente aderência à maioria dos materiais de construção: concreto, argamassa, pedra, tijolo, madeira, fibro-cimento, cerâmica, telhas, zinco, alumínio, aço galvanizado e impermeabilizações betuminosas já&acute;existentes (desde que não estejam deterioradas).\n• Impermeável e resistente à água.\n• Resistência aos raios de sol (U.V.).\n• Não rasga.\n• Permanece flexível, mesmo em clima frio.\n• Aceita pintura.\n• Não necessita de ferramentas especiais para sua aplicação.\nModo de Emprego:\nPreparo da Superfície\nA superfície deve estar seca, limpa e isenta de poeira. Sobre alumínio ou aço galvanizado, remover graxa e óleo.\nEm substratos altamente porosos ou em clima muito frio, aplica—se uma demão de Igol 2, o qual deverá estar seco para aplicação do Sika Multiseal.\nAplicação do Produto\nA fita deve ser cortada, com faca ou tesoura, no comprimento desejado.\nO papel protetor da fita deve ser removido.\nPara a aplicação, a fita é pressionada firmemente com uma espátula ou rolo sobre a área a ser reparada.\nObservação: a temperatura de aplicação mínima é de +5ºC.\nDados Técnicos:\nEspessura: 1,1 mm\nLargura: 10 e 20 cm\nComprimento: 3m\nValidade:\n24 meses em local abrigado e seco, com temperatura entre 0ºC e 40ºC, nas embalagens originais e intactas.\nSegurança e Ecologia:\nConsultar MSDS 155, com o Departamento Técnico.",
     "aplicacao": "",
     "descricao": "Para estanquemento rápido e durável de goleiras e infiltrações em:\nTelhados.\nChapas de lâminas metálicas.\nPassagem de dutos ou tubulações através de paredes e tetos.\nCanos de dutos de ar condicionado.\nUnião de tetos de telhados com muros.\nCalhas e drenagens.\nUnião entre diferentes materiais.",
-    "tags": [],
+    "tags": [
+      "fita autoadesiva",
+      "asfáltica",
+      "alumínio"
+    ],
     "ordem": 72,
     "origin": "seed"
   },
@@ -1537,7 +1870,13 @@ window.CSP_SEED = {
     "detalhes": "Usos\n- Lajes de concreto;\n- Coberturas;\n- Telhados;\n- Abóbodas;\n- Pisos de área frias.",
     "aplicacao": "",
     "descricao": "Sikafill® Rápido é um impermeabilizante aplicado a frio, à base de resinas acrílicas e fibras, para a impermeabilização de coberturas, lajes e baldrames.",
-    "tags": [],
+    "tags": [
+      "manta líquida",
+      "acrílico",
+      "laje",
+      "cor concreto",
+      "branco"
+    ],
     "ordem": 73,
     "origin": "seed"
   },
@@ -1557,7 +1896,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante e adesivo elástico multiuso, disponível nas cores cinza e branca",
-    "tags": [],
+    "tags": [
+      "selante",
+      "adesivo",
+      "junta",
+      "cinza",
+      "branco"
+    ],
     "ordem": 74,
     "origin": "seed"
   },
@@ -1577,7 +1922,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Sikaflex-Construction é um selante elástico, monocomponente, que cura com a umidade do ar, à base de poliuretano. Adequado para aplicações internas ou externas.",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "junta",
+      "cinza",
+      "branco"
+    ],
     "ordem": 75,
     "origin": "seed"
   },
@@ -1597,7 +1948,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante e adesivo elástico multiuso, disponível nas cores branca e cinza",
-    "tags": [],
+    "tags": [
+      "selante",
+      "adesivo",
+      "multiuso",
+      "branco",
+      "cinza"
+    ],
     "ordem": 76,
     "origin": "seed"
   },
@@ -1617,7 +1974,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Membrana acrílica elástica (manta líquida), disponível nas cores branca e concreto",
-    "tags": [],
+    "tags": [
+      "manta líquida",
+      "acrílico",
+      "laje",
+      "branco",
+      "concreto"
+    ],
     "ordem": 77,
     "origin": "seed"
   },
@@ -1637,7 +2000,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Graute cimentício fluido de alta resistência para bases e chumbamentos",
-    "tags": [],
+    "tags": [
+      "graute",
+      "chumbamento",
+      "alta resistência"
+    ],
     "ordem": 78,
     "origin": "seed"
   },
@@ -1657,7 +2024,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Telas de Poliéster para diversos tipos de aplicações, desde armações para reforço estrutural em impermeabilizações, borrachas, mantas asfálticas, estruturantes para EPS, dentre centenas de outras aplicações industrias.",
-    "tags": [],
+    "tags": [
+      "tela",
+      "poliéster",
+      "estruturante"
+    ],
     "ordem": 79,
     "origin": "seed"
   },
@@ -1677,7 +2048,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Tela de poliéster resinada para estruturação de sistemas de impermeabilização",
-    "tags": [],
+    "tags": [
+      "tela",
+      "poliéster",
+      "estruturante"
+    ],
     "ordem": 80,
     "origin": "seed"
   },
@@ -1697,7 +2072,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Tela palstica de PVC para uso na construção civil.\nUsadas :\n- estruturante para protção mecânica armada nas impermeabilizações;\n- estruturante para piso de calçadas;\n- sustentação de solos;\n- proteção contra erosão;\n- reforço em concretos;\n- execução de estuque, etc..",
-    "tags": [],
+    "tags": [
+      "tela",
+      "pvc",
+      "estruturante"
+    ],
     "ordem": 81,
     "origin": "seed"
   },
@@ -1717,7 +2096,12 @@ window.CSP_SEED = {
     "detalhes": "Tela engomada de 10cm X 3mt com bandagem central (uso em conjunto com a MASSA VEDATRINCA).",
     "aplicacao": "",
     "descricao": "Indicada para ser aplicada em superfícies sujeitas a movimentações e trincas.\nA TELA VEDATRINCA é um produto de poliéster com gramatura específica, resistente à alcalinidade que proporciona resistência e elasticidade suficientes para absorver pequenas movimentações podendo ser usada na prevenção ou na correção de trincas.\nINDICAÇÕES\nA TELA VEDATRINCA é indicada para ser aplicada em superfícies sujeitas a movimentações e trincas, podendo ser utilizada em conjunto com o VEDATRINCA, MANTA LÍQUIDA, VEDBEM PISCINA, VEDATRINCA ou VEDBEM COZINHA E BANHEIRO.",
-    "tags": [],
+    "tags": [
+      "tela",
+      "poliéster",
+      "trinca",
+      "estruturante"
+    ],
     "ordem": 82,
     "origin": "seed"
   },
@@ -1737,7 +2121,12 @@ window.CSP_SEED = {
     "detalhes": "O TELHAFRIA é feito de uma tinta especial composta por um polímero acrílico elastomérico à base de água e de altíssima qualidade que, combinados com microesferas cerâmicas estabelecem um eficiente isolamento térmico, formando uma proteção impermeável na face externa das telhas, proporcionando considerável redução de calor causado pela radiação solar.",
     "aplicacao": "",
     "descricao": "Trata-se de um revestimento térmico que reflete 90% o calor do sol, garantindo uma temperatura interna agradável nos ambientes. Na cor branca e de fácil aplicação, é indicado para diversos tipos de telha, além de ser ecologicamente correto, já que contribui na redução do aquecimento global.",
-    "tags": [],
+    "tags": [
+      "telhado",
+      "térmico",
+      "impermeabilizante",
+      "refletivo"
+    ],
     "ordem": 83,
     "origin": "seed"
   },
@@ -1757,7 +2146,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Os tubos flexíveis e corrugados para drenagem apresentam excelente resistência e alta capacidade drenante, garantindo assim um rápido escoamento do excesso de água infiltrada no solo. O tubo flexível corrugado é fabricado em polietileno de alta densidade (PEAD). É resistente ao ataque de substâncias químicas e bioquímicas, tem baixo atrito interno e grande resistência a intempéries.",
-    "tags": [],
+    "tags": [
+      "dreno",
+      "tubo",
+      "drenagem"
+    ],
     "ordem": 84,
     "origin": "seed"
   },
@@ -1777,7 +2170,14 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante elástico monocomponente de poliuretano híbrido, disponível nas cores cinza, branca e preta",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "pu 40",
+      "cinza",
+      "branco",
+      "preto"
+    ],
     "ordem": 85,
     "origin": "seed"
   },
@@ -1797,7 +2197,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Aditivo acelerador de pega e endurecimento para concretos e argamassas",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "acelerador",
+      "concreto",
+      "pega"
+    ],
     "ordem": 86,
     "origin": "seed"
   },
@@ -1813,11 +2218,17 @@ window.CSP_SEED = {
     "alt": "VEDALAGE PLUS",
     "url": "produtos/produto-vedalage-plus.html",
     "tipo": "Impermeabilizante a base de resina acrílica.",
-    "embalagem": "Bd 18kg BRANCO\nBd 18kg CONCRETO",
+    "embalagem": "12 kg\n4 L\n4 kg\n12 kg",
     "detalhes": "Vedalage Plus - Manta Líquida possui as seguintes vantagens:\n• Pronto para uso;\n• Aplicável a frio;\n• Excelente aderência a diferentes substratos; tais como concreto e argamassas;\n• Alta resistência a intempéries,\n• Alta elasticidade;\n• Isento de solventes inflamáveis;\n• Permite vedar fissuras ativas de até 0,2 mm e passivas de até 0,5 mm;\n• Acabamento colorido;\n• Resistência a raios UV;\n• Redução de calor.",
     "aplicacao": "",
     "descricao": "Impermeabilizante à base de resina acrílica que forma sobre as superfícies uma membrana impermeável, elástica e flexível, resistente a intempéries. Disponível em 4 cores: Bege, Branco, Telha e Concreto. Produto à base de emulsão acrílica, cargas e pigmentos inorgânicos, agentes estabilizantes, espessantes, protetores e água.",
-    "tags": [],
+    "tags": [
+      "manta líquida",
+      "acrílico",
+      "laje",
+      "branco",
+      "concreto"
+    ],
     "ordem": 87,
     "origin": "seed"
   },
@@ -1837,7 +2248,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Impermeabilizante elástico à base de emulsão asfáltica, cor preta",
-    "tags": [],
+    "tags": [
+      "emulsão asfáltica",
+      "impermeabilizante",
+      "preto"
+    ],
     "ordem": 88,
     "origin": "seed"
   },
@@ -1857,7 +2272,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Aditivo impermeabilizante líquido para argamassas e concretos",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "impermeabilizante",
+      "argamassa"
+    ],
     "ordem": 89,
     "origin": "seed"
   },
@@ -1877,7 +2296,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Adesivo PVA para chapisco e argamassas",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "pva",
+      "chapisco",
+      "argamassa"
+    ],
     "ordem": 90,
     "origin": "seed"
   },
@@ -1897,7 +2321,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa polimérica flexível para impermeabilização",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "flexível",
+      "impermeabilizante"
+    ],
     "ordem": 91,
     "origin": "seed"
   },
@@ -1917,7 +2345,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa polimérica flexível com fibras para impermeabilização",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "fibras",
+      "flexível"
+    ],
     "ordem": 92,
     "origin": "seed"
   },
@@ -1937,7 +2369,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa polimérica flexível com fibras para impermeabilização",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "fibras",
+      "flexível"
+    ],
     "ordem": 93,
     "origin": "seed"
   },
@@ -1957,7 +2393,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Membrana acrílica elástica (manta líquida), disponível nas cores cinza e branca",
-    "tags": [],
+    "tags": [
+      "manta líquida",
+      "acrílico",
+      "laje",
+      "cinza",
+      "branco"
+    ],
     "ordem": 94,
     "origin": "seed"
   },
@@ -1977,7 +2419,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Aditivo plastificante para argamassas e concretos",
-    "tags": [],
+    "tags": [
+      "aditivo",
+      "plastificante",
+      "argamassa",
+      "concreto"
+    ],
     "ordem": 95,
     "origin": "seed"
   },
@@ -1997,7 +2444,13 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante elástico de poliuretano para juntas, disponível nas cores branca e cinza",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "junta",
+      "branco",
+      "cinza"
+    ],
     "ordem": 96,
     "origin": "seed"
   },
@@ -2017,7 +2470,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante para tratamento e vedação de trincas",
-    "tags": [],
+    "tags": [
+      "selante",
+      "trinca",
+      "vedação"
+    ],
     "ordem": 97,
     "origin": "seed"
   },
@@ -2037,7 +2494,10 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa polimérica semiflexível para impermeabilização",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "impermeabilizante"
+    ],
     "ordem": 98,
     "origin": "seed"
   },
@@ -2057,7 +2517,12 @@ window.CSP_SEED = {
     "detalhes": "\u0002VEDBEM TRINCA é um poderoso selante elastomérico para correção de trincas, fissuras e calafetação em esquadrias em geral. VEDBEM TRINCA possui alta elasticidade e aderência permitindo um tratamento mais simplificado e com excelente acabamento. Dispensa o uso de telas estruturantes. APLICAÇÕES Trincas e fissuras em geral Calafetação em caixilhos e esquadria metálica ou madeira Junta entre estruturas e elementos pré-moldados VANTAGENS Praticidade na aplicação Rapidez Alta elasticidade Aderência a diversos tipos de superfície Ótimo acabamento Aceita pintura Excelente resistência às ações climáticas e ao envelhecimento Evita a proliferação de mofo PREPARO DO PRODUTO Pronto para uso PREPARO DA SUPERFÍCIE A superfície a ser tratada deve estar limpa, isenta de partículas soltas, graxa, óleo, ferrugem, fungos, restos de pintura e totalmente seca. APLICAÇÃO DO PRODUTO 1. Utilizando uma ferramenta manual ou elétrica, abra a trinca com largura entre 2 mm e 7 mm e profundidade máxima de 10 mm. 2. Limpe a área de tratamento removendo todas as partículas soltas. Se necessário, aplique um fundo preparador de parede. 3. Com o auxilio de uma espátula, desempenadeira de aço ou celulóide, aplique o VEDBEM TRINCA garantindo o preenchimento de toda a área. 4. Após a secagem, reaplique o VEDBEM TRINCA se ocorrer perda de volume. PRECAUÇÕES DE USO Não aplique com a superfície úmida. A secagem pode variar de acordo com a umidade relativa do ar e temperatura no local da aplicação. FERRAMENTAS Espátula Desempenadeira Celulóide CARACTERÍSTICAS COMPOSIÇÃO BÁSICA Resina 100% acrílica, cargas minerais inertes e antifungos. COR Pasta viscosa branca. DENSIDADE 1,60 g/cm³ ARMAZENAGEM Local coberto, seco, arejado e fora do alcance de crianças e animais. EMBALAGEM 1,2 Kg RENDIMENTO Aproximadamente 30g/m em juntas de 5x10mm SEGURANÇA Utilizar óculos de segurança e luvas de borracha ou sintética. PRIMEIROS SOCORROS INGESTÃO Não provoque vômito, beba bastante água. Procure um médico. CONTATO COM OS OLHOS Lave com bastante água durante 15 minutos. Procure um médico. CONTATO COM A PELE Lave com bastante água durante 15 minutos e aplique um creme hidratante. INALAÇÃO: Remova a vítima para um local arejado e com boa ventilação. Se necessário procure um médico. Consulte o centro de intoxicações Ceatox através do telefone 0800 0148110 ou serviço de saúde mais próximo. VALIDADE 24 meses sem violação da embalagem.",
     "aplicacao": "",
     "descricao": "• Trincas e fissuras em geral\n• Calafetação em caixilhos e esquadria metálica ou madeira\n• Junta entre estruturas e elementos pré-moldados",
-    "tags": [],
+    "tags": [
+      "selante",
+      "acrílico",
+      "trinca",
+      "fachada"
+    ],
     "ordem": 99,
     "origin": "seed"
   },
@@ -2077,7 +2542,11 @@ window.CSP_SEED = {
     "detalhes": "Pintura impermeabilizante composta de asfaltos modificados, plastificantes e solventes orgânicos, para aplicação à frio sobre superfícies de concreto, argamassa, alvenaria, metal, PVC, fibra de vidro, etc.\nUtilização:\nViabit é uma solução asfáltica que forma um filme de excelente aderência, ideal para ser utilizado como:\nPrimer para colagem de mantas asfálticas;\nPrimer para impermeabilizações com soluções asfálticas moldadas no local;\nPrimer para selantes asfálticos;\nProteção anticorrosiva em metais;\nPintura impermeável em baldrames, alicerces e muros de arrimo;\nPintura impermeável para fachadas, quando for aplicada sob película de vidro. Forma eficiente barreira contra a umidade, permitindo perfeito acabamento, enaltecendo a película.\nAplicada na pintura de madeiras utilizadas para confecção de mourões.\nRevestimento impermeável para cochos.\nRevestimento impermeável de tanques para alcool etílico.\nVantagens:\nForma um filme flexível;\nProteção da estrutura contra agentes agressivos, como ambiente marítimo e chuvas ácidas;\nÓtimo poder de adesividade sobre diversos materiais;\nExcelente agente antioxidante e anticorrosivo para superfícies metálicas;\nExcelente desempenho quando utilizado como pintura de fachada, antes da colocação de revestimentos como: granitos e pele de vidro.\nApós secagem da película não transmite cheirto ou gosto à água e aos alimentos.\nCaracterísticas técnicas:\n\u0002Características\u0001Unid.\u0001Especificação\n\u0002Viscosidade Copo Ford 4 a 25o C:\u0001segundos\u000140-60\n\u0002Não voláteis a 120ºC/3h:\u0001% massa\u000155 - 65\n\u0002Massa específica a 25/25ºC:\u0001-\u0001mín. 0,940 g/cm³\n\u0002Secagem ao toque:\u0001minutos\u0001máximo 50\nPreparação da superfície:\nO local a receber o primer Viabit deve estar limpo, seco e regularizado com caimento mínimo de 1% em direção aos pontos de escoamento de água, preparada com argamassa de cimento e areia média, traço 1:3, utilizando água de amassamento composta de 1 volume de emulsão adesiva Viafix e 2 volumes de água para maior aderência ao substrato. Essa argamassa deverá ter acabamento desempenado, com espessura mínima de 2cm.\nConsumo:\nDe 0,3 a 0, 4 litros/m²/demão\nValidade e estocagem:\nProduto válido por 24 meses, a partir da data de fabricação, desde que armazenado em local seco e ventilado e nas embalagens originais e intactas.\nRecomendações:\nPERIGO: produto inflamável\nManter a embalagem fechada, CONSERVE FORA DO ALCANCE DAS CRIANÇAS E DOS ANIMAIS DOMÉSTICOS.\nA Inalação freqüente em concentrações elevadas deste produto, acima dos níveis permitidos pela legislação, pode causar dependência e danos irreversíveis à saúde.\nManter o ambiente ventilado durante a aplicação e secagem.\nEm ambientes fechados, utilizar obrigatóriamente ventilação forçada;\nNão incinerar, perfurar ou reutilizar esta embalagem.\nUsar máscara protetora, óculos de segurança e luvas durante a aplicação.\nEm caso de contato com os olhos ou irritação da pele, lavar com água em abundância.\nVENENO: perigosa inalação e proibida a ingestão.\nEm caso de ingestão, não provocar vômito, procure auxílio médico, informando o tipo de produto.\nEm caso de intoxicações, procure um Centro de Intoxicações ou Serviço de Saúde, levando a embalagem ou o rótulo do produto.\nMisturar bem o produto antes de utilizar.\nPara limpeza de ferramentas, utilizar aguarrás.\nNota: As informações contidas nesta ficha são baseadas em nosso conhecimento para a sua ajuda e orientação. Salientamos que o desempenho dos nossos produtos depende das condições de preparo de superfície, aplicação e estocagem, que não estão sob nossos cuidados. O rendimento prático depende da técnica de aplicação, das condições do equipamento e da superfície a ser revestida. Não assumimos assim, qualquer responsabilidade relativa ao rendimento e ao desempenho de qualquer natureza em decorrência do uso indevido do produto. Para maiores esclarecimentos consultar nosso departamento técnico. A Viapol reserva-se o direito de mudar as especificações ou informações contidas neste follheto sem prévio aviso.",
     "aplicacao": "",
     "descricao": "Viabit é aplicado puro, com rolo de pintura ou trincha, em uma demão como solução para imprimação. Para uso como pintura impermeável deve-se aplicar três ou mais demãos, aguardando a secagem entre demãos de no mínimo 6 horas.\nMisturar o produto antes de sua aplicação.",
-    "tags": [],
+    "tags": [
+      "emulsão asfáltica",
+      "impermeabilizante",
+      "laje"
+    ],
     "ordem": 100,
     "origin": "seed"
   },
@@ -2097,7 +2566,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Impermeabilizante asfáltico com aditivo anti-raiz para jardineiras e canteiros",
-    "tags": [],
+    "tags": [
+      "emulsão asfáltica",
+      "anti-raiz",
+      "jardineira"
+    ],
     "ordem": 101,
     "origin": "seed"
   },
@@ -2117,7 +2590,12 @@ window.CSP_SEED = {
     "detalhes": "\u0002Características Técnicas\u0001Viafix Chapisco\n\u0002Ação Principal\u0001Incorporador de aderência, resistência e plasticidade para concreto e argamassa.\n\u0002Composição básica\u0001Solução aquosa de estireno-butadieno\n\u0002Aspecto\u0001Líquido\n\u0002Cor\u0001Branca\n\u0002pH\u00018,5 a 10,0\n\u0002Densidade a 25ºC\u00011,001 a 1,003 g/cm3\n\u0002Viscosidade Brookfield (F1/100 rpm, 25ºC)\u0001Mínimo 20 cPs\n\u0002Preparação da superfície A superfície deverá estar resistente, limpa, isenta de impregnação de óleo, graxas e desmoldantes. Deve ser regularizada e umedecida com água, mas não saturada. Preparação do produto Faça a homogeneização do produto antes de utilizá-lo. O Viafix Chapisco deve ser diluído em volume na proporção de 1:2 (Viafix/água) Aplicação do produto A argamassa deve ser executada no traço especifico em obra e amassada com a solução de Viafix Chapisco e água na proporção de 1 parte de Viafix Chapisco para 2 partes de água. Adicionar a mistura de solução Viafix/água na argamassa de cimento e areia até atingir a trabalhabilidade necessária (tipo de aplicação). Observação: Viafix Chapisco não deve ser aplicado como chapisco rolado em isopor (EPS) e teto. Para estas aplicações, utilize o adesivo Viafix (base PVA).",
     "aplicacao": "",
     "descricao": "Viafix Chapisco é um adesivo não reemulsionável à base de resina estireno-butadieno (SBR) que somado com as propriedades do cimento portland, aumenta a aderência e beneficia outras propriedades dos chapiscos e argamassas nos mais variados substratos da construção civil.\nVantagens\nViafix Chapisco proporciona as seguintes vantagens:\n• Aumento da aderência nos substratos de concreto e alvenaria;\n• Evita a segregação e exsudação;\n• Melhora a trabalhabilidade;\n• Redução do potencial de retração e a formação de fissuras;\n• Aumento das resistências ao desgaste e impacto;\n• Redução da permeabilidade.\nUtilização\nViafix Chapisco é utilizado como promotor de aderência, resistência e plasticidade das argamassas e chapiscos em:\n• Argamassa de contrapiso;\n• Emboços internos ou externos;\n• Chapisco convencional. Para chapisco rolado, utilizar o Viafix PVA à base de resina PVA;\n• Ponte de aderência para argamassa.",
-    "tags": [],
+    "tags": [
+      "adesivo",
+      "chapisco",
+      "argamassa",
+      "aderência"
+    ],
     "ordem": 102,
     "origin": "seed"
   },
@@ -2137,7 +2615,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Viaflex Fita/Pró é uma membrana asfáltica com utilização de asfalto. Com alto teor de elastômeros, propicia permanente adesividade.\nRecoberta com alumínio flexível, possibilita sua utilização de forma abrangente, de fácil aplicação e proporcionando solução imediata de reparos em goteiras e infiltrações.\nUtilização\nA alta e permanente adesividade garante a adesão em:\n• Concreto;\n• Telhas (metálicas: fibrocimento e concreto);\n• Rufos e calhas metálicas;\n• Proteção de tubulação PVC exposta ao tempo;\n• Dutos de ventilação e ar condicionado;\n• Cantoneiras, furgões, carrocerias baú;\n• Barraca de camping;\n• Fechamento das sobreposições em sistema de subcobertura.",
-    "tags": [],
+    "tags": [
+      "fita autoadesiva",
+      "asfáltica",
+      "alumínio",
+      "vedação"
+    ],
     "ordem": 103,
     "origin": "seed"
   },
@@ -2157,7 +2640,12 @@ window.CSP_SEED = {
     "detalhes": "\u0002Caracteristicas\u0001Valor Nominal\u0001Especificação\u0001Unidade\n\u0002pH\u000112,00\u000111,00 a 13,00\u0001n/a\n\u0002Aparência\u0001Líquido Transparente\u0001n/a\u0001n/a\n\u0002Odor\u0001Inodoro\u0001n/a\u0001n/a",
     "aplicacao": "",
     "descricao": "Viafloor Silicato é uma solução aquosa à base de silicatos que pode ser aplicado sobre o piso de concreto logo após seu acabamento com a finalidade principal de endurecer a superfície, servindo paralelamente como auxiliar de cura do concreto, aumentando a impermeabilidade do piso e a resistência à abrasão. Pode também ser aplicado em pisos de concreto já curado que apresentem baixa resistência superficial (soltando pó).\nVantagens\nO uso do Viafloor Silicato traz os seguintes benefícios aos usuários:\n• Fácil aplicação;\n• Melhora a resistência à abrasão do concreto;\n• Reduz a geração de poeira em concreto de baixa qualidade;\n• Boa penetração no concreto;\n• Economia devido ao baixo custo para a obtenção de proteção superficial para pisos de concreto facilitando a limpeza;\n• Reduz a perda de água por evaporação no concreto, auxiliando na cura do concreto fresco;\n• Produz um ligeiro brilho superficial;",
-    "tags": [],
+    "tags": [
+      "endurecedor",
+      "silicato",
+      "piso",
+      "concreto"
+    ],
     "ordem": 104,
     "origin": "seed"
   },
@@ -2177,7 +2665,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Membrana acrílica elástica impermeabilizante, cor branca",
-    "tags": [],
+    "tags": [
+      "manta líquida",
+      "acrílico",
+      "laje",
+      "branco"
+    ],
     "ordem": 105,
     "origin": "seed"
   },
@@ -2197,7 +2690,11 @@ window.CSP_SEED = {
     "detalhes": "Características técnicas do Produto\n\u0002Características\u0001Componente A\u0001Componente B\n\u0002Aspecto\u0001Líquido\u0001Pó\n\u0002Cor\u0001Branca\u0001Cinza\n\u0002Aspecto da Mistura (A+B)\u0001Líquido viscoso cinza\n\u0002Ensaios\u0001Resultados\n\u0002Temperatura mín./máx. de aplicação\u000110ºC a 35ºC\n\u0002Período mínimo entre demãos\u00012 a 6 horas\n\u0002Tempo de cura total\u00015 dias Ambientes fechados 7 dias\n\u0002Tempo de utilização da mistura (A+B)\u000140 minutos\n\u0002Estanqueidade a pressão negativa\u00010,1 Mpa\n\u0002Estanqueidade a pressão positiva\u00010,6 Mpa\n\u0002Resistência à aderência no concreto-mínimo (método de ensaio NBR 13528)\u0001Mínimo 0,3 MPa\n\u0002Resistência à aderência em alvenaria - mínimo (método de ensaio NBR 13528)\u0001Mínimo 0,3 MPa\nVantagens\n• Resistente às altas pressões hidrostáticas, tanto positivas quanto negativas.\n• Resiste até 60 m.c.a.(metros de coluna d’água).\n• Apresenta ótima aderência e resistência mecânica.\n• Não altera a potabilidade da água, sendo atóxico e inodoro.\n• Produto de fácil aplicação, com trincha ou vassoura de pelo.\n• Aplicado sobre superfícies de concreto, alvenaria e argamassa.\n• Permite assentamento direto de revestimentos sem a necessidade de proteção mecânica no caso de banheiros, cozinhas e lavanderias sem cota.\nNormas e Certificados\nNBR 11.905 – Sistema Impermeabilizante composto por cimento impermeabilizante e polímeros;\nNBR 9575:2010 – Impermeabilização – Sistemas e projetos;\nNBR 9574:2008 – Execução da impermeabilização.\nUtilização\nViaplus 1000 é utilizado para impermeabilização de subsolos, cortinas, poços de elevadores, muros de arrimo, baldrames, paredes internas e externas, pisos frios em contato com o solo, reservatório de água potável (não elevado), piscinas em concreto enterradas e estruturas sujeitas a infiltração do lençol freático. Indicado como revestimento sobre contra piso antes de receber o assentamento de pisos cerâmicos",
     "aplicacao": "",
     "descricao": "Descrição\nRevestimento impermeabilizante, semi-flexível, bicomponente (A+B), à base de cimentos especiais, aditivos minerais e polímeros de excelentes características impermeabilizantes.",
-    "tags": [],
+    "tags": [
+      "impermeabilizante",
+      "argamassa polimérica",
+      "semiflexível"
+    ],
     "ordem": 106,
     "origin": "seed"
   },
@@ -2217,7 +2714,11 @@ window.CSP_SEED = {
     "detalhes": "Características técnicas do Produto\n\u0002Características\u0001Componente A\u0001Componente B\n\u0002Aspecto\u0001Líquido\u0001Pó\n\u0002Cor\u0001Branca\u0001Cinza\n\u0002Aspecto da Mistura (A+B)\u0001Líquido viscoso cinza\n\u0002Ensaios\u0001Resultados\n\u0002Temperatura mín./máx. de aplicação\u000110ºC a 35ºC\n\u0002Período mínimo entre demãos\u00014 a 8 horas\n\u0002Tempo de cura total\u00017 dias\n\u0002Tempo de utilização da mistura (A+B)\u000140 minutos\n\u0002Estanqueidade a pressão positiva\u00010,6 Mpa\nNormas e Certificados\n• NBR 11.905 – Sistema Impermeabilizante composto por cimento impermeabilizante e polímeros;\n• NBR 9575:2010 – Impermeabilização – Sistemas e projetos;\n• NBR 9574:2008 – Execução da impermeabilização.\nVantagens\n• Produto de fácil aplicação, com trincha ou vassoura de pelo.\n• Excelente desempenho de flexibilidade\n• Aplicado sobre superfícies de concreto, alvenaria e argamassa.\n• Não altera a potabilidade da água, sendo atóxico e inodoro.\n• Resistente às altas pressões hidrostáticas positivas.\n• Acompanha as movimentações estruturais e fissuras previstas nas Normas Brasileiras.\nUtilização\nPor se tratar de um produto flexível, Viaplus 5000 é indicado para impermeabilização de torres de água e reservatórios de água potáveis, elevados ou apoiados de estrutura de concreto armado.",
     "aplicacao": "",
     "descricao": "Revestimento impermeabilizante flexível, bicomponente à base de resinas termoplásticas e cimentos aditivados que em composição, resultam em uma membrana de polímero modificado, com cimento de excelentes características de resistência e impermeabilidade.",
-    "tags": [],
+    "tags": [
+      "argamassa polimérica",
+      "flexível",
+      "reservatório"
+    ],
     "ordem": 107,
     "origin": "seed"
   },
@@ -2237,7 +2738,12 @@ window.CSP_SEED = {
     "detalhes": "Características técnicas do Produto\n\u0002Características\u0001Componente A\u0001Componente B\n\u0002Aspecto\u0001Líquido\u0001Pó\n\u0002Cor\u0001Branca\u0001Cinza\n\u0002Aspecto da mistura (A+B)\u0001Líquido viscoso cinza\n\u0002Ensaios\u0001Resultados\n\u0002Temperatura mín./máx. de aplicação\u000110ºC a 35ºC\n\u0002Período mínimo entre demãos\u00014 a 8 horas\n\u0002Tempo de cura total\u00015 dias Ambientes fechados 7 dias\n\u0002Tempo de utilização da mistura (A+B)\u000140 minutos\n\u0002Estanqueidade a pressão positiva\u00010,6 Mpa\n\u0002Resistência à aderência no concreto-mínimo (método de ensaio NBR 13528)\u0001Mínimo 0,3 MPa\n\u0002Resistência à aderência em alvenaria - mínimo (método de ensaio NBR 13528)\u0001Mínimo 0,3 MPa\nNormas e Certificados\n• NBR 11.905 – Sistema Impermeabilizante composto por cimento impermeabilizante e polímeros;\n• NBR 9575:2010 – Impermeabilização – Sistemas e projetos;\n• NBR 9574:2008 – Execução da impermeabilização.\nVantagens\n• Produto de fácil aplicação, com trincha ou vassoura de pelo.\n• Excelente desempenho de flexibilidade.\n• Aplicado sobre superfícies de concreto, alvenaria, argamassa e gesso acartonado.\n• Não altera a potabilidade da água, sendo atóxico e inodoro.\n• Resistente às altas pressões hidrostáticas positivas.\n• Permite o assentamento direto de revestimentos sem a necessidade de proteção mecânica no caso de banheiros, cozinhas e lavanderias sem cota.\n• Por conter fibras sintéticas em sua composição, dispensa a necessidade de tela de poliéster.\n• Acompanha as movimentações estruturais e fissuras previstas nas Normas Brasileiras.\nUtilização\nVIAPLUS 7000 é indicado para impermeabilização de áreas com constante presença de água ou áreas permanentemente úmidas, como:\n• Reservatório de concreto de água potável elevado, apoiado ou enterrado.\n• Piscinas de concreto enterradas.\n• Espelhos d’água enterrados.\n• Áreas frias como banheiros, cozinhas, lavanderias, áreas de serviços, barriletes, lavabos, etc.\n• Sacadas, terraços e varandas gourmet.\nPara outras utilizações de uso consulte o Departamento Técnico (sac@viapol.com.br).\nNão utilize o produto em:\n• Estruturas sujeitas a fissuração.\n• Sobre massa de regularização que contenha cal ou hidrofugo. Caso seja necessário, substitua por Viacal.\n• Áreas expostas às intempéries.\n• Produto formulado para reservatório de água potável ou estação de tratamento de água (E.T.A), não utilizar quando o pH for inferior a 6,0.\n• Produto não recomendado para lençol freático atuante.",
     "aplicacao": "",
     "descricao": "Revestimento impermeabilizante, flexível, bicomponente à base de resinas termoplásticas e cimentos com aditivos e incorporação de fibras sintéticas (polipropileno). Essa composição resulta em uma membrana de polímero modificado com cimento de excelentes características de resistência, flexibilidade e impermeabilidade.",
-    "tags": [],
+    "tags": [
+      "impermeabilizante",
+      "argamassa polimérica",
+      "flexível",
+      "laje"
+    ],
     "ordem": 108,
     "origin": "seed"
   },
@@ -2257,7 +2763,12 @@ window.CSP_SEED = {
     "detalhes": "Preparação da superfície\n• O substrato deverá estar limpo, sem partes soltas ou desagregadas, nata de cimento, óleos, desmoldantes, etc. Para tanto, recomenda-se a lavagem da estrutura com escova de aço e água ou jato d'água de alta pressão.\n• Ninhos e falhas de concretagem devem ser reparados com aplicação de Viapoxi Adesivo Tix na interface do concreto e preenchimento com Viagraute.\n• Quando houver ocorrência de jorros de água, no caso de reservatórios enterrados com influência do lençol freático, execute tamponamento com utilização de cimento de pega ultrarápida PÓ 2, após prévio preparo do local.\n• As tubulações deverão ser chumbadas com Viapoxi Adesivo Tix na fase de concretagem, como também serem fixadas com flanges e contra flanges para um perfeito arremate da impermeabilização. Não poderá haver emendas das tubulações embutidas no concreto.\n• Para tanques e reservatórios, sugerimos a existência de mísula estrutural na junção de piso e paredes.\nPreparação do Produto\nO produto é fornecido em dois componentes (sob consulta):\n• Componente A (resina): polímeros acrílicos emulsionados que proporcionam resistência química a ácidos, bases e solventes.\n• Componente B (pó cinza): cimentos especiais, aditivos impermeabilizantes, plastificantes e agregados minerais.\n• Adicione aos poucos o componente B (pó cinza) ao componente A (resina) e misture mecanicamente por 3 minutos, ou manualmente por 5 minutos. Dissolva os possíveis grumos que possam se formar, obtendo uma pasta homogênea.\n• Uma vez misturados os componentes A + B, o tempo de utilização não deverá ultrapassar o período de 40 minutos na temperatura de 25 ⁰C. Passado este período, a utilização não é recomendada.\n• O material já vem na proporção correta para aplicação. Caso necessário misturar em partes, observe sempre a mesma proporção dos componentes na mistura.\nAplicação do Material\n• A superfície que será impermeabilizada com Viaplus Dique deverá estar previamente úmida, mas não encharcada.\n• Aplique sobre a superfície de concreto, 4 demãos em sentido cruzado do Viaplus Dique, em camadas uniformes e com intervalos de 2 a 6 horas entre demãos, considerando da temperatura ambiente.\n• Nas juntas de concretagem e meias-canas, reforce o Viaplus Dique com incorporação de uma tela de poliéster Mantex logo após a primeira demão.\n• No período de cura do produto, promova a hidratação do Viaplus Dique por no mínimo 72 horas.\n• Impermeabilize o teto dos tanques ou reservatórios com aplicação do Viaplus Dique. – 2kg/m2.\n• Misture constantemente o produto da embalagem durante a aplicação.\nForma de Aplicação\nPintura (traço em volume)\nUtilize, aproximadamente, 1 parte de componente A (resina), para 3,5 partes de componente B (pó cinza).\nFaça a aplicação com trincha, vassoura de pelo ou escova.",
     "aplicacao": "",
     "descricao": "Viaplus Dique é um revestimento impermeabilizante, semiflexível, bicomponente (A+B) à base de cimentos especiais, aditivos minerais e resina acrílica, de excelentes características impermeabilizantes. Apresenta ótima aderência e excepcional resistência a ácidos, bases e solventes (sob consulta).\nVantagens\n• Resistente a ácidos, bases e solventes (sob consulta);\n• Produto de fácil aplicação com trincha, broxa ou vassoura de pelo, dependendo da forma de aplicação;\n• Não altera a potabilidade da água. É atóxico e inodoro;\n• Aplicado sobre superfícies de concreto, alvenaria, argamassa ou metal. Confere excelente aderência sem necessidade de chapisco, primer, etc;\n• Pode ser estruturado com tela de poliéster ou nylon;\n• Atende as exigências da ABNT 11905/92;\n• Suporta até 10 mca de pressão negativa de lençol freático.\nUtilização\nPor se tratar de um produto semiflexível de excepcional resistência química, Viaplus Dique é indicado para impermeabilização de ETE (Estação de Tratamento de Esgoto Doméstico e Estação de Tratamento de Resíduos Industriais - sob consulta-), caixa de gordura, estruturas sujeitas à infiltração do lençol freático, bacias e diques de contenção.",
-    "tags": [],
+    "tags": [
+      "argamassa",
+      "dique",
+      "contenção",
+      "impermeabilizante"
+    ],
     "ordem": 109,
     "origin": "seed"
   },
@@ -2277,7 +2788,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Argamassa de reparo para recomposição de concreto e alvenaria",
-    "tags": [],
+    "tags": [
+      "reparo",
+      "argamassa",
+      "concreto"
+    ],
     "ordem": 110,
     "origin": "seed"
   },
@@ -2297,7 +2812,11 @@ window.CSP_SEED = {
     "detalhes": "Características Técnicas\n\u0002Idade\u0001Resistência MPa\n\u00022 horas\u000136,9\n\u000224 horas\u000151,0\n\u00023 dias\u000161,5\n\u00027 dias\u000168,8\n\u000228 dias\u000171,1\nUtilização\n• Viaplus ST acelerado é indicado para aplicações em reparos de estruturas, com espessuras acima de 1cm, tais como:\n• Pisos de concreto em rampas de estacionamento, pavimento de concreto de rodovias, e aeroportos;\n• Reparos estruturais de tabuleiro de pontes e viadutos;\n• Restauração de bordas de juntas de dilatação em pontes e viadutos;\n• Reparos em câmaras frigoríficas;\n• Execução de reparos em estruturas de concreto em área industriais sujeitas ao meio agressivo, pela presença na atmosfera de ácidos, gases e outros;\n• Reparos localizados e profundos;\n• Em reparos estruturais, para garantia de monoliticidade da estrutura, recomenda-se a aplicação de ponte de aderência com Viapoxi Adesivo Gel;\n• Em superfícies verticais é recomendado o uso de forma para contenção do produto.",
     "aplicacao": "",
     "descricao": "Viaplus ST Acelerado é um produto de alto desempenho de consistência plástica, possibilitando elevadas resistências mecânicas e liberação da área, em poucas horas. Produto em pó pronto para uso, isento de cloretos, constituído de cimento especial, agregados selecionados, fibras e aditivos especiais, de fácil homogeneização, bastando somente adicionar água e misturar.\nVantagens\nElevadas resistências mecânicas, iniciadas horas após aplicado. Permite rápida liberação da área reparada (2 horas);\n• Alta resistência químicas aos agentes agressivos;\n• Retração compensada;\n• Condições de utilização para aplicações em locais de baixas temperaturas;\n• Fácil aplicação;\n• Liberação da estrutura reparada, para pintura, após 24 horas.",
-    "tags": [],
+    "tags": [
+      "reparo estrutural",
+      "argamassa",
+      "acelerado"
+    ],
     "ordem": 111,
     "origin": "seed"
   },
@@ -2317,7 +2836,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Espuma expansiva de poliuretano para preenchimento e vedação",
-    "tags": [],
+    "tags": [
+      "espuma expansiva",
+      "poliuretano",
+      "vedação"
+    ],
     "ordem": 112,
     "origin": "seed"
   },
@@ -2337,7 +2860,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Manta asfáltica elastomérica tipo III com estruturante de polipropileno",
-    "tags": [],
+    "tags": [
+      "manta asfáltica",
+      "tipo iii",
+      "polipropileno",
+      "elastomérica"
+    ],
     "ordem": 113,
     "origin": "seed"
   },
@@ -2357,7 +2885,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Composto de pega ultrarrápida para tamponamento de vazamentos",
-    "tags": [],
+    "tags": [
+      "tamponamento",
+      "pega instantânea",
+      "vazamento"
+    ],
     "ordem": 114,
     "origin": "seed"
   },
@@ -2377,7 +2909,12 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante elástico de poliuretano para juntas, cor cinza",
-    "tags": [],
+    "tags": [
+      "selante",
+      "poliuretano",
+      "junta",
+      "cinza"
+    ],
     "ordem": 115,
     "origin": "seed"
   },
@@ -2397,7 +2934,11 @@ window.CSP_SEED = {
     "detalhes": "",
     "aplicacao": "",
     "descricao": "Selante para tratamento e vedação de trincas",
-    "tags": [],
+    "tags": [
+      "selante",
+      "trinca",
+      "vedação"
+    ],
     "ordem": 116,
     "origin": "seed"
   }

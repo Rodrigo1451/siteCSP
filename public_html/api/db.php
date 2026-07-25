@@ -125,6 +125,8 @@ function init_schema($pdo) {
     seed_sync($pdo);
     seed_backfill_vazios($pdo);
     seed_corrigir_conhecidos($pdo);
+    seed_corrigir_embalagens_conhecidas($pdo);
+    seed_preencher_tags($pdo);
 }
 
 /* Preenche SO os campos que estao vazios no banco, com o valor do seed.json,
@@ -174,10 +176,12 @@ function seed_backfill_vazios($pdo) {
    auditar o banco contra a planilha completa.xlsx em 2026-07-25:
    camisa-solodren-4-polegadas, monopol-pu-25-300ml, telhafria e
    vedalage-plus tinham uma marca que nao bate com a planilha (provavelmente
-   copiada de outro produto por engano numa carga anterior). So aplica se o
-   valor atual no banco for EXATAMENTE o valor errado conhecido - se o admin
-   ja tiver trocado para outra coisa nesse meio tempo, nao mexe. Roda uma vez. */
-define('CSP_CORRECAO_VERSION', '2026-07-25-marca-conhecida');
+   copiada de outro produto por engano numa carga anterior). instant-pav
+   entrou depois: a planilha (com fonte pesquisada, ver comentario da celula)
+   aponta o fabricante como "FH", nao "CB-PAV". So aplica se o valor atual no
+   banco for EXATAMENTE o valor errado conhecido - se o admin ja tiver
+   trocado para outra coisa nesse meio tempo, nao mexe. Roda uma vez. */
+define('CSP_CORRECAO_VERSION', '2026-07-25-marca-conhecida-v2');
 
 function seed_corrigir_conhecidos($pdo) {
     $chave = 'correcao_' . CSP_CORRECAO_VERSION;
@@ -188,6 +192,7 @@ function seed_corrigir_conhecidos($pdo) {
         array('id' => 'monopol-pu-25-300ml', 'de' => 'branyl', 'paraMarca' => 'monopol', 'paraLabel' => 'Monopol'),
         array('id' => 'telhafria', 'de' => 'vedbem', 'paraMarca' => '', 'paraLabel' => ''),
         array('id' => 'vedalage-plus', 'de' => 'viapol', 'paraMarca' => 'vedacit', 'paraLabel' => 'Vedacit'),
+        array('id' => 'instant-pav', 'de' => 'cbpav', 'paraMarca' => 'fh', 'paraLabel' => 'FH'),
     );
 
     $upd = $pdo->prepare("UPDATE produtos SET marca = :marca, marcaLabel = :marcaLabel WHERE id = :id AND marca = :de");
@@ -198,6 +203,64 @@ function seed_corrigir_conhecidos($pdo) {
             ':id' => $c['id'],
             ':de' => $c['de'],
         ));
+    }
+    set_setting($pdo, $chave, '1');
+}
+
+/* Corrige EMBALAGEM errada (nao so vazia) em produtos especificos, achada
+   numa segunda rodada de auditoria contra completa.xlsx em 2026-07-25:
+   monopol-pu-25-300ml estava com a embalagem menor (300ml) de um SKU que a
+   planilha lista como 600ml/942g; vedalage-plus estava com "Bd 18kg" que nao
+   corresponde a nenhum dos 4 SKUs da planilha (12kg/4L/4kg/12kg); instant-pav
+   estava com "SC 40kg", planilha (com fonte pesquisada) diz "Saco 25 kg". So
+   aplica se o valor atual no banco for EXATAMENTE o valor errado conhecido -
+   se o admin ja tiver trocado para outra coisa nesse meio tempo, nao mexe.
+   Roda uma vez. */
+define('CSP_CORRECAO_EMBALAGEM_VERSION', '2026-07-25-embalagem-conhecida');
+
+function seed_corrigir_embalagens_conhecidas($pdo) {
+    $chave = 'correcao_embalagem_' . CSP_CORRECAO_EMBALAGEM_VERSION;
+    if (get_setting($pdo, $chave) === '1') return;
+
+    $correcoes = array(
+        array('id' => 'monopol-pu-25-300ml', 'de' => "Cart. 300ml BCO\nCart. 300ml CINZA", 'para' => '600 ml / 942 g'),
+        array('id' => 'vedalage-plus', 'de' => "Bd 18kg BRANCO\nBd 18kg CONCRETO", 'para' => "12 kg\n4 L\n4 kg\n12 kg"),
+        array('id' => 'instant-pav', 'de' => 'SC 40kg', 'para' => 'Saco 25 kg'),
+    );
+
+    $upd = $pdo->prepare("UPDATE produtos SET embalagem = :para WHERE id = :id AND embalagem = :de");
+    foreach ($correcoes as $c) {
+        $upd->execute(array(':para' => $c['para'], ':id' => $c['id'], ':de' => $c['de']));
+    }
+    set_setting($pdo, $chave, '1');
+}
+
+/* Preenche a coluna tags (vazia em todos os 117 produtos ate 2026-07-25) com
+   o dado da planilha completa.xlsx, ja cruzado e gravado no seed.json. So
+   entra se o campo estiver vazio no banco ('', NULL ou '[]', que e o que
+   save_produto grava quando o array vem vazio) - nunca sobrescreve tags que
+   o admin ja tenha preenchido manualmente. Roda uma vez. */
+define('CSP_TAGS_VERSION', '2026-07-25-tags-planilha');
+
+function seed_preencher_tags($pdo) {
+    $chave = 'tags_' . CSP_TAGS_VERSION;
+    if (get_setting($pdo, $chave) === '1') return;
+    $seed = ler_seed();
+    if ($seed === null || empty($seed['produtos'])) return;
+
+    $st = $pdo->prepare("SELECT tags FROM produtos WHERE id = ?");
+    $upd = $pdo->prepare("UPDATE produtos SET tags = :tags WHERE id = :id");
+
+    foreach ($seed['produtos'] as $p) {
+        $id = isset($p['id']) ? $p['id'] : '';
+        if ($id === '' || empty($p['tags'])) continue;
+        $st->execute(array($id));
+        $atual = $st->fetch();
+        if (!$atual) continue;
+        $vazio = !isset($atual['tags']) || $atual['tags'] === null || $atual['tags'] === '' || $atual['tags'] === '[]';
+        if ($vazio) {
+            $upd->execute(array(':tags' => json_encode($p['tags'], JSON_UNESCAPED_UNICODE), ':id' => $id));
+        }
     }
     set_setting($pdo, $chave, '1');
 }
