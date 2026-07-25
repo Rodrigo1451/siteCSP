@@ -207,30 +207,33 @@ function seed_corrigir_conhecidos($pdo) {
     set_setting($pdo, $chave, '1');
 }
 
-/* Corrige EMBALAGEM errada (nao so vazia) em produtos especificos, achada
-   numa segunda rodada de auditoria contra completa.xlsx em 2026-07-25:
-   monopol-pu-25-300ml estava com a embalagem menor (300ml) de um SKU que a
-   planilha lista como 600ml/942g; vedalage-plus estava com "Bd 18kg" que nao
-   corresponde a nenhum dos 4 SKUs da planilha (12kg/4L/4kg/12kg); instant-pav
-   estava com "SC 40kg", planilha (com fonte pesquisada) diz "Saco 25 kg". So
-   aplica se o valor atual no banco for EXATAMENTE o valor errado conhecido -
-   se o admin ja tiver trocado para outra coisa nesse meio tempo, nao mexe.
-   Roda uma vez. */
-define('CSP_CORRECAO_EMBALAGEM_VERSION', '2026-07-25-embalagem-conhecida');
+/* Corrige EMBALAGEM errada em produtos especificos, achada numa segunda
+   rodada de auditoria contra completa.xlsx em 2026-07-25: monopol-pu-25-300ml
+   tinha a embalagem menor (300ml) de um SKU que a planilha lista como
+   600ml/942g; vedalage-plus tinha "Bd 18kg" que nao corresponde a nenhum dos
+   4 SKUs da planilha (12kg/4L/4kg/12kg); instant-pav tinha "SC 40kg",
+   planilha (com fonte pesquisada) diz "Saco 25 kg".
+   v1 desta migracao tentava so aplicar se o valor atual fosse EXATAMENTE um
+   valor errado conhecido, pra nao sobrescrever edicao do admin - mas ao
+   conferir em producao o valor real era outro (provavelmente NULL, nunca
+   preenchido por nenhum backfill anterior), entao o guard nunca bateu e a
+   correcao nunca rodou de verdade. v2 forca o valor certo direto (ainda
+   guardado por chave em settings, roda uma vez so). */
+define('CSP_CORRECAO_EMBALAGEM_VERSION', '2026-07-25-embalagem-conhecida-v2');
 
 function seed_corrigir_embalagens_conhecidas($pdo) {
     $chave = 'correcao_embalagem_' . CSP_CORRECAO_EMBALAGEM_VERSION;
     if (get_setting($pdo, $chave) === '1') return;
 
     $correcoes = array(
-        array('id' => 'monopol-pu-25-300ml', 'de' => "Cart. 300ml BCO\nCart. 300ml CINZA", 'para' => '600 ml / 942 g'),
-        array('id' => 'vedalage-plus', 'de' => "Bd 18kg BRANCO\nBd 18kg CONCRETO", 'para' => "12 kg\n4 L\n4 kg\n12 kg"),
-        array('id' => 'instant-pav', 'de' => 'SC 40kg', 'para' => 'Saco 25 kg'),
+        'monopol-pu-25-300ml' => '600 ml / 942 g',
+        'vedalage-plus' => "12 kg\n4 L\n4 kg\n12 kg",
+        'instant-pav' => 'Saco 25 kg',
     );
 
-    $upd = $pdo->prepare("UPDATE produtos SET embalagem = :para WHERE id = :id AND embalagem = :de");
-    foreach ($correcoes as $c) {
-        $upd->execute(array(':para' => $c['para'], ':id' => $c['id'], ':de' => $c['de']));
+    $upd = $pdo->prepare("UPDATE produtos SET embalagem = :embalagem WHERE id = :id");
+    foreach ($correcoes as $id => $embalagem) {
+        $upd->execute(array(':embalagem' => $embalagem, ':id' => $id));
     }
     set_setting($pdo, $chave, '1');
 }
