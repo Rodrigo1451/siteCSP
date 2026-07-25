@@ -39,7 +39,7 @@ async function main() {
     }
 
     console.log('[dev-php] Site + API em http://localhost:' + PORT + '  (admin: /admin.html)');
-    const phpChild = spawn(php, ['-S', 'localhost:' + PORT, '-t', 'public_html'], {
+    const phpChild = spawn(php, ['-S', 'localhost:' + PORT, '-t', 'public_html', 'scripts/router.php'], {
         cwd: mariadb.ROOT,
         stdio: 'inherit',
         env: Object.assign({}, process.env, { CSP_DEV_CONFIG: mariadb.CONFIG_PATH }),

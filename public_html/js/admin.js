@@ -295,10 +295,10 @@ async function saveProduto() {
     const nome = $('#pNome').value.trim().toUpperCase();
     const categoriaEl = $('#pCategoria');
     const categoria = categoriaEl.value;
-    const categoriaLabel = categoriaEl.options[categoriaEl.selectedIndex].text;
+    const categoriaLabel = (categoria && categoriaEl.selectedIndex >= 0) ? categoriaEl.options[categoriaEl.selectedIndex].text : '';
     const marcaEl = $('#pMarca');
     const marca = marcaEl.value;
-    const marcaLabel = marca ? marcaEl.options[marcaEl.selectedIndex].text : '';
+    const marcaLabel = (marca && marcaEl.selectedIndex >= 0) ? marcaEl.options[marcaEl.selectedIndex].text : '';
     const tipo = $('#pTipo').value.trim();
     const aplicacao = $('#pAplicacao').value.trim();
     const descricao = $('#pDescricao').value.trim();

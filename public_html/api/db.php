@@ -123,6 +123,83 @@ function init_schema($pdo) {
     ));
     seed_if_empty($pdo);
     seed_sync($pdo);
+    seed_backfill_vazios($pdo);
+    seed_corrigir_conhecidos($pdo);
+}
+
+/* Preenche SO os campos que estao vazios no banco, com o valor do seed.json,
+   produto por produto. Diferente do seed_sync() (que so insere produto
+   ausente), isto serve para consertar produto que ja existe no banco mas
+   ficou com campo em branco numa carga anterior - foi o caso de marca e
+   descricao de 84 produtos na sessao de 2026-07-25. Roda uma vez (guardado
+   por chave em `settings`) e nunca sobrescreve um campo que ja tem valor,
+   entao e seguro mesmo se o admin ja tiver editado algo nesse meio tempo. */
+define('CSP_BACKFILL_VERSION', '2026-07-25-marca-descricao');
+
+function seed_backfill_vazios($pdo) {
+    $chave = 'backfill_' . CSP_BACKFILL_VERSION;
+    if (get_setting($pdo, $chave) === '1') return;
+    $seed = ler_seed();
+    if ($seed === null || empty($seed['produtos'])) return;
+
+    $campos = array('marca', 'marcaLabel', 'descricao', 'embalagem');
+    $st = $pdo->prepare("SELECT " . implode(',', $campos) . " FROM produtos WHERE id = ?");
+    $upd = $pdo->prepare("UPDATE produtos SET " . implode(',', array_map(function ($c) { return "$c = :$c"; }, $campos)) . " WHERE id = :id");
+
+    foreach ($seed['produtos'] as $p) {
+        $id = isset($p['id']) ? $p['id'] : '';
+        if ($id === '') continue;
+        $st->execute(array($id));
+        $atual = $st->fetch();
+        if (!$atual) continue; // produto nao existe nesse banco - seed_sync cuida disso
+
+        $valores = array('id' => $id);
+        $mudou = false;
+        foreach ($campos as $c) {
+            $vazio = !isset($atual[$c]) || $atual[$c] === null || $atual[$c] === '';
+            $novo = isset($p[$c]) ? (string) $p[$c] : '';
+            if ($vazio && $novo !== '') {
+                $valores[$c] = $novo;
+                $mudou = true;
+            } else {
+                $valores[$c] = $atual[$c];
+            }
+        }
+        if ($mudou) $upd->execute($valores);
+    }
+    set_setting($pdo, $chave, '1');
+}
+
+/* Corrige marca ERRADA (nao so vazia) em produtos especificos, achada ao
+   auditar o banco contra a planilha completa.xlsx em 2026-07-25:
+   camisa-solodren-4-polegadas, monopol-pu-25-300ml, telhafria e
+   vedalage-plus tinham uma marca que nao bate com a planilha (provavelmente
+   copiada de outro produto por engano numa carga anterior). So aplica se o
+   valor atual no banco for EXATAMENTE o valor errado conhecido - se o admin
+   ja tiver trocado para outra coisa nesse meio tempo, nao mexe. Roda uma vez. */
+define('CSP_CORRECAO_VERSION', '2026-07-25-marca-conhecida');
+
+function seed_corrigir_conhecidos($pdo) {
+    $chave = 'correcao_' . CSP_CORRECAO_VERSION;
+    if (get_setting($pdo, $chave) === '1') return;
+
+    $correcoes = array(
+        array('id' => 'camisa-solodren-4-polegadas', 'de' => 'maccaferri', 'paraMarca' => 'acqua', 'paraLabel' => 'Acqua'),
+        array('id' => 'monopol-pu-25-300ml', 'de' => 'branyl', 'paraMarca' => 'monopol', 'paraLabel' => 'Monopol'),
+        array('id' => 'telhafria', 'de' => 'vedbem', 'paraMarca' => '', 'paraLabel' => ''),
+        array('id' => 'vedalage-plus', 'de' => 'viapol', 'paraMarca' => 'vedacit', 'paraLabel' => 'Vedacit'),
+    );
+
+    $upd = $pdo->prepare("UPDATE produtos SET marca = :marca, marcaLabel = :marcaLabel WHERE id = :id AND marca = :de");
+    foreach ($correcoes as $c) {
+        $upd->execute(array(
+            ':marca' => $c['paraMarca'],
+            ':marcaLabel' => $c['paraLabel'],
+            ':id' => $c['id'],
+            ':de' => $c['de'],
+        ));
+    }
+    set_setting($pdo, $chave, '1');
 }
 
 function ler_seed() {
@@ -172,8 +249,40 @@ function seed_sync($pdo) {
 
 function val($arr, $key, $def = '') { return isset($arr[$key]) ? $arr[$key] : $def; }
 
+/* Slug a partir do nome: minusculas, sem acento, so a-z0-9 e hifen. Vira o
+   id do produto e o arquivo produto-<slug>.html (servido via rewrite). */
+function slugify($texto) {
+    $texto = (string) $texto;
+    $semAcento = @iconv('UTF-8', 'ASCII//TRANSLIT', $texto);
+    if ($semAcento !== false) $texto = $semAcento;
+    $texto = strtolower($texto);
+    $texto = preg_replace('/[^a-z0-9]+/', '-', $texto);
+    $texto = trim($texto, '-');
+    return $texto !== '' ? $texto : 'produto';
+}
+
+function slug_unico($pdo, $slug) {
+    $st = $pdo->prepare('SELECT id FROM produtos WHERE id = ? OR id LIKE ?');
+    $st->execute(array($slug, $slug . '-%'));
+    $existentes = array();
+    foreach ($st->fetchAll() as $r) { $existentes[$r['id']] = true; }
+    if (!isset($existentes[$slug])) return $slug;
+    $n = 2;
+    while (isset($existentes[$slug . '-' . $n])) { $n++; }
+    return $slug . '-' . $n;
+}
+
 function save_produto($pdo, $p, $ordem = null) {
-    $id = (isset($p['id']) && $p['id'] !== '') ? $p['id'] : uniqid('p_');
+    $criandoNovo = !isset($p['id']) || $p['id'] === '';
+    if ($criandoNovo) {
+        $id = slug_unico($pdo, slugify(val($p, 'nome')));
+    } else {
+        $id = $p['id'];
+    }
+    $url = (string) val($p, 'url');
+    if ($url === '') $url = 'produtos/produto-' . $id . '.html';
+    $alt = (string) val($p, 'alt');
+    if ($alt === '') $alt = (string) val($p, 'nome');
     $tags = isset($p['tags']) ? json_encode($p['tags'], JSON_UNESCAPED_UNICODE) : '[]';
     $sql = "INSERT INTO produtos (id,nome,categoria,categoriaLabel,marca,marcaLabel,tag,img,alt,url,tipo,embalagem,detalhes,aplicacao,descricao,tags,ordem,createdAt)
         VALUES (:id,:nome,:categoria,:categoriaLabel,:marca,:marcaLabel,:tag,:img,:alt,:url,:tipo,:embalagem,:detalhes,:aplicacao,:descricao,:tags,:ordem,:createdAt)
@@ -191,8 +300,8 @@ function save_produto($pdo, $p, $ordem = null) {
         ':marcaLabel' => (string) val($p, 'marcaLabel'),
         ':tag' => (string) val($p, 'tag'),
         ':img' => (string) val($p, 'img'),
-        ':alt' => (string) val($p, 'alt'),
-        ':url' => (string) val($p, 'url'),
+        ':alt' => $alt,
+        ':url' => $url,
         ':tipo' => (string) val($p, 'tipo'),
         ':embalagem' => (string) val($p, 'embalagem'),
         ':detalhes' => (string) val($p, 'detalhes'),

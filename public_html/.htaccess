@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Ficha de produto: produto-<slug>.html -> produto.php?slug=<slug>.
+# So entra em acao se nao existir um arquivo real com esse nome (nenhum
+# existe mais - todas as fichas sao geradas na hora a partir do banco).
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^produtos/produto-([a-z0-9-]+)\.html$ produtos/produto.php?slug=$1 [L,QSA]

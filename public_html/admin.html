@@ -127,8 +127,8 @@
                         </div>
                         <div>
                             <div class="stat-value" id="statProdutos">0</div>
-                            <div class="stat-label">Produtos adicionados</div>
-                            <div style="font-size:.7rem; color:#aaa; margin-top:2px;">+ 98 no catálogo estático</div>
+                            <div class="stat-label">Produtos no catálogo</div>
+                            <div style="font-size:.7rem; color:#aaa; margin-top:2px;">Direto do banco de dados</div>
                         </div>
                     </div>
 
@@ -189,8 +189,8 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#44110D" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
                             </div>
                             <div>
-                                <div style="font-weight:600; font-size:.875rem; color:#111;">Produtos adicionais</div>
-                                <div style="font-size:.8125rem; color:#888; line-height:1.5;">Novos produtos aparecem no catálogo de produtos do site, junto com os 98 produtos já existentes.</div>
+                                <div style="font-weight:600; font-size:.875rem; color:#111;">Produtos 100% pelo banco</div>
+                                <div style="font-size:.8125rem; color:#888; line-height:1.5;">Criar, editar ou excluir aqui muda o site na hora — a ficha de cada produto é gerada a partir do banco, sem precisar publicar nada.</div>
                             </div>
                         </div>
                         <div style="display:flex; gap:12px; align-items:flex-start;">
@@ -459,6 +459,7 @@
                     <div class="form-group">
                         <label for="pCategoria">Categoria *</label>
                         <select id="pCategoria" class="form-input">
+                            <option value="">— Sem categoria —</option>
                             <option value="adesivos_epoxi">Adesivos Base Epoxi</option>
                             <option value="adesivos_argamassas">Adesivos p/ Argamassas</option>
                             <option value="aditivos_concretos">Aditivos p/ Concretos</option>
@@ -484,16 +485,31 @@
                         <label for="pMarca">Marca</label>
                         <select id="pMarca" class="form-input">
                             <option value="">— Sem marca —</option>
+                            <option value="acqua">Acqua</option>
+                            <option value="astrofita">Astrofita</option>
+                            <option value="bautech">Bautech</option>
                             <option value="branyl">Branyl</option>
                             <option value="cbpav">CB-PAV</option>
+                            <option value="ciplak">Ciplak</option>
+                            <option value="duralfoil">Duralfoil</option>
+                            <option value="euclid_chemical">Euclid Chemical</option>
+                            <option value="fibratex">Fibratex</option>
+                            <option value="fuseprotec">Fuseprotec</option>
+                            <option value="heydi">Heydi</option>
+                            <option value="itw">ITW</option>
                             <option value="maccaferri">Maccaferri</option>
                             <option value="mactra">Mactra</option>
+                            <option value="monopol">Monopol</option>
                             <option value="outros">Outros</option>
                             <option value="saint_gobain">Saint Gobain</option>
+                            <option value="scavone">Scavone</option>
                             <option value="sika">Sika</option>
+                            <option value="tarucel">Tarucel</option>
                             <option value="tegula">Tégula</option>
+                            <option value="tigre">Tigre</option>
                             <option value="vedbem">VedBem</option>
                             <option value="vedacit">Vedacit</option>
+                            <option value="vedax">Vedax</option>
                             <option value="viapol">Viapol</option>
                             <option value="quartzolit">Weber-Quartzolit</option></select>
                     </div>
