@@ -6,6 +6,9 @@ csp-config.php
 # Node
 node_modules/
 
+# MariaDB portátil de desenvolvimento local (baixado por npm run dev:php)
+.devdb/
+
 # Sistema / editores
 Thumbs.db
 desktop.ini

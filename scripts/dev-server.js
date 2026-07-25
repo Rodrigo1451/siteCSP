@@ -12,9 +12,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// O site fica em public_html/ na raiz, espelhando a Hostinger.
-// Este script vive em output_claude/scripts/, por isso sobe dois niveis.
-const ROOT = path.resolve(__dirname, '..', '..', 'public_html');
+// O site fica em public_html/ na raiz do projeto.
+// Este script vive em scripts/, por isso sobe um nível.
+const ROOT = path.resolve(__dirname, '..', 'public_html');
 const PORT = process.env.PORT || 3000;
 
 const MIME = {

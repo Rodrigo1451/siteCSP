@@ -20,13 +20,15 @@
 
     function contar(produtos) {
         var cats = {};
+        var marcas = {};
         var n = 0;
         produtos.forEach(function (p) {
             if (!p || !p.nome) return;
             n++;
             if (p.categoria) cats[p.categoria] = true;
+            if (p.marca) marcas[p.marca] = true;
         });
-        return { produtos: n, categorias: Object.keys(cats).length };
+        return { produtos: n, categorias: Object.keys(cats).length, marcas: Object.keys(marcas).length };
     }
 
     // Escreve os totais nos elementos marcados com data-csp-count

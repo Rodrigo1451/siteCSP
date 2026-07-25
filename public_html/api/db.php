@@ -8,6 +8,13 @@ $cspConfigPaths = array(
     dirname(dirname(__DIR__)) . '/csp-config.php',
     __DIR__ . '/config.php'
 );
+/* Servidor de dev local (npm run dev:php) aponta pro banco local via esta
+   variavel de ambiente, sem depender da ordem acima nem mexer nas
+   credenciais reais. Em producao ela nunca fica definida. */
+$cspDevConfig = getenv('CSP_DEV_CONFIG');
+if ($cspDevConfig && is_readable($cspDevConfig)) {
+    array_unshift($cspConfigPaths, $cspDevConfig);
+}
 $cspConfigLoaded = false;
 foreach ($cspConfigPaths as $cspConfigPath) {
     if (is_readable($cspConfigPath)) {
