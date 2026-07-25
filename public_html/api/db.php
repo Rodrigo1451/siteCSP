@@ -56,7 +56,7 @@ function require_admin() {
 /* Versao da carga inicial. Ao publicar um seed.json com produtos novos,
    incremente esta constante: seed_sync() insere o que falta no banco que ja
    existe, sem sobrescrever nada que o admin tenha editado. */
-define('CSP_SEED_VERSION', '2026-07-24-99');
+define('CSP_SEED_VERSION', '2026-07-24-117');
 
 /* Adiciona colunas que ainda nao existem. MySQL antigo nao aceita
    ADD COLUMN IF NOT EXISTS, entao consultamos o information_schema. */
